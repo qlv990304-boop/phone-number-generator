@@ -30,4 +30,4 @@ Every record includes `iso2`, `callingCode`, `nationalPattern`, `e164Example`, `
 
 These are format fixtures, not verified subscriber lines. Unless an official authority reserves the example, a structurally plausible value may coincide with an assigned number. Never call, text or use fixtures for account verification.
 
-See the [live dataset and source notes](https://getphonenum.com/phone-number-dataset.html).
+See the [versioned live dataset and official source notes](https://getphonenum.com/phone-number-dataset). Corrections with an official reference are welcome through [GitHub Issues](https://github.com/qlv990304-boop/phone-number-generator/issues).

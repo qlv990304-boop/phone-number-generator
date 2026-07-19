@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If this dataset supports your work, please cite it using the metadata below and link to the canonical dataset page."
+title: "GetPhoneNum country phone format fixtures"
+type: dataset
+authors:
+  - name: "GetPhoneNum"
+version: "2026-07-20"
+date-released: 2026-07-20
+url: "https://getphonenum.com/phone-number-dataset"
+repository-code: "https://github.com/qlv990304-boop/phone-number-generator"
+license: MIT
+keywords:
+  - phone-number-formats
+  - country-calling-codes
+  - E.164
+  - test-fixtures
+  - quality-assurance

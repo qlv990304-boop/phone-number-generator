@@ -30,10 +30,13 @@
     "url": "git+https://github.com/qlv990304-boop/phone-number-generator.git",
     "directory": "packages/getphonenum-fixtures"
   },
-  "homepage": "https://getphonenum.com/phone-number-dataset.html",
+  "homepage": "https://getphonenum.com/phone-number-dataset",
   "bugs": "https://github.com/qlv990304-boop/phone-number-generator/issues",
   "keywords": ["phone", "e164", "fixtures", "testing", "qa", "calling-code", "phone-number"],
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "engines": {
     "node": ">=18"
