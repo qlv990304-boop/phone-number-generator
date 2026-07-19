@@ -145,6 +145,23 @@ h3 { font-size: 1.1rem; }
 
 .section { margin-top: 3.5rem; }
 
+.article-shell { max-width: 900px; }
+
+.article-body { margin-top: 3rem; }
+
+.article-body section {
+  border-top: 1px solid var(--line);
+  margin-top: 2.75rem;
+  padding-top: 1.25rem;
+}
+
+.article-body p,
+.article-body li { color: var(--muted); }
+
+.article-body li + li { margin-top: .55rem; }
+
+.article-body pre { white-space: pre-wrap; }
+
 .section-tight { margin-top: 1.25rem; }
 
 .tool-grid {
