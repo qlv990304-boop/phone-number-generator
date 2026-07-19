@@ -232,6 +232,14 @@ textarea[readonly] {
 
 #regex-result-matches { white-space: pre-wrap; }
 
+.widget-preview {
+  border: 0;
+  min-height: 330px;
+  width: 100%;
+}
+
+.embed-code { white-space: pre-wrap; }
+
 .result {
   background: #0f172a;
   border-radius: .8rem;
