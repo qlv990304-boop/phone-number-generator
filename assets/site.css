@@ -78,6 +78,11 @@ a { color: var(--blue-dark); }
 
 .page-shell { padding-block: 4rem 1rem; }
 
+.home-hero { max-width: 900px; }
+.home-generator { max-width: 720px; }
+.home-generator .result p { color: #cbd5e1; margin-bottom: 0; }
+.home-generator .button.secondary { border-color: #93c5fd; }
+
 .eyebrow {
   color: var(--blue-dark);
   font-size: .78rem;

@@ -112,6 +112,24 @@ function initializeCopyButtons() {
   });
 }
 
+function initializeHomeGenerator() {
+  const form = document.querySelector("#home-generator-form");
+  if (!form) return;
+  const number = document.querySelector("#home-generator-number");
+  const pattern = document.querySelector("#home-generator-pattern");
+  const guide = document.querySelector("#home-generator-guide");
+  function render() {
+    const plan = byId(form.elements.country.value);
+    const e164 = generate(plan);
+    number.textContent = e164;
+    pattern.textContent = `Pattern: ${plan.pattern}`;
+    guide.href = plan.page.replace(/\.html$/, "");
+    guide.textContent = `View ${plan.name} guide`;
+    window.GetPhoneNum.track("home_phone_generate", { country: plan.id });
+  }
+  form.addEventListener("submit", (event) => { event.preventDefault(); render(); });
+}
+
 function initializeValidator() {
   const form = document.querySelector("#validator-form");
   if (!form) return;
@@ -209,6 +227,7 @@ function initializeBulkGenerator() {
 }
 
 fillCountrySelects();
+initializeHomeGenerator();
 initializeCopyButtons();
 initializeValidator();
 initializeCallingCode();
