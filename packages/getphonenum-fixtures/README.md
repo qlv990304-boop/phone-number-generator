@@ -1,6 +1,6 @@
 # getphonenum-fixtures
 
-Zero-dependency country calling-code and phone-format fixtures for development, documentation and QA. The package contains 20 country records and does not perform network lookups.
+Zero-dependency country calling-code and phone-format fixtures for development, documentation and QA. The package contains 31 country records and does not perform network lookups.
 
 ## Install
 

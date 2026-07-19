@@ -19,7 +19,18 @@
     SG: { generate: () => `+65 9${digits(3)} ${digits(4)}` },
     KR: { generate: () => `+82 10 ${digits(4)} ${digits(4)}` },
     NZ: { generate: () => `+64 21 ${digits(3)} ${digits(4)}` },
-    AE: { generate: () => `+971 50 ${digits(3)} ${digits(4)}` }
+    AE: { generate: () => `+971 50 ${digits(3)} ${digits(4)}` },
+    ID: { generate: () => `+62 812 ${digits(4)} ${digits(4)}` },
+    PK: { generate: () => `+92 300 ${digits(7)}` },
+    NG: { generate: () => `+234 803 ${digits(3)} ${digits(4)}` },
+    BD: { generate: () => `+880 1711 ${digits(6)}` },
+    RU: { generate: () => `+7 900 ${digits(3)}-${digits(2)}-${digits(2)}` },
+    VN: { generate: () => `+84 91 ${digits(3)} ${digits(4)}` },
+    PH: { generate: () => `+63 917 ${digits(3)} ${digits(4)}` },
+    TR: { generate: () => `+90 532 ${digits(3)} ${digits(2)} ${digits(2)}` },
+    SA: { generate: () => `+966 50 ${digits(3)} ${digits(4)}` },
+    EG: { generate: () => `+20 10 ${digits(4)} ${digits(4)}` },
+    PL: { generate: () => `+48 501 ${digits(3)} ${digits(3)}` }
   };
 
   function digits(length) {

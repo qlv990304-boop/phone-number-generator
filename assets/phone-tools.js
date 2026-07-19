@@ -18,7 +18,18 @@ const plans = [
   { id: "SG", name: "Singapore", code: "65", min: 8, max: 8, trunk: false, pattern: "9xxx xxxx", example: "+6591234567", prefix: /^[89]\d{7}$/, page: "/singapore-phone-number.html" },
   { id: "KR", name: "South Korea", code: "82", min: 10, max: 10, trunk: true, pattern: "010-xxxx-xxxx", example: "+821012345678", prefix: /^10\d{8}$/, page: "/south-korea-phone-number.html" },
   { id: "NZ", name: "New Zealand", code: "64", min: 8, max: 10, trunk: true, pattern: "021 xxx xxxx", example: "+64211234567", prefix: /^2\d{7,9}$/, page: "/new-zealand-phone-number.html" },
-  { id: "AE", name: "United Arab Emirates", code: "971", min: 9, max: 9, trunk: true, pattern: "05x xxx xxxx", example: "+971501234567", prefix: /^5\d{8}$/, page: "/uae-phone-number.html" }
+  { id: "AE", name: "United Arab Emirates", code: "971", min: 9, max: 9, trunk: true, pattern: "05x xxx xxxx", example: "+971501234567", prefix: /^5\d{8}$/, page: "/uae-phone-number.html" },
+  { id: "ID", name: "Indonesia", code: "62", min: 9, max: 12, trunk: true, pattern: "08xx-xxxx-xxxx", example: "+6281234567890", prefix: /^8\d{8,11}$/, page: "/indonesia-phone-number.html" },
+  { id: "PK", name: "Pakistan", code: "92", min: 10, max: 10, trunk: true, pattern: "03xx xxxxxxx", example: "+923001234567", prefix: /^3\d{9}$/, page: "/pakistan-phone-number.html" },
+  { id: "NG", name: "Nigeria", code: "234", min: 10, max: 10, trunk: true, pattern: "0803 xxx xxxx", example: "+2348031234567", prefix: /^[789]\d{9}$/, page: "/nigeria-phone-number.html" },
+  { id: "BD", name: "Bangladesh", code: "880", min: 10, max: 10, trunk: true, pattern: "01xxx-xxxxxx", example: "+8801711123456", prefix: /^1\d{9}$/, page: "/bangladesh-phone-number.html" },
+  { id: "RU", name: "Russia", code: "7", min: 10, max: 10, trunk: "8", pattern: "8 900 xxx-xx-xx", example: "+79001234567", prefix: /^9\d{9}$/, page: "/russia-phone-number.html" },
+  { id: "VN", name: "Vietnam", code: "84", min: 9, max: 9, trunk: true, pattern: "09x xxx xxxx", example: "+84912345678", prefix: /^[35789]\d{8}$/, page: "/vietnam-phone-number.html" },
+  { id: "PH", name: "Philippines", code: "63", min: 10, max: 10, trunk: true, pattern: "09xx xxx xxxx", example: "+639171234567", prefix: /^9\d{9}$/, page: "/philippines-phone-number.html" },
+  { id: "TR", name: "Turkey", code: "90", min: 10, max: 10, trunk: true, pattern: "05xx xxx xx xx", example: "+905321234567", prefix: /^5\d{9}$/, page: "/turkey-phone-number.html" },
+  { id: "SA", name: "Saudi Arabia", code: "966", min: 9, max: 9, trunk: true, pattern: "05x xxx xxxx", example: "+966501234567", prefix: /^5\d{8}$/, page: "/saudi-arabia-phone-number.html" },
+  { id: "EG", name: "Egypt", code: "20", min: 10, max: 10, trunk: true, pattern: "01x xxxx xxxx", example: "+201012345678", prefix: /^1\d{9}$/, page: "/egypt-phone-number.html" },
+  { id: "PL", name: "Poland", code: "48", min: 9, max: 9, trunk: false, pattern: "xxx xxx xxx", example: "+48501123456", prefix: /^[4-8]\d{8}$/, page: "/poland-phone-number.html" }
 ];
 
 function byId(id) { return plans.find((plan) => plan.id === id); }
@@ -32,7 +43,10 @@ function normalize(raw, plan) {
   if (value.startsWith("00")) value = value.slice(2);
   if (international && value.startsWith(plan.code)) value = value.slice(plan.code.length);
   else if (!international && plan.code === "1" && value.length === 11 && value.startsWith("1")) value = value.slice(1);
-  else if (!international && plan.trunk && value.startsWith("0")) value = value.slice(1);
+  else {
+    const trunkPrefix = typeof plan.trunk === "string" ? plan.trunk : plan.trunk ? "0" : "";
+    if (!international && trunkPrefix && value.startsWith(trunkPrefix)) value = value.slice(trunkPrefix.length);
+  }
   return value;
 }
 
@@ -57,7 +71,18 @@ function generate(plan) {
     SG: () => `+659${digits(7)}`,
     KR: () => `+8210${digits(8)}`,
     NZ: () => `+6421${digits(7)}`,
-    AE: () => `+97150${digits(7)}`
+    AE: () => `+97150${digits(7)}`,
+    ID: () => `+62812${digits(8)}`,
+    PK: () => `+92300${digits(7)}`,
+    NG: () => `+234803${digits(7)}`,
+    BD: () => `+8801711${digits(6)}`,
+    RU: () => `+7900${digits(7)}`,
+    VN: () => `+8491${digits(7)}`,
+    PH: () => `+63917${digits(7)}`,
+    TR: () => `+90532${digits(7)}`,
+    SA: () => `+96650${digits(7)}`,
+    EG: () => `+2010${digits(8)}`,
+    PL: () => `+48501${digits(6)}`
   };
   return generators[plan.id]();
 }

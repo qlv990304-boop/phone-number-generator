@@ -198,5 +198,115 @@ export const phoneFormats = Object.freeze([
     "nationalDigits": "9 after +971",
     "fixtureSafety": "Structural example; may coincide with an assigned number",
     "sourceUrl": "https://tdra.gov.ae/-/media/About/regulations-and-ruling/EN/National-Number-Plan-pdf.ashx"
+  },
+  {
+    "country": "Indonesia",
+    "iso2": "ID",
+    "callingCode": "+62",
+    "nationalPattern": "08xx-xxxx-xxxx",
+    "e164Example": "+6281234567890",
+    "nationalDigits": "Variable after +62",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://jdih.komdigi.go.id/produk_hukum/view/id/768/t/peraturan%2Bmenteri%2Bkomunikasi%2Bdan%2Binformatika%2Bnomor%2B5%2Btahun%2B2021"
+  },
+  {
+    "country": "Pakistan",
+    "iso2": "PK",
+    "callingCode": "+92",
+    "nationalPattern": "03xx xxxxxxx",
+    "e164Example": "+923001234567",
+    "nationalDigits": "10 after +92",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.ituob.org/issues/1233-en/"
+  },
+  {
+    "country": "Nigeria",
+    "iso2": "NG",
+    "callingCode": "+234",
+    "nationalPattern": "0803 xxx xxxx",
+    "e164Example": "+2348031234567",
+    "nationalDigits": "10 after +234",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://ncc.gov.ng/sites/default/files/2024-11/Standards-National_Numbering_Plan_202210.pdf"
+  },
+  {
+    "country": "Bangladesh",
+    "iso2": "BD",
+    "callingCode": "+880",
+    "nationalPattern": "01xxx-xxxxxx",
+    "e164Example": "+8801711123456",
+    "nationalDigits": "10 after +880",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://btrc.gov.bd/sites/default/files/files/btrc.portal.gov.bd/page/70331228_9816_40ea_8d59_f2baf756d078/national_numbering_plan_2005_0.pdf"
+  },
+  {
+    "country": "Russia",
+    "iso2": "RU",
+    "callingCode": "+7",
+    "nationalPattern": "8 900 xxx-xx-xx",
+    "e164Example": "+79001234567",
+    "nationalDigits": "10 after +7",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.itu.int/oth/T02020000AD/en"
+  },
+  {
+    "country": "Vietnam",
+    "iso2": "VN",
+    "callingCode": "+84",
+    "nationalPattern": "09x xxx xxxx",
+    "e164Example": "+84912345678",
+    "nationalDigits": "9 after +84",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.itu.int/dms_pub/itu-t/oth/02/02/T02020000E40005PDFE.pdf"
+  },
+  {
+    "country": "Philippines",
+    "iso2": "PH",
+    "callingCode": "+63",
+    "nationalPattern": "09xx xxx xxxx",
+    "e164Example": "+639171234567",
+    "nationalDigits": "10 after +63",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.ntc.gov.ph/wp-content/uploads/2015/10/LawsRulesRegulations/MemoCirculars/MC1994/MC-11-5-94.pdf"
+  },
+  {
+    "country": "Turkey",
+    "iso2": "TR",
+    "callingCode": "+90",
+    "nationalPattern": "05xx xxx xx xx",
+    "e164Example": "+905321234567",
+    "nationalDigits": "10 after +90",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.btk.gov.tr/genel-numaralandirma-plani"
+  },
+  {
+    "country": "Saudi Arabia",
+    "iso2": "SA",
+    "callingCode": "+966",
+    "nationalPattern": "05x xxx xxxx",
+    "e164Example": "+966501234567",
+    "nationalDigits": "9 after +966",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.cst.gov.sa/en/about/Numbering"
+  },
+  {
+    "country": "Egypt",
+    "iso2": "EG",
+    "callingCode": "+20",
+    "nationalPattern": "01x xxxx xxxx",
+    "e164Example": "+201012345678",
+    "nationalDigits": "10 after +20",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.itu.int/dms_pub/itu-t/oth/02/02/T020200003E0004PDFE.pdf"
+  },
+  {
+    "country": "Poland",
+    "iso2": "PL",
+    "callingCode": "+48",
+    "nationalPattern": "xxx xxx xxx",
+    "e164Example": "+48501123456",
+    "nationalDigits": "9",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://numeracja.uke.gov.pl/pl"
   }
 ].map((record) => Object.freeze(record)));

@@ -8,7 +8,28 @@ const plans = {
   FR: { name: "France", code: "33", min: 9, max: 9, trunk: true },
   JP: { name: "Japan", code: "81", min: 9, max: 10, trunk: true },
   BR: { name: "Brazil", code: "55", min: 10, max: 11, trunk: false },
-  AU: { name: "Australia", code: "61", min: 9, max: 9, trunk: true }
+  AU: { name: "Australia", code: "61", min: 9, max: 9, trunk: true },
+  MX: { name: "Mexico", code: "52", min: 10, max: 10, trunk: false },
+  ES: { name: "Spain", code: "34", min: 9, max: 9, trunk: false },
+  IT: { name: "Italy", code: "39", min: 10, max: 10, trunk: false },
+  NL: { name: "Netherlands", code: "31", min: 9, max: 9, trunk: true },
+  SE: { name: "Sweden", code: "46", min: 9, max: 9, trunk: true },
+  CH: { name: "Switzerland", code: "41", min: 9, max: 9, trunk: true },
+  SG: { name: "Singapore", code: "65", min: 8, max: 8, trunk: false },
+  KR: { name: "South Korea", code: "82", min: 10, max: 10, trunk: true },
+  NZ: { name: "New Zealand", code: "64", min: 8, max: 10, trunk: true },
+  AE: { name: "United Arab Emirates", code: "971", min: 9, max: 9, trunk: true },
+  ID: { name: "Indonesia", code: "62", min: 9, max: 12, trunk: true },
+  PK: { name: "Pakistan", code: "92", min: 10, max: 10, trunk: true },
+  NG: { name: "Nigeria", code: "234", min: 10, max: 10, trunk: true },
+  BD: { name: "Bangladesh", code: "880", min: 10, max: 10, trunk: true },
+  RU: { name: "Russia", code: "7", min: 10, max: 10, trunk: "8" },
+  VN: { name: "Vietnam", code: "84", min: 9, max: 9, trunk: true },
+  PH: { name: "Philippines", code: "63", min: 10, max: 10, trunk: true },
+  TR: { name: "Turkey", code: "90", min: 10, max: 10, trunk: true },
+  SA: { name: "Saudi Arabia", code: "966", min: 9, max: 9, trunk: true },
+  EG: { name: "Egypt", code: "20", min: 10, max: 10, trunk: true },
+  PL: { name: "Poland", code: "48", min: 9, max: 9, trunk: false }
 };
 
 const form = document.querySelector("#formatter-form");
@@ -24,8 +45,11 @@ function normalize(raw, plan) {
     digits = digits.slice(plan.code.length);
   } else if (!hasInternationalPrefix && plan.code === "1" && digits.length === 11 && digits.startsWith("1")) {
     digits = digits.slice(1);
-  } else if (!hasInternationalPrefix && plan.trunk && digits.startsWith("0")) {
-    digits = digits.slice(1);
+  } else {
+    const trunkPrefix = typeof plan.trunk === "string" ? plan.trunk : plan.trunk ? "0" : "";
+    if (!hasInternationalPrefix && trunkPrefix && digits.startsWith(trunkPrefix)) {
+      digits = digits.slice(trunkPrefix.length);
+    }
   }
 
   return digits;
@@ -54,7 +78,8 @@ form.addEventListener("submit", function (event) {
   const e164 = `+${plan.code}${national}`;
   document.querySelector("#result-e164").textContent = e164;
   document.querySelector("#result-international").textContent = `+${plan.code} ${national}`;
-  document.querySelector("#result-national").textContent = plan.trunk ? `0${national}` : national;
+  const trunkPrefix = typeof plan.trunk === "string" ? plan.trunk : plan.trunk ? "0" : "";
+  document.querySelector("#result-national").textContent = `${trunkPrefix}${national}`;
   document.querySelector("#result-rfc").textContent = `tel:${e164}`;
   results.hidden = false;
   showStatus("The number matches the selected country's basic length rules.", "success");
