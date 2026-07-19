@@ -1,0 +1,41 @@
+{
+  "name": "getphonenum-fixtures",
+  "version": "0.1.0",
+  "description": "Country calling codes, phone format metadata and E.164 fixtures for development and QA.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./data": {
+      "types": "./data.d.ts",
+      "import": "./data.js"
+    }
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "data.js",
+    "data.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "prepack": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qlv990304-boop/phone-number-generator.git",
+    "directory": "packages/getphonenum-fixtures"
+  },
+  "homepage": "https://getphonenum.com/phone-number-dataset.html",
+  "bugs": "https://github.com/qlv990304-boop/phone-number-generator/issues",
+  "keywords": ["phone", "e164", "fixtures", "testing", "qa", "calling-code", "phone-number"],
+  "license": "MIT",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  }
+}

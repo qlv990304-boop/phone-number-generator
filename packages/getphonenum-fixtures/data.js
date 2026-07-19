@@ -1,0 +1,202 @@
+export const phoneFormats = Object.freeze([
+  {
+    "country": "United States",
+    "iso2": "US",
+    "callingCode": "+1",
+    "nationalPattern": "(NPA) NXX-XXXX",
+    "e164Example": "+12025550123",
+    "nationalDigits": "10",
+    "fixtureSafety": "Uses the reserved 555-01xx fictional block",
+    "sourceUrl": "https://www.nanpa.com/numbering/555-line-numbers"
+  },
+  {
+    "country": "Canada",
+    "iso2": "CA",
+    "callingCode": "+1",
+    "nationalPattern": "(NPA) NXX-XXXX",
+    "e164Example": "+14165550123",
+    "nationalDigits": "10",
+    "fixtureSafety": "Uses the reserved 555-01xx fictional block",
+    "sourceUrl": "https://www.cnac.ca/about/mandate.htm"
+  },
+  {
+    "country": "United Kingdom",
+    "iso2": "GB",
+    "callingCode": "+44",
+    "nationalPattern": "07xxx xxxxxx",
+    "e164Example": "+447700900123",
+    "nationalDigits": "10 after +44",
+    "fixtureSafety": "Uses Ofcom's 07700 900xxx drama range",
+    "sourceUrl": "https://www.ofcom.org.uk/phones-and-broadband/phone-numbers/numbers-for-drama"
+  },
+  {
+    "country": "Australia",
+    "iso2": "AU",
+    "callingCode": "+61",
+    "nationalPattern": "04xx xxx xxx",
+    "e164Example": "+61491570006",
+    "nationalDigits": "9 after +61",
+    "fixtureSafety": "Example is from ACMA's published creative-work list",
+    "sourceUrl": "https://www.acma.gov.au/phone-numbers-use-tv-shows-films-and-creative-works"
+  },
+  {
+    "country": "China",
+    "iso2": "CN",
+    "callingCode": "+86",
+    "nationalPattern": "1xx xxxx xxxx",
+    "e164Example": "+8613012345678",
+    "nationalDigits": "11",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://nac.miit.gov.cn/"
+  },
+  {
+    "country": "India",
+    "iso2": "IN",
+    "callingCode": "+91",
+    "nationalPattern": "xxxxx xxxxx",
+    "e164Example": "+919876543210",
+    "nationalDigits": "10",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.dot.gov.in/"
+  },
+  {
+    "country": "Germany",
+    "iso2": "DE",
+    "callingCode": "+49",
+    "nationalPattern": "01xx xxxxxxx",
+    "e164Example": "+4915112345678",
+    "nationalDigits": "Variable",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.bundesnetzagentur.de/EN/Areas/Telecommunications/Numbering/start.html"
+  },
+  {
+    "country": "France",
+    "iso2": "FR",
+    "callingCode": "+33",
+    "nationalPattern": "06 xx xx xx xx",
+    "e164Example": "+33639981234",
+    "nationalDigits": "9 after +33",
+    "fixtureSafety": "Structural example; review current Arcep rules",
+    "sourceUrl": "https://www.arcep.fr/la-regulation/grands-dossiers-thematiques-transverses/la-numerotation.html"
+  },
+  {
+    "country": "Japan",
+    "iso2": "JP",
+    "callingCode": "+81",
+    "nationalPattern": "0x0-xxxx-xxxx",
+    "e164Example": "+819012345678",
+    "nationalDigits": "9-10 after +81",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.itu.int/en/ITU-T/inr/forms/Pages/dialling.aspx"
+  },
+  {
+    "country": "Brazil",
+    "iso2": "BR",
+    "callingCode": "+55",
+    "nationalPattern": "(AA) 9xxxx-xxxx",
+    "e164Example": "+5511987654321",
+    "nationalDigits": "11 mobile digits",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.gov.br/anatel/pt-br/regulado/numeracao/tabela-servico-movel-celular"
+  },
+  {
+    "country": "Mexico",
+    "iso2": "MX",
+    "callingCode": "+52",
+    "nationalPattern": "xx xxxx xxxx",
+    "e164Example": "+525512345678",
+    "nationalDigits": "10",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.ift.org.mx/comunicacion-y-medios/marcacion-a-10-digitos"
+  },
+  {
+    "country": "Spain",
+    "iso2": "ES",
+    "callingCode": "+34",
+    "nationalPattern": "6xx xxx xxx",
+    "e164Example": "+34612345678",
+    "nationalDigits": "9",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.cnmc.es/sectores-que-regulamos/telecomunicaciones/registros-de-numeracion"
+  },
+  {
+    "country": "Italy",
+    "iso2": "IT",
+    "callingCode": "+39",
+    "nationalPattern": "3xx xxx xxxx",
+    "e164Example": "+393123456789",
+    "nationalDigits": "10 mobile digits",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.agcom.it/competenze/comunicazioni-elettroniche/reti/numerazione/piano-di-numerazione"
+  },
+  {
+    "country": "Netherlands",
+    "iso2": "NL",
+    "callingCode": "+31",
+    "nationalPattern": "06 xxxxxxxx",
+    "e164Example": "+31612345678",
+    "nationalDigits": "9 after +31",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.acm.nl/nl/telefoonnummers/nummers-en-codes-voor-telecomaanbieders"
+  },
+  {
+    "country": "Sweden",
+    "iso2": "SE",
+    "callingCode": "+46",
+    "nationalPattern": "070-xxx xx xx",
+    "e164Example": "+46701234567",
+    "nationalDigits": "9 after +46",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.pts.se/en/internet-and-telephony/numbering-and-addressing/"
+  },
+  {
+    "country": "Switzerland",
+    "iso2": "CH",
+    "callingCode": "+41",
+    "nationalPattern": "079 xxx xx xx",
+    "e164Example": "+41791234567",
+    "nationalDigits": "9 after +41",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.bakom.admin.ch/en/numbering-and-telephony"
+  },
+  {
+    "country": "Singapore",
+    "iso2": "SG",
+    "callingCode": "+65",
+    "nationalPattern": "9xxx xxxx",
+    "e164Example": "+6591234567",
+    "nationalDigits": "8",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.imda.gov.sg/-/media/imda/files/regulation-licensing-and-consultations/frameworks-and-policies/numbering/national-numbering-plan-and-allocation-process/2chapter_2_the_national_numbering_scheme.pdf"
+  },
+  {
+    "country": "South Korea",
+    "iso2": "KR",
+    "callingCode": "+82",
+    "nationalPattern": "010-xxxx-xxxx",
+    "e164Example": "+821012345678",
+    "nationalDigits": "10 after +82",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.itu.int/en/ITU-T/inr/forms/Pages/dialling.aspx"
+  },
+  {
+    "country": "New Zealand",
+    "iso2": "NZ",
+    "callingCode": "+64",
+    "nationalPattern": "021 xxx xxxx",
+    "e164Example": "+64211234567",
+    "nationalDigits": "Variable",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://www.nad.org.nz/resources"
+  },
+  {
+    "country": "United Arab Emirates",
+    "iso2": "AE",
+    "callingCode": "+971",
+    "nationalPattern": "05x xxx xxxx",
+    "e164Example": "+971501234567",
+    "nationalDigits": "9 after +971",
+    "fixtureSafety": "Structural example; may coincide with an assigned number",
+    "sourceUrl": "https://tdra.gov.ae/-/media/About/regulations-and-ruling/EN/National-Number-Plan-pdf.ashx"
+  }
+].map((record) => Object.freeze(record)));
