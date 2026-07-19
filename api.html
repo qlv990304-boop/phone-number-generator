@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Number Test Data API — Early Access | GetPhoneNum</title>
+  <meta name="description" content="Preview the planned GetPhoneNum API for deterministic international phone test data, invalid edge cases and JSON fixtures.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://getphonenum.com/api.html">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script defer src="/assets/site.js"></script>
+</head>
+<body class="static-page">
+  <header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/">Generator</a><a href="/e164-formatter.html">Formatter</a><a href="/responsible-use.html">Responsible use</a></div></nav></header>
+  <main class="page-shell">
+    <p class="eyebrow">Concept validation</p>
+    <h1>Phone test-data API</h1>
+    <p class="lede">We are validating a small API for repeatable international phone fixtures—not live numbers, SMS reception or subscriber lookups.</p>
+    <div class="notice"><strong>Not yet generally available.</strong> This page documents the proposed MVP so developers can tell us whether it solves a real testing problem.</div>
+
+    <section class="section grid">
+      <article class="card"><h3>Deterministic output</h3><p>Provide a seed and receive the same fixtures on every test run.</p></article>
+      <article class="card"><h3>Positive and negative cases</h3><p>Generate valid-format examples alongside wrong-length, missing-code and boundary cases.</p></article>
+      <article class="card"><h3>Developer-friendly formats</h3><p>Return E.164, national, international and RFC 3966 values in JSON.</p></article>
+    </section>
+
+    <section class="section">
+      <h2>Proposed request</h2>
+      <pre class="result"><code>POST /v1/generate
+
+{
+  "countries": ["US", "GB"],
+  "quantity": 25,
+  "formats": ["E164", "NATIONAL"],
+  "seed": "checkout-tests",
+  "include_invalid_cases": true
+}</code></pre>
+      <div class="hero-actions">
+        <a class="button" href="https://github.com/qlv990304-boop/phone-number-generator/issues/new?title=API%20early%20access%20request&amp;body=Use%20case%3A%0AExpected%20monthly%20requests%3A%0ACountries%20needed%3A" data-event="api_feedback_click" rel="noopener">Request early access on GitHub</a>
+        <a class="button secondary" href="/e164-formatter.html">Try the free formatter</a>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h2>What would make it worth paying for?</h2>
+      <p>We are specifically looking for workflows that free local libraries do not solve well: maintained reserved ranges, repeatable fixtures across languages, bulk edge cases, team datasets and CI integration.</p>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/about.html">About</a><a href="/privacy.html">Privacy</a></div></div></footer>
+</body>
+</html>
