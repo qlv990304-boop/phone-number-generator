@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css?v=20260719-2">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-3">
   <style>body { font-family: Inter, sans-serif; }</style>
   <script type="application/ld+json">
   {
@@ -94,10 +94,22 @@
       <h2>Phone number fixtures without using customer data</h2>
       <p>GetPhoneNum generates correctly structured examples for testing phone inputs, international forms, demos and documentation. It does not provide real subscriber lines, SMS inboxes or verification bypasses.</p>
       <div class="hero-actions">
+        <a class="button" href="/tools.html" data-event="tools_cta">Browse all phone tools</a>
         <a class="button" href="/e164-formatter.html" data-event="formatter_cta">Format a number to E.164</a>
         <a class="button secondary" href="/api.html" data-event="api_interest_click">Explore the planned API</a>
       </div>
       <div class="notice"><strong>Important:</strong> Except where a regulator reserves a fictional range, a valid-looking number could match a real subscriber. Never call, text or use generated data for account verification.</div>
+    </section>
+
+    <section class="section" aria-labelledby="developer-tools">
+      <p class="eyebrow">Free browser tools</p>
+      <h2 id="developer-tools">Test, validate and export phone fixtures</h2>
+      <div class="tool-grid">
+        <article class="card tool-card"><span class="tool-badge">Validate</span><h3>Phone number validator</h3><p>Check digit length, calling code and basic country-specific structure.</p><a href="/phone-validator.html">Validate a number</a></article>
+        <article class="card tool-card"><span class="tool-badge">Reference</span><h3>Country calling code lookup</h3><p>Find dialing codes, common national patterns and E.164 examples.</p><a href="/country-calling-code.html">Look up a calling code</a></article>
+        <article class="card tool-card"><span class="tool-badge">QA</span><h3>Phone regex tester</h3><p>Run JavaScript regular expressions against sample phone input.</p><a href="/phone-regex-tester.html">Test a phone regex</a></article>
+        <article class="card tool-card"><span class="tool-badge">Fixtures</span><h3>Bulk test-data generator</h3><p>Create up to 100 local fixtures and export JSON or CSV.</p><a href="/bulk-phone-generator.html">Generate bulk fixtures</a></article>
+      </div>
     </section>
 
     <section class="section" aria-labelledby="use-cases">
@@ -171,6 +183,7 @@
     <footer class="section footer-inner">
       <span>© 2026 GetPhoneNum</span>
       <nav class="footer-links" aria-label="Footer">
+        <a href="/tools.html">Tools</a>
         <a href="/about.html">About</a>
         <a href="/responsible-use.html">Responsible use</a>
         <a href="/privacy.html">Privacy</a>

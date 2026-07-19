@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Phone Number Regex Tester for JavaScript | GetPhoneNum</title>
+  <meta name="description" content="Test JavaScript regular expressions against phone number fixtures, inspect matches and debug phone input validation in your browser.">
+  <meta name="robots" content="index, follow"><link rel="canonical" href="https://getphonenum.com/phone-regex-tester.html">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-3"><script defer src="/assets/site.js?v=20260719-2"></script><script defer type="module" src="/assets/phone-tools.js?v=20260719-3"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Phone number regex tester","url":"https://getphonenum.com/phone-regex-tester.html","applicationCategory":"DeveloperApplication","operatingSystem":"Web Browser","isAccessibleForFree":true}</script>
+</head>
+<body class="static-page" data-tool="regex">
+  <header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools.html">Tools</a><a href="/e164-formatter.html">Formatter</a><a href="/#countries">Countries</a><a href="/api.html">API</a></div></nav></header>
+  <main class="page-shell"><p class="eyebrow">Developer QA tool</p><h1>Phone number regex tester</h1><p class="lede">Run a JavaScript regular expression against sample input and inspect every match without sending data to a server.</p><section class="tool-panel"><h2>Test a pattern</h2><form id="regex-form">
+      <div class="field"><label for="regex-pattern">Regular expression</label><input id="regex-pattern" name="pattern" spellcheck="false" value="\+?[1-9]\d{7,14}" required></div>
+      <div class="field"><label for="regex-flags">Flags</label><input id="regex-flags" name="flags" spellcheck="false" value="g" maxlength="6"></div>
+      <div class="field"><label for="regex-input">Test input</label><textarea id="regex-input" name="input" rows="6" spellcheck="false">Valid fixture: +12025550123
+Invalid fixture: 1234
+UK fixture: +447700900123</textarea></div>
+      <button class="button" type="submit">Run regex</button></form>
+      <div id="regex-status" class="status" role="status"></div><div id="regex-results" class="result" hidden><small>Matches</small><strong id="regex-result-matches"></strong></div>
+    </section>
+    <div class="notice"><strong>A regex is not global phone validation.</strong> Numbering plans change and many countries use variable lengths. Prefer a maintained numbering library for production decisions.</div></main>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools.html">Tools</a><a href="/about.html">About</a><a href="/responsible-use.html">Responsible use</a><a href="/privacy.html">Privacy</a></div></div></footer>
+</body>
+</html>
