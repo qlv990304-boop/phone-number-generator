@@ -8,7 +8,17 @@ const plans = [
   { id: "DE", name: "Germany", code: "49", min: 7, max: 11, trunk: true, pattern: "01xx xxxxxxx", example: "+4915112345678", prefix: /^\d{7,11}$/, page: "/germany-phone-number.html" },
   { id: "FR", name: "France", code: "33", min: 9, max: 9, trunk: true, pattern: "06 xx xx xx xx", example: "+33639981234", prefix: /^[1-9]\d{8}$/, page: "/france-phone-number.html" },
   { id: "JP", name: "Japan", code: "81", min: 9, max: 10, trunk: true, pattern: "0x0-xxxx-xxxx", example: "+819012345678", prefix: /^\d{9,10}$/, page: "/japan-phone-number.html" },
-  { id: "BR", name: "Brazil", code: "55", min: 10, max: 11, trunk: false, pattern: "(AA) 9xxxx-xxxx", example: "+5511987654321", prefix: /^[1-9]\d{9,10}$/, page: "/brazil-phone-number.html" }
+  { id: "BR", name: "Brazil", code: "55", min: 10, max: 11, trunk: false, pattern: "(AA) 9xxxx-xxxx", example: "+5511987654321", prefix: /^[1-9]\d{9,10}$/, page: "/brazil-phone-number.html" },
+  { id: "MX", name: "Mexico", code: "52", min: 10, max: 10, trunk: false, pattern: "xx xxxx xxxx", example: "+525512345678", prefix: /^[2-9]\d{9}$/, page: "/mexico-phone-number.html" },
+  { id: "ES", name: "Spain", code: "34", min: 9, max: 9, trunk: false, pattern: "6xx xxx xxx", example: "+34612345678", prefix: /^[6-9]\d{8}$/, page: "/spain-phone-number.html" },
+  { id: "IT", name: "Italy", code: "39", min: 10, max: 10, trunk: false, pattern: "3xx xxx xxxx", example: "+393123456789", prefix: /^3\d{9}$/, page: "/italy-phone-number.html" },
+  { id: "NL", name: "Netherlands", code: "31", min: 9, max: 9, trunk: true, pattern: "06 xxxxxxxx", example: "+31612345678", prefix: /^6\d{8}$/, page: "/netherlands-phone-number.html" },
+  { id: "SE", name: "Sweden", code: "46", min: 9, max: 9, trunk: true, pattern: "070-xxx xx xx", example: "+46701234567", prefix: /^7\d{8}$/, page: "/sweden-phone-number.html" },
+  { id: "CH", name: "Switzerland", code: "41", min: 9, max: 9, trunk: true, pattern: "079 xxx xx xx", example: "+41791234567", prefix: /^7[5-9]\d{7}$/, page: "/switzerland-phone-number.html" },
+  { id: "SG", name: "Singapore", code: "65", min: 8, max: 8, trunk: false, pattern: "9xxx xxxx", example: "+6591234567", prefix: /^[89]\d{7}$/, page: "/singapore-phone-number.html" },
+  { id: "KR", name: "South Korea", code: "82", min: 10, max: 10, trunk: true, pattern: "010-xxxx-xxxx", example: "+821012345678", prefix: /^10\d{8}$/, page: "/south-korea-phone-number.html" },
+  { id: "NZ", name: "New Zealand", code: "64", min: 8, max: 10, trunk: true, pattern: "021 xxx xxxx", example: "+64211234567", prefix: /^2\d{7,9}$/, page: "/new-zealand-phone-number.html" },
+  { id: "AE", name: "United Arab Emirates", code: "971", min: 9, max: 9, trunk: true, pattern: "05x xxx xxxx", example: "+971501234567", prefix: /^5\d{8}$/, page: "/uae-phone-number.html" }
 ];
 
 function byId(id) { return plans.find((plan) => plan.id === id); }
@@ -37,7 +47,17 @@ function generate(plan) {
     DE: () => `+49${pick([151, 160, 170, 176])}${digits(7)}`,
     FR: () => `+3363998${digits(4)}`,
     JP: () => `+81${pick([70, 80, 90])}${digits(8)}`,
-    BR: () => `+55${pick([11, 21, 31, 41, 61])}9${digits(8)}`
+    BR: () => `+55${pick([11, 21, 31, 41, 61])}9${digits(8)}`,
+    MX: () => `+52${pick([55, 81, 33])}${digits(8)}`,
+    ES: () => `+346${digits(8)}`,
+    IT: () => `+393${digits(9)}`,
+    NL: () => `+316${digits(8)}`,
+    SE: () => `+4670${digits(7)}`,
+    CH: () => `+4179${digits(7)}`,
+    SG: () => `+659${digits(7)}`,
+    KR: () => `+8210${digits(8)}`,
+    NZ: () => `+6421${digits(7)}`,
+    AE: () => `+97150${digits(7)}`
   };
   return generators[plan.id]();
 }

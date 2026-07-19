@@ -9,7 +9,17 @@
     DE: { generate: () => `+49 ${pick([151, 160, 170, 176])} ${digits(7)}` },
     FR: { generate: () => `+33 6 39 98 ${digits(2)} ${digits(2)}` },
     JP: { generate: () => `+81 ${pick([70, 80, 90])} ${digits(4)} ${digits(4)}` },
-    BR: { generate: () => `+55 (${pick([11, 21, 31, 41, 61])}) 9${digits(4)}-${digits(4)}` }
+    BR: { generate: () => `+55 (${pick([11, 21, 31, 41, 61])}) 9${digits(4)}-${digits(4)}` },
+    MX: { generate: () => `+52 ${pick([55, 81, 33])} ${digits(4)} ${digits(4)}` },
+    ES: { generate: () => `+34 6${digits(2)} ${digits(3)} ${digits(3)}` },
+    IT: { generate: () => `+39 3${digits(2)} ${digits(3)} ${digits(4)}` },
+    NL: { generate: () => `+31 6 ${digits(8)}` },
+    SE: { generate: () => `+46 70 ${digits(3)} ${digits(2)} ${digits(2)}` },
+    CH: { generate: () => `+41 79 ${digits(3)} ${digits(2)} ${digits(2)}` },
+    SG: { generate: () => `+65 9${digits(3)} ${digits(4)}` },
+    KR: { generate: () => `+82 10 ${digits(4)} ${digits(4)}` },
+    NZ: { generate: () => `+64 21 ${digits(3)} ${digits(4)}` },
+    AE: { generate: () => `+971 50 ${digits(3)} ${digits(4)}` }
   };
 
   function digits(length) {
