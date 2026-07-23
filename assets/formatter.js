@@ -1,4 +1,4 @@
-const plans = {
+export const plans = {
   US: { name: "United States", code: "1", min: 10, max: 10, trunk: false },
   CA: { name: "Canada", code: "1", min: 10, max: 10, trunk: false },
   GB: { name: "United Kingdom", code: "44", min: 10, max: 10, trunk: true },
@@ -32,62 +32,126 @@ const plans = {
   PL: { name: "Poland", code: "48", min: 9, max: 9, trunk: false }
 };
 
-const form = document.querySelector("#formatter-form");
-const status = document.querySelector("#formatter-status");
-const results = document.querySelector("#formatter-results");
+const sharedCallingCodeLabels = {
+  "1": "United States / Canada / other NANP regions",
+  "7": "Russia / Kazakhstan"
+};
 
-function normalize(raw, plan) {
-  let digits = raw.trim().replace(/[^0-9]/g, "");
-  const hasInternationalPrefix = raw.trim().startsWith("+") || digits.startsWith("00");
+function trunkPrefix(plan) {
+  return typeof plan.trunk === "string" ? plan.trunk : plan.trunk ? "0" : "";
+}
 
+export function parsePhoneNumber(raw, defaultCountry) {
+  const input = String(raw || "").trim();
+  let digits = input.replace(/[^0-9]/g, "");
+  if (!digits) throw new Error("Enter at least one digit.");
+
+  const internationalInput = input.startsWith("+") || digits.startsWith("00");
   if (digits.startsWith("00")) digits = digits.slice(2);
-  if (hasInternationalPrefix && digits.startsWith(plan.code)) {
-    digits = digits.slice(plan.code.length);
-  } else if (!hasInternationalPrefix && plan.code === "1" && digits.length === 11 && digits.startsWith("1")) {
-    digits = digits.slice(1);
+
+  let candidates;
+  let plan;
+  let national;
+
+  if (internationalInput) {
+    const codes = [...new Set(Object.values(plans).map((item) => item.code))]
+      .sort((left, right) => right.length - left.length);
+    const code = codes.find((item) => digits.startsWith(item));
+    if (!code) throw new Error("The international calling code is not in the 31-country dataset.");
+    candidates = Object.entries(plans).filter(([, item]) => item.code === code);
+    plan = candidates.find(([id]) => id === defaultCountry)?.[1] || candidates[0][1];
+    national = digits.slice(code.length);
   } else {
-    const trunkPrefix = typeof plan.trunk === "string" ? plan.trunk : plan.trunk ? "0" : "";
-    if (!hasInternationalPrefix && trunkPrefix && digits.startsWith(trunkPrefix)) {
-      digits = digits.slice(trunkPrefix.length);
-    }
+    plan = plans[defaultCountry];
+    if (!plan) throw new Error("Choose a default country for a national number.");
+    candidates = [[defaultCountry, plan]];
+    national = digits;
+    if (plan.code === "1" && national.length === 11 && national.startsWith("1")) national = national.slice(1);
+    const trunk = trunkPrefix(plan);
+    if (trunk && national.startsWith(trunk)) national = national.slice(trunk.length);
   }
 
-  return digits;
-}
-
-function showStatus(message, type) {
-  status.textContent = message;
-  status.className = "status " + type;
-}
-
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const country = form.elements.country.value;
-  const plan = plans[country];
-  const national = normalize(form.elements.phone.value, plan);
-
-  if (national.length < plan.min || national.length > plan.max) {
-    results.hidden = true;
-    showStatus(
-      `This number has ${national.length} national digits; ${plan.name} expects ${plan.min === plan.max ? plan.min : `${plan.min}–${plan.max}`}.`,
-      "error"
-    );
-    return;
-  }
-
+  const validLength = candidates.some(([, item]) => national.length >= item.min && national.length <= item.max);
+  const countryIds = candidates.map(([id]) => id);
+  const sharedLabel = internationalInput ? sharedCallingCodeLabels[plan.code] : undefined;
+  const countryLabel = sharedLabel || candidates.map(([, item]) => item.name).join(" / ");
   const e164 = `+${plan.code}${national}`;
-  document.querySelector("#result-e164").textContent = e164;
-  document.querySelector("#result-international").textContent = `+${plan.code} ${national}`;
-  const trunkPrefix = typeof plan.trunk === "string" ? plan.trunk : plan.trunk ? "0" : "";
-  document.querySelector("#result-national").textContent = `${trunkPrefix}${national}`;
-  document.querySelector("#result-rfc").textContent = `tel:${e164}`;
-  results.hidden = false;
-  showStatus("The number matches the selected country's basic length rules.", "success");
-  window.GetPhoneNum.track("formatter_submit", { country: country, valid_length: true });
-});
-document.querySelectorAll("[data-copy-target]").forEach(function (button) {
-  button.addEventListener("click", function () {
-    const target = document.querySelector(button.dataset.copyTarget);
-    window.GetPhoneNum.copy(target.textContent, button);
-  });
-});
+
+  return {
+    countryIds,
+    countryLabel,
+    callingCode: `+${plan.code}`,
+    national,
+    e164,
+    international: `+${plan.code} ${national}`,
+    nationalDisplay: `${trunkPrefix(plan)}${national}`,
+    rfc3966: `tel:${e164}`,
+    internationalInput,
+    ambiguousCountry: Boolean(sharedLabel),
+    validLength,
+    expectedLength: plan.min === plan.max ? String(plan.min) : `${plan.min}–${plan.max}`
+  };
+}
+
+if (typeof document !== "undefined") {
+  const form = document.querySelector("#formatter-form");
+  const status = document.querySelector("#formatter-status");
+  const results = document.querySelector("#formatter-results");
+
+  function showStatus(message, type) {
+    status.textContent = message;
+    status.className = "status " + type;
+  }
+
+  if (form && status && results) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      let parsed;
+      try {
+        parsed = parsePhoneNumber(form.elements.phone.value, form.elements.country.value);
+      } catch (error) {
+        results.hidden = true;
+        showStatus(error.message, "error");
+        return;
+      }
+
+      if (!parsed.validLength) {
+        results.hidden = true;
+        showStatus(
+          `This number has ${parsed.national.length} national digits; ${parsed.countryLabel} expects ${parsed.expectedLength}.`,
+          "error"
+        );
+        window.GetPhoneNum.track("formatter_submit", { country: parsed.countryIds.join("_"), valid_length: false });
+        return;
+      }
+
+      document.querySelector("#result-country").textContent = parsed.countryLabel;
+      document.querySelector("#result-calling-code").textContent = parsed.callingCode;
+      document.querySelector("#result-national-digits").textContent = parsed.national;
+      document.querySelector("#result-e164").textContent = parsed.e164;
+      document.querySelector("#result-international").textContent = parsed.international;
+      document.querySelector("#result-national").textContent = parsed.nationalDisplay;
+      document.querySelector("#result-rfc").textContent = parsed.rfc3966;
+      results.hidden = false;
+      showStatus(
+        parsed.ambiguousCountry
+          ? `${parsed.callingCode} is shared by ${parsed.countryLabel}; the calling code alone cannot identify one country.`
+          : `Parsed as ${parsed.countryLabel} using basic calling-code and length rules.`,
+        "success"
+      );
+      window.GetPhoneNum.track("formatter_submit", {
+        country: parsed.countryIds.join("_"),
+        international_input: parsed.internationalInput,
+        shared_calling_code: parsed.ambiguousCountry,
+        valid_length: true
+      });
+    });
+
+    document.querySelectorAll("[data-copy-target]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const target = document.querySelector(button.dataset.copyTarget);
+        window.GetPhoneNum.copy(target.textContent, button);
+      });
+    });
+  }
+}

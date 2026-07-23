@@ -1,4 +1,4 @@
-const plans = [
+export const plans = [
   { id: "US", name: "United States", code: "1", min: 10, max: 10, trunk: false, pattern: "(NPA) NXX-XXXX", example: "+12025550123", prefix: /^[2-9]\d{9}$/, page: "/us-phone-number.html" },
   { id: "CA", name: "Canada", code: "1", min: 10, max: 10, trunk: false, pattern: "(NPA) NXX-XXXX", example: "+14165550123", prefix: /^[2-9]\d{9}$/, page: "/canada-phone-number.html" },
   { id: "GB", name: "United Kingdom", code: "44", min: 10, max: 10, trunk: true, pattern: "07xxx xxxxxx", example: "+447700900123", prefix: /^7\d{9}$/, page: "/uk-phone-number.html" },
@@ -32,7 +32,41 @@ const plans = [
   { id: "PL", name: "Poland", code: "48", min: 9, max: 9, trunk: false, pattern: "xxx xxx xxx", example: "+48501123456", prefix: /^[4-8]\d{8}$/, page: "/poland-phone-number.html" }
 ];
 
+const sharedCallingCodeLabels = {
+  "1": "United States / Canada / other NANP regions",
+  "7": "Russia / Kazakhstan"
+};
+
 function byId(id) { return plans.find((plan) => plan.id === id); }
+
+export function lookupCallingCode(raw) {
+  const input = String(raw || "").trim();
+  let digitsOnly = input.replace(/[^0-9]/g, "");
+  if (!digitsOnly) throw new Error("Enter a calling code or international phone number.");
+
+  const internationalInput = input.startsWith("+") || digitsOnly.startsWith("00");
+  if (digitsOnly.startsWith("00")) digitsOnly = digitsOnly.slice(2);
+  const codes = [...new Set(plans.map((plan) => plan.code))].sort((left, right) => right.length - left.length);
+  let code;
+
+  if (!internationalInput) {
+    if (digitsOnly.length > 3) throw new Error("Add + or 00 before a full international phone number.");
+    code = codes.find((item) => item === digitsOnly);
+  } else {
+    code = codes.find((item) => digitsOnly.startsWith(item));
+  }
+
+  if (!code) throw new Error("That calling code is not in the 31-country dataset.");
+  const candidates = plans.filter((plan) => plan.code === code);
+  const sharedLabel = sharedCallingCodeLabels[code];
+  return {
+    callingCode: `+${code}`,
+    countryLabel: sharedLabel || candidates.map((plan) => plan.name).join(" / "),
+    candidates,
+    shared: Boolean(sharedLabel),
+    queryType: internationalInput && digitsOnly.length > code.length ? "international_number" : "calling_code"
+  };
+}
 function digits(length) { return Array.from({ length }, () => Math.floor(Math.random() * 10)).join(""); }
 function pick(values) { return values[Math.floor(Math.random() * values.length)]; }
 
@@ -156,15 +190,47 @@ function initializeCallingCode() {
   const form = document.querySelector("#calling-code-form");
   if (!form) return;
   const results = document.querySelector("#calling-results");
+  const status = document.querySelector("#calling-code-status");
   function render() {
-    const plan = byId(form.elements.country.value);
-    document.querySelector("#calling-result-code").textContent = `+${plan.code}`;
-    document.querySelector("#calling-result-pattern").textContent = plan.pattern;
-    document.querySelector("#calling-result-length").textContent = plan.min === plan.max ? `${plan.min} digits` : `${plan.min}-${plan.max} digits`;
+    const query = form.elements.query.value.trim();
+    let candidates;
+    let countryLabel;
+    let callingCode;
+    let shared = false;
+    let direction = "country";
+
+    try {
+      if (query) {
+        const lookup = lookupCallingCode(query);
+        candidates = lookup.candidates;
+        countryLabel = lookup.countryLabel;
+        callingCode = lookup.callingCode;
+        shared = lookup.shared;
+        direction = "code";
+      } else {
+        const selected = byId(form.elements.country.value);
+        candidates = [selected];
+        countryLabel = selected.name;
+        callingCode = `+${selected.code}`;
+      }
+    } catch (error) {
+      results.hidden = true;
+      showStatus(status, error.message, "error");
+      return;
+    }
+
+    const plan = candidates[0];
+    const patterns = [...new Set(candidates.map((item) => item.pattern))];
+    const lengths = [...new Set(candidates.map((item) => item.min === item.max ? `${item.min} digits` : `${item.min}-${item.max} digits`))];
+    document.querySelector("#calling-result-country").textContent = countryLabel;
+    document.querySelector("#calling-result-code").textContent = callingCode;
+    document.querySelector("#calling-result-pattern").textContent = patterns.join(" / ");
+    document.querySelector("#calling-result-length").textContent = lengths.join(" / ");
     document.querySelector("#calling-result-example").textContent = plan.example;
-    document.querySelector("#calling-guide").innerHTML = `See the <a href="${plan.page}">${plan.name} format guide and fixture generator</a>.`;
+    document.querySelector("#calling-guide").innerHTML = `Supported guides: ${candidates.map((item) => `<a href="${item.page}">${item.name}</a>`).join(" · ")}.`;
     results.hidden = false;
-    window.GetPhoneNum.track("calling_code_lookup", { country: plan.id });
+    showStatus(status, shared ? `${callingCode} is shared by ${countryLabel}; the code alone cannot identify one country.` : `Matched ${callingCode} to ${countryLabel}.`, "success");
+    window.GetPhoneNum.track("calling_code_lookup", { country: candidates.map((item) => item.id).join("_"), lookup_direction: direction, shared_calling_code: shared });
   }
   form.addEventListener("submit", (event) => { event.preventDefault(); render(); });
   render();
@@ -226,10 +292,12 @@ function initializeBulkGenerator() {
   document.querySelector("#bulk-csv").addEventListener("click", () => download("phone-fixtures.csv", "text/csv", `id,country,e164,display\n${records.map((record) => `${record.id},${record.country},${record.e164},"${record.display}"`).join("\n")}`));
 }
 
-fillCountrySelects();
-initializeHomeGenerator();
-initializeCopyButtons();
-initializeValidator();
-initializeCallingCode();
-initializeRegexTester();
-initializeBulkGenerator();
+if (typeof document !== "undefined") {
+  fillCountrySelects();
+  initializeHomeGenerator();
+  initializeCopyButtons();
+  initializeValidator();
+  initializeCallingCode();
+  initializeRegexTester();
+  initializeBulkGenerator();
+}

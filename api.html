@@ -5,30 +5,31 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phone Number Test Data API — Early Access | GetPhoneNum</title>
-  <meta name="description" content="Preview the planned GetPhoneNum API for deterministic international phone test data, invalid edge cases and JSON fixtures.">
+  <title>Phone Number Test Data API Design Guide | GetPhoneNum</title>
+  <meta name="description" content="Design a deterministic phone test-data API with stable seeds, explicit invalid cases, safe fixtures and versioned JSON contracts.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://getphonenum.com/api">
   <link rel="stylesheet" href="/assets/site.css?v=20260719-2">
   <script defer src="/assets/site.js?v=20260719-2"></script>
 </head>
 <body class="static-page">
-  <header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/">Generator</a><a href="/e164-formatter">Formatter</a><a href="/responsible-use">Responsible use</a></div></nav></header>
+  <header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/phone-number-dataset">Dataset</a></div></nav></header>
   <main class="page-shell">
-    <p class="eyebrow">Concept validation</p>
-    <h1>Phone test-data API</h1>
-    <p class="lede">We are validating a small API for repeatable international phone fixtures—not live numbers, SMS reception or subscriber lookups.</p>
-    <div class="notice"><strong>Not yet generally available.</strong> This page documents the proposed MVP so developers can tell us whether it solves a real testing problem.</div>
+    <p class="eyebrow">API design reference</p>
+    <h1>Designing a phone test-data API</h1>
+    <p class="lede">A useful fixture API should return repeatable, versioned test data without pretending to provide live numbers, SMS reception or subscriber information.</p>
+    <div class="notice"><strong>No hosted GetPhoneNum API is currently offered.</strong> This page is a complete design reference. For working data today, use the <a href="/phone-number-dataset">downloadable dataset</a>, browser tools or local package.</div>
 
     <section class="section grid">
-      <article class="card"><h3>Deterministic output</h3><p>Provide a seed and receive the same fixtures on every test run.</p></article>
-      <article class="card"><h3>Positive and negative cases</h3><p>Generate valid-format examples alongside wrong-length, missing-code and boundary cases.</p></article>
-      <article class="card"><h3>Developer-friendly formats</h3><p>Return E.164, national, international and RFC 3966 values in JSON.</p></article>
+      <article class="card"><h2>Deterministic output</h2><p>Accept a caller-supplied seed and document the metadata version. The same seed, country and version should produce the same fixture on every test run.</p></article>
+      <article class="card"><h2>Explicit test intent</h2><p>Label positive and negative cases separately. A wrong-length fixture should explain its intended failure instead of masquerading as a valid subscriber number.</p></article>
+      <article class="card"><h2>Stable contracts</h2><p>Return E.164, national, international and RFC 3966 fields under a versioned schema. Add fields compatibly or publish a new major version.</p></article>
     </section>
 
     <section class="section">
-      <h2>Proposed request</h2>
-      <pre class="result"><code>POST /v1/generate
+      <h2>Example request contract</h2>
+      <p>The following is an illustrative interface, not a live endpoint. It keeps country selection, quantity, output formats and reproducibility explicit.</p>
+      <pre class="result"><code>POST /v1/fixtures
 
 {
   "countries": ["US", "GB"],
@@ -37,17 +38,32 @@
   "seed": "checkout-tests",
   "include_invalid_cases": true
 }</code></pre>
-      <div class="hero-actions">
-        <a class="button" href="https://github.com/qlv990304-boop/phone-number-generator/issues/new?title=API%20early%20access%20request&amp;body=Use%20case%3A%0AExpected%20monthly%20requests%3A%0ACountries%20needed%3A" data-event="api_feedback_click" rel="noopener">Request early access on GitHub</a>
-        <a class="button secondary" href="/e164-formatter">Try the free formatter</a>
-      </div>
     </section>
 
-    <section class="section card">
-      <h2>What would make it worth paying for?</h2>
-      <p>We are specifically looking for workflows that free local libraries do not solve well: maintained reserved ranges, repeatable fixtures across languages, bulk edge cases, team datasets and CI integration.</p>
+    <section class="section"><h2>Example response shape</h2><pre class="result"><code>{
+  "schema_version": "1.0",
+  "metadata_version": "2026-07-20",
+  "seed": "checkout-tests",
+  "fixtures": [
+    {
+      "country": "US",
+      "case": "valid_format",
+      "e164": "+12025550123",
+      "national": "(202) 555-0123",
+      "rfc3966": "tel:+12025550123",
+      "safety": "Reserved fictional range"
+    }
+  ]
+}</code></pre></section>
+
+    <section class="section grid">
+      <article class="card"><h2>Validate requests</h2><p>Set clear limits for quantity, supported countries and seed length. Reject unknown fields when strict reproducibility matters, and return row-level errors for mixed requests.</p></article>
+      <article class="card"><h2>Separate format from reachability</h2><p>Never label a structurally possible fixture as assigned, reachable or controlled by a user. Those claims require different data and consent-based workflows.</p></article>
+      <article class="card"><h2>Protect real subscribers</h2><p>Prefer regulator-reserved fictional ranges. Where none are published, disclose collision risk and disable outbound SMS or voice in automated environments.</p></article>
     </section>
+
+    <section class="section card"><h2>Use the maintained local resources</h2><p>The <a href="/phone-number-dataset">country format dataset</a> provides JSON, CSV and a JSON Schema with official-source links. For one-off work, use the <a href="/e164-formatter">E.164 formatter</a> or <a href="/bulk-phone-generator">bulk fixture generator</a>. These options avoid network dependencies and keep input in the browser.</p><p>For production validation architecture, read the <a href="/phone-number-validation-guide">phone number validation guide</a> and <a href="/responsible-use">responsible-use policy</a>.</p></section>
   </main>
-  <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/about">About</a><a href="/privacy">Privacy</a></div></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer>
 </body>
 </html>

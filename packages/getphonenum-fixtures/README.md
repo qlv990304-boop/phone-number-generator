@@ -26,6 +26,19 @@ listCountries(); // compact list for a country selector
 
 Every record includes `iso2`, `callingCode`, `nationalPattern`, `e164Example`, `nationalDigits`, `fixtureSafety` and `sourceUrl`.
 
+## Validate the dataset shape
+
+The package includes the same JSON Schema Draft 2020-12 contract published by the website:
+
+```js
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const schema = require("getphonenum-fixtures/schema.json");
+```
+
+The canonical schema is also available at <https://getphonenum.com/data/country-phone-formats.schema.json>.
+
 ## Safety
 
 These are format fixtures, not verified subscriber lines. Unless an official authority reserves the example, a structurally plausible value may coincide with an assigned number. Never call, text or use fixtures for account verification.

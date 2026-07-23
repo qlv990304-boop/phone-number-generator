@@ -11,13 +11,15 @@
     "./data": {
       "types": "./data.d.ts",
       "import": "./data.js"
-    }
+    },
+    "./schema.json": "./schema.json"
   },
   "files": [
     "index.js",
     "index.d.ts",
     "data.js",
     "data.d.ts",
+    "schema.json",
     "README.md",
     "LICENSE"
   ],

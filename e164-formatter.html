@@ -5,26 +5,26 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free E.164 Phone Number Formatter | GetPhoneNum</title>
-  <meta name="description" content="Normalize phone numbers to E.164, international, national and RFC 3966 formats. Free client-side tool for developers and QA.">
+  <title>Phone Number Parser and E.164 Formatter | GetPhoneNum</title>
+  <meta name="description" content="Parse international phone numbers or normalize national input to E.164, calling code, national digits and RFC 3966 formats in your browser.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://getphonenum.com/e164-formatter">
   <link rel="stylesheet" href="/assets/site.css?v=20260719-3">
   <script defer src="/assets/site.js?v=20260719-2"></script>
-  <script defer type="module" src="/assets/formatter.js?v=20260719-2"></script>
+  <script defer type="module" src="/assets/formatter.js?v=20260720-1"></script>
 </head>
 <body class="static-page">
   <header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/">Generator</a><a href="/api">API</a><a href="/responsible-use">Responsible use</a></div></nav></header>
   <main class="page-shell">
     <p class="eyebrow">Free developer tool</p>
-    <h1>E.164 phone number formatter</h1>
-    <p class="lede">Normalize a phone number into common storage and display formats. Processing happens locally in your browser.</p>
+    <h1>Phone number parser and E.164 formatter</h1>
+    <p class="lede">Paste an international number to detect its calling code, or choose a default country for national input. Processing happens locally in your browser.</p>
 
     <section class="tool-panel" aria-labelledby="formatter-heading">
-      <h2 id="formatter-heading">Format a number</h2>
+      <h2 id="formatter-heading">Parse or format a number</h2>
       <form id="formatter-form">
         <div class="field">
-          <label for="country">Default country</label>
+          <label for="country">Default country for national input</label>
           <select id="country" name="country">
             <option value="US">United States (+1)</option><option value="CA">Canada (+1)</option><option value="GB">United Kingdom (+44)</option><option value="CN">China (+86)</option><option value="IN">India (+91)</option><option value="DE">Germany (+49)</option><option value="FR">France (+33)</option><option value="JP">Japan (+81)</option><option value="BR">Brazil (+55)</option><option value="AU">Australia (+61)</option><option value="MX">Mexico (+52)</option><option value="ES">Spain (+34)</option><option value="IT">Italy (+39)</option><option value="NL">Netherlands (+31)</option><option value="SE">Sweden (+46)</option><option value="CH">Switzerland (+41)</option><option value="SG">Singapore (+65)</option><option value="KR">South Korea (+82)</option><option value="NZ">New Zealand (+64)</option><option value="AE">United Arab Emirates (+971)</option><option value="ID">Indonesia (+62)</option><option value="PK">Pakistan (+92)</option><option value="NG">Nigeria (+234)</option><option value="BD">Bangladesh (+880)</option><option value="RU">Russia (+7)</option><option value="VN">Vietnam (+84)</option><option value="PH">Philippines (+63)</option><option value="TR">Turkey (+90)</option><option value="SA">Saudi Arabia (+966)</option><option value="EG">Egypt (+20)</option><option value="PL">Poland (+48)</option>
           </select>
@@ -37,6 +37,9 @@
       </form>
       <div id="formatter-status" class="status" role="status"></div>
       <div id="formatter-results" class="result result-grid" hidden>
+        <div><small>Detected country</small><strong id="result-country"></strong></div>
+        <div><small>Calling code</small><strong id="result-calling-code"></strong></div>
+        <div><small>National digits</small><strong id="result-national-digits"></strong></div>
         <div><small>E.164</small><strong id="result-e164"></strong><button class="button secondary" type="button" data-copy-target="#result-e164">Copy</button></div>
         <div><small>International</small><strong id="result-international"></strong><button class="button secondary" type="button" data-copy-target="#result-international">Copy</button></div>
         <div><small>National</small><strong id="result-national"></strong><button class="button secondary" type="button" data-copy-target="#result-national">Copy</button></div>
@@ -44,13 +47,13 @@
       </div>
     </section>
 
-    <div class="notice"><strong>Structural check only:</strong> this tool checks basic country-code and length rules. It does not confirm that a number is assigned, reachable, mobile or able to receive SMS.</div>
+    <div class="notice"><strong>Structural parsing only:</strong> this tool uses the 31-country GetPhoneNum dataset and basic length rules. Shared plans such as +1 and +7 cannot identify one country from the calling code alone. It does not confirm assignment, reachability, line type or SMS capability.</div>
 
     <section class="section">
       <h2>When to use E.164</h2>
       <div class="grid"><article class="card"><h3>Databases</h3><p>Store one normalized representation to simplify deduplication and downstream processing.</p></article><article class="card"><h3>Communications APIs</h3><p>Many SMS, voice and identity providers expect a leading plus sign followed by country code and national number.</p></article><article class="card"><h3>QA and migrations</h3><p>Find records with missing country context, trunk prefixes or incorrect digit counts before import.</p></article></div>
     </section>
   </main>
-  <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/privacy">Privacy</a></div></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer>
 </body>
 </html>

@@ -7,6 +7,7 @@
 - [Country phone format dataset](https://getphonenum.com/phone-number-dataset)
 - [JSON download](https://getphonenum.com/data/country-phone-formats.json)
 - [CSV download](https://getphonenum.com/data/country-phone-formats.csv)
+- [JSON Schema contract](https://getphonenum.com/data/country-phone-formats.schema.json)
 - [`getphonenum-fixtures` package source](packages/getphonenum-fixtures)
 
 The dataset currently covers 31 countries. Records include the ISO code, calling code, national presentation pattern, E.164 fixture, fixture-safety note, and an official source URL. It contains no subscriber or reachability data.
@@ -26,11 +27,14 @@ npm run generate
 ## Verify before deployment
 
 ```powershell
-python gensitemap.py
-npm run check
+npm.cmd run generate
+npm.cmd run audit:content
+npm.cmd test
+npm.cmd run check
+npm.cmd run check:candidates
 ```
 
-Serve the folder with any static HTTP server for local browser testing. The `dist/` directory in the original working copy is a separate deployment repository and should receive only verified site files.
+`sitemap.xml` is checked against the complete indexable-page inventory by `npm.cmd run check`; do not replace it with a partial generated list. Serve the folder with any static HTTP server for local browser testing. The `dist/` directory in the original working copy is a separate deployment repository and should receive only verified site files.
 
 ## License
 
