@@ -6,12 +6,12 @@ export const plans = [
   { id: "CN", name: "China", code: "86", min: 11, max: 11, trunk: false, pattern: "1xx xxxx xxxx", example: "+8613012345678", prefix: /^1\d{10}$/, page: "/china-phone-number.html" },
   { id: "IN", name: "India", code: "91", min: 10, max: 10, trunk: false, pattern: "xxxxx xxxxx", example: "+919876543210", prefix: /^[6-9]\d{9}$/, page: "/india-phone-number.html" },
   { id: "DE", name: "Germany", code: "49", min: 7, max: 11, trunk: true, pattern: "01xx xxxxxxx", example: "+4915112345678", prefix: /^\d{7,11}$/, page: "/germany-phone-number.html" },
-  { id: "FR", name: "France", code: "33", min: 9, max: 9, trunk: true, pattern: "06 xx xx xx xx", example: "+33639981234", prefix: /^[1-9]\d{8}$/, page: "/france-phone-number.html" },
+  { id: "FR", name: "France", code: "33", min: 9, max: 9, trunk: true, pattern: "06 xx xx xx xx", example: "+33639981234", prefix: /^[1-9]\d{8}$/, page: "/france-phone-number-generator.html" },
   { id: "JP", name: "Japan", code: "81", min: 9, max: 10, trunk: true, pattern: "0x0-xxxx-xxxx", example: "+819012345678", prefix: /^\d{9,10}$/, page: "/japan-phone-number.html" },
-  { id: "BR", name: "Brazil", code: "55", min: 10, max: 11, trunk: false, pattern: "(AA) 9xxxx-xxxx", example: "+5511987654321", prefix: /^[1-9]\d{9,10}$/, page: "/brazil-phone-number.html" },
+  { id: "BR", name: "Brazil", code: "55", min: 10, max: 11, trunk: false, pattern: "(AA) 9xxxx-xxxx", example: "+5511987654321", prefix: /^[1-9]\d{9,10}$/, page: "/brazil-phone-number-generator.html" },
   { id: "MX", name: "Mexico", code: "52", min: 10, max: 10, trunk: false, pattern: "xx xxxx xxxx", example: "+525512345678", prefix: /^[2-9]\d{9}$/, page: "/mexico-phone-number.html" },
   { id: "ES", name: "Spain", code: "34", min: 9, max: 9, trunk: false, pattern: "6xx xxx xxx", example: "+34612345678", prefix: /^[6-9]\d{8}$/, page: "/spain-phone-number.html" },
-  { id: "IT", name: "Italy", code: "39", min: 10, max: 10, trunk: false, pattern: "3xx xxx xxxx", example: "+393123456789", prefix: /^3\d{9}$/, page: "/italy-phone-number.html" },
+  { id: "IT", name: "Italy", code: "39", min: 10, max: 10, trunk: false, pattern: "3xx xxx xxxx", example: "+393123456789", prefix: /^3\d{9}$/, page: "/italy-phone-number-generator.html" },
   { id: "NL", name: "Netherlands", code: "31", min: 9, max: 9, trunk: true, pattern: "06 xxxxxxxx", example: "+31612345678", prefix: /^6\d{8}$/, page: "/netherlands-phone-number.html" },
   { id: "SE", name: "Sweden", code: "46", min: 9, max: 9, trunk: true, pattern: "070-xxx xx xx", example: "+46701234567", prefix: /^7\d{8}$/, page: "/sweden-phone-number.html" },
   { id: "CH", name: "Switzerland", code: "41", min: 9, max: 9, trunk: true, pattern: "079 xxx xx xx", example: "+41791234567", prefix: /^7[5-9]\d{7}$/, page: "/switzerland-phone-number.html" },
@@ -22,8 +22,8 @@ export const plans = [
   { id: "ID", name: "Indonesia", code: "62", min: 9, max: 12, trunk: true, pattern: "08xx-xxxx-xxxx", example: "+6281234567890", prefix: /^8\d{8,11}$/, page: "/indonesia-phone-number.html" },
   { id: "PK", name: "Pakistan", code: "92", min: 10, max: 10, trunk: true, pattern: "03xx xxxxxxx", example: "+923001234567", prefix: /^3\d{9}$/, page: "/pakistan-phone-number.html" },
   { id: "NG", name: "Nigeria", code: "234", min: 10, max: 10, trunk: true, pattern: "0803 xxx xxxx", example: "+2348031234567", prefix: /^[789]\d{9}$/, page: "/nigeria-phone-number.html" },
-  { id: "BD", name: "Bangladesh", code: "880", min: 10, max: 10, trunk: true, pattern: "01xxx-xxxxxx", example: "+8801711123456", prefix: /^1\d{9}$/, page: "/bangladesh-phone-number.html" },
-  { id: "RU", name: "Russia", code: "7", min: 10, max: 10, trunk: "8", pattern: "8 900 xxx-xx-xx", example: "+79001234567", prefix: /^9\d{9}$/, page: "/russia-phone-number.html" },
+  { id: "BD", name: "Bangladesh", code: "880", min: 10, max: 10, trunk: true, pattern: "01xxx-xxxxxx", example: "+8801711123456", prefix: /^1\d{9}$/, page: "/bangladesh-phone-number-generator.html" },
+  { id: "RU", name: "Russia", code: "7", min: 10, max: 10, trunk: "8", pattern: "8 900 xxx-xx-xx", example: "+79001234567", prefix: /^9\d{9}$/, page: "/russia-phone-number-generator.html" },
   { id: "VN", name: "Vietnam", code: "84", min: 9, max: 9, trunk: true, pattern: "09x xxx xxxx", example: "+84912345678", prefix: /^[35789]\d{8}$/, page: "/vietnam-phone-number.html" },
   { id: "PH", name: "Philippines", code: "63", min: 10, max: 10, trunk: true, pattern: "09xx xxx xxxx", example: "+639171234567", prefix: /^9\d{9}$/, page: "/philippines-phone-number.html" },
   { id: "TR", name: "Turkey", code: "90", min: 10, max: 10, trunk: true, pattern: "05xx xxx xx xx", example: "+905321234567", prefix: /^5\d{9}$/, page: "/turkey-phone-number.html" },
@@ -267,6 +267,32 @@ function download(name, type, content) {
   URL.revokeObjectURL(url);
 }
 
+export function normalizeBulkCount(raw) {
+  return Math.min(100, Math.max(1, Number(raw) || 1));
+}
+
+export function buildBulkExport(format, records) {
+  if (!records.length) return null;
+  const eventParameters = { format, country: records[0].country, count: records.length };
+  if (format === "json") {
+    return {
+      name: "phone-fixtures.json",
+      type: "application/json",
+      content: JSON.stringify(records, null, 2),
+      eventParameters
+    };
+  }
+  if (format === "csv") {
+    return {
+      name: "phone-fixtures.csv",
+      type: "text/csv",
+      content: `id,country,e164,display\n${records.map((record) => `${record.id},${record.country},${record.e164},"${record.display}"`).join("\n")}`,
+      eventParameters
+    };
+  }
+  throw new Error(`Unsupported bulk export format: ${format}`);
+}
+
 function initializeBulkGenerator() {
   const form = document.querySelector("#bulk-form");
   if (!form) return;
@@ -277,7 +303,7 @@ function initializeBulkGenerator() {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const plan = byId(form.elements.country.value);
-    const count = Math.min(100, Math.max(1, Number(form.elements.count.value) || 1));
+    const count = normalizeBulkCount(form.elements.count.value);
     records = Array.from({ length: count }, (_, index) => {
       const e164 = generate(plan);
       return { id: index + 1, country: plan.id, e164, display: display(e164, plan) };
@@ -288,8 +314,14 @@ function initializeBulkGenerator() {
     window.GetPhoneNum.track("bulk_phone_generate", { country: plan.id, count });
   });
   document.querySelector("#bulk-copy").addEventListener("click", (event) => window.GetPhoneNum.copy(output.value, event.currentTarget));
-  document.querySelector("#bulk-json").addEventListener("click", () => download("phone-fixtures.json", "application/json", JSON.stringify(records, null, 2)));
-  document.querySelector("#bulk-csv").addEventListener("click", () => download("phone-fixtures.csv", "text/csv", `id,country,e164,display\n${records.map((record) => `${record.id},${record.country},${record.e164},"${record.display}"`).join("\n")}`));
+  function exportRecords(format) {
+    const bulkExport = buildBulkExport(format, records);
+    if (!bulkExport) return;
+    download(bulkExport.name, bulkExport.type, bulkExport.content);
+    window.GetPhoneNum.track("bulk_phone_export", bulkExport.eventParameters);
+  }
+  document.querySelector("#bulk-json").addEventListener("click", () => exportRecords("json"));
+  document.querySelector("#bulk-csv").addEventListener("click", () => exportRecords("csv"));
 }
 
 if (typeof document !== "undefined") {
