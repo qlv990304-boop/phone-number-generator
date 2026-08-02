@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://getphonenum.com/</loc><lastmod>2026-07-25</lastmod><priority>1.0</priority></url>
+  <url><loc>https://getphonenum.com/</loc><lastmod>2026-08-02</lastmod><priority>1.0</priority></url>
   <url><loc>https://getphonenum.com/tools</loc><lastmod>2026-07-19</lastmod><priority>0.9</priority></url>
   <url><loc>https://getphonenum.com/phone-validator</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://getphonenum.com/country-calling-code</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://getphonenum.com/phone-regex-tester</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://getphonenum.com/bulk-phone-generator</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/guides</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/guides</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://getphonenum.com/e164-phone-number-format</loc><lastmod>2026-07-19</lastmod><priority>0.7</priority></url>
   <url><loc>https://getphonenum.com/phone-number-validation-guide</loc><lastmod>2026-07-19</lastmod><priority>0.7</priority></url>
   <url><loc>https://getphonenum.com/phone-number-test-data-guide</loc><lastmod>2026-07-19</lastmod><priority>0.7</priority></url>
@@ -20,42 +20,22 @@
   <url><loc>https://getphonenum.com/phone-number-testing-checklist</loc><lastmod>2026-07-19</lastmod><priority>0.7</priority></url>
   <url><loc>https://getphonenum.com/phone-number-masking-logging</loc><lastmod>2026-07-19</lastmod><priority>0.7</priority></url>
   <url><loc>https://getphonenum.com/phone-number-dataset</loc><lastmod>2026-07-19</lastmod><priority>0.7</priority></url>
+  <url><loc>https://getphonenum.com/phone-fixture-methodology</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/fictional-phone-number-ranges</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/e164-normalization-test-cases</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/phone-number-dataset-changelog</loc><lastmod>2026-08-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://getphonenum.com/phone-number-validation-lab</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://getphonenum.com/phone-format-widget</loc><lastmod>2026-07-19</lastmod><priority>0.7</priority></url>
   <url><loc>https://getphonenum.com/e164-formatter</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
   <url><loc>https://getphonenum.com/api</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
   <url><loc>https://getphonenum.com/responsible-use</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
-  <url><loc>https://getphonenum.com/about</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
-  <url><loc>https://getphonenum.com/contact</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://getphonenum.com/about</loc><lastmod>2026-08-02</lastmod><priority>0.5</priority></url>
+  <url><loc>https://getphonenum.com/contact</loc><lastmod>2026-08-02</lastmod><priority>0.5</priority></url>
   <url><loc>https://getphonenum.com/privacy</loc><lastmod>2026-07-23</lastmod><priority>0.5</priority></url>
-  <url><loc>https://getphonenum.com/us-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/uk-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/canada-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/australia-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/china-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/india-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/germany-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/france-phone-number-generator</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/japan-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/brazil-phone-number-generator</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/mexico-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/spain-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/italy-phone-number-generator</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/netherlands-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/sweden-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/switzerland-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/singapore-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/south-korea-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/new-zealand-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/uae-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/indonesia-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/pakistan-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/nigeria-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/bangladesh-phone-number-generator</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/russia-phone-number-generator</loc><lastmod>2026-07-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/vietnam-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/philippines-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/turkey-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/saudi-arabia-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/egypt-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
-  <url><loc>https://getphonenum.com/poland-phone-number</loc><lastmod>2026-07-19</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/india-phone-number</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/france-phone-number-generator</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/brazil-phone-number-generator</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/italy-phone-number-generator</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/bangladesh-phone-number-generator</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://getphonenum.com/russia-phone-number-generator</loc><lastmod>2026-08-02</lastmod><priority>0.8</priority></url>
 </urlset>
