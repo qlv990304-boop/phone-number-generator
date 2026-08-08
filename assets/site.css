@@ -311,6 +311,21 @@ th { background: #f8fafc; }
 .status.error { background: #fef2f2; color: #b91c1c; display: block; }
 .status.success { background: #ecfdf5; color: #047857; display: block; }
 
+.third-party-ad {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.ad-label {
+  color: var(--muted);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  margin: 0 0 .75rem;
+  text-transform: uppercase;
+}
+
 @media (max-width: 760px) {
   .grid,
   .result-grid,
