@@ -64,6 +64,16 @@
     </section>
 
     <section class="section card"><h2>Use the maintained local resources</h2><p>The <a href="/phone-number-dataset">country format dataset</a> provides JSON, CSV and a JSON Schema with official-source links. For one-off work, use the <a href="/e164-formatter">E.164 formatter</a> or <a href="/bulk-phone-generator">bulk fixture generator</a>. These options avoid network dependencies and keep input in the browser.</p><p>For production validation architecture, read the <a href="/phone-number-validation-guide">phone number validation guide</a> and <a href="/responsible-use">responsible-use policy</a>.</p></section>
+    <section class="section">
+      <h2>Implementation notes if you build your own endpoint</h2>
+      <p>Keep the API boring and predictable. Accept explicit country codes, reject unsupported countries with a stable error, cap quantity, and return the dataset version that produced the response. A caller should be able to reproduce a failed test months later by using the same seed and metadata version. If a national numbering rule changes, publish a changelog entry instead of silently changing every fixture.</p>
+      <p>Do not collect user phone numbers to generate test data. The request should describe the fixture the developer wants, not upload real contacts. Analytics should record only safe parameters such as country, count and export format. Generated values should remain in the response body and local test files, not in URLs, tracking events, server logs or marketing systems.</p>
+    </section>
+    <section class="section grid">
+      <article class="card"><h2>Error model</h2><p>Return separate errors for unsupported country, invalid count, unsupported format and unsafe request shape. Avoid a generic “invalid number” response when the request is really a fixture-generation problem.</p></article>
+      <article class="card"><h2>Versioning</h2><p>Include schema and metadata versions in every response. Add fields compatibly when possible, and use a new major version when response meaning changes.</p></article>
+      <article class="card"><h2>Abuse prevention</h2><p>Rate-limit public endpoints, block contact-enrichment use cases and make the documentation clear that the API would return test fixtures only, not reachable numbers.</p></article>
+    </section>
   </main>
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer>
 </body>

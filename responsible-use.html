@@ -22,6 +22,23 @@
     </section>
     <div class="notice"><strong>Real-number risk:</strong> only some countries publish reserved fictional ranges. A format-accurate result outside those ranges could coincide with a real subscriber, so never attempt contact.</div>
     <section class="section card"><h2>Report a safety concern</h2><p>If a page appears to encourage unsafe use or a fixture should be replaced with an officially reserved example, use the <a href="/contact">contact page</a> and cite the relevant regulator or numbering-plan source. Do not include a real subscriber's personal information in a public report.</p></section>
+    <section class="section">
+      <h2>Safe testing workflow</h2>
+      <ol>
+        <li><strong>Keep generation in non-production environments.</strong> Use local development, staging or documentation examples rather than customer-facing messaging systems.</li>
+        <li><strong>Disable outbound delivery by default.</strong> Automated tests should not be able to place calls, send SMS or trigger WhatsApp, RCS or voice workflows to generated values.</li>
+        <li><strong>Record the test purpose.</strong> Store the selected country, expected format and scenario name beside a fixture so future maintainers understand why it exists.</li>
+        <li><strong>Separate format from consent.</strong> A parser can say a string fits a country pattern; only a consent-based verification flow can show that a user controls a destination.</li>
+      </ol>
+      <p>This workflow protects real subscribers and makes QA results easier to debug. A generated number that passes a structural check should still have empty reachability, ownership and marketing-consent fields in your test records.</p>
+    </section>
+    <section class="section grid">
+      <article class="card"><h2>For screenshots and docs</h2><p>Prefer documented fictional ranges when a country publishes them. If only a structural example is available, add a note that the value is a test fixture and must not be contacted.</p></article>
+      <article class="card"><h2>For automated tests</h2><p>Use provider sandbox credentials, internal allowlists and mocked delivery services. Treat any accidental attempt to contact a fixture as a test failure, not as a normal validation step.</p></article>
+      <article class="card"><h2>For imports and demos</h2><p>Do not mix generated fixtures with production contacts. If you need a large demo dataset, keep it clearly labelled, versioned and isolated from CRM, lead-generation and notification tools.</p></article>
+    </section>
+    <section class="section card"><h2>Why this policy is part of the product</h2><p>Phone-number tools sit near sensitive workflows: account recovery, identity checks, messaging and support. Clear limits make the utility safer and more useful. They also help reviewers understand that GetPhoneNum is a developer reference, not a service for obtaining contactable numbers or bypassing verification systems.</p></section>
+    <section class="section card"><h2>When in doubt, choose the safer fixture</h2><p>If a test can be completed with a documented fictional range, use that option. If no protected range is available, keep the value structural, local and clearly labelled. The extra note may feel small, but it prevents a future teammate from mistaking QA data for a reachable contact list. Safer fixtures also make public demos easier to review because the warning travels with the example.</p></section>
   </main>
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer>
 </body>

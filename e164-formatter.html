@@ -54,6 +54,20 @@
       <h2>When to use E.164</h2>
       <div class="grid"><article class="card"><h3>Databases</h3><p>Store one normalized representation to simplify deduplication and downstream processing.</p></article><article class="card"><h3>Communications APIs</h3><p>Many SMS, voice and identity providers expect a leading plus sign followed by country code and national number.</p></article><article class="card"><h3>QA and migrations</h3><p>Find records with missing country context, trunk prefixes or incorrect digit counts before import.</p></article></div>
     </section>
+    <section class="section">
+      <h2>How to read the formatted result</h2>
+      <p>The E.164 value is the canonical storage form: a plus sign, the country calling code and the national significant number. The international and national display values are presentation forms for users. The RFC 3966 value is intended for <code>tel:</code> links. Keeping those outputs separate prevents a common bug where display punctuation is stored as identity or a link format is sent to an SMS provider.</p>
+      <p>Country context is essential for national input. A domestic prefix may need to be removed in one country and preserved in another. Shared calling plans also make automatic inference risky: <code>+1</code> does not prove a value belongs to the United States, and <code>+7</code> does not prove one country either. When the input begins with a plus sign, parse the international calling code first; when it does not, require a selected country.</p>
+    </section>
+    <section class="section grid">
+      <article class="card"><h2>Before storing</h2><p>Save the original input long enough for correction, then store the normalized E.164 value as text. Do not use an integer column; leading plus signs, leading zeros in national display and extension data are meaningful.</p></article>
+      <article class="card"><h2>Before sending</h2><p>Repeat important checks on the server and verify user consent before any SMS or voice delivery. A formatting result does not prove that the number is assigned, reachable or controlled by the user.</p></article>
+      <article class="card"><h2>Before logging</h2><p>Record safe categories such as country, success state and error reason. Avoid sending full phone strings to analytics events, URLs, crash reports or routine application logs.</p></article>
+    </section>
+    <section class="section card">
+      <h2>Related implementation guides</h2>
+      <p>For a full production workflow, pair this formatter with the <a href="/phone-number-validation-guide">validation guide</a>, <a href="/international-phone-input-guide">international input UX guide</a> and <a href="/phone-number-database-design">database design guide</a>. For repeatable examples, use the <a href="/phone-number-dataset">country format dataset</a> or the <a href="/bulk-phone-generator">bulk fixture generator</a>.</p>
+    </section>
   </main>
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer>
 </body>
