@@ -18,6 +18,16 @@
     <p class="lede">Generate Russia phone number examples for development, QA, input masks and documentation. Results are not live subscriber lines.</p>
     <section class="tool-panel"><h2>Generate an example</h2><div class="result"><small>International display</small><strong id="country-result">+79001234567</strong></div><div class="button-row"><button class="button" id="generate-country-number" type="button">Generate another</button><button class="button secondary" id="copy-country-number" type="button">Copy</button></div></section>
     <div class="notice"><strong>Do not call or text generated values.</strong> Russia shares country code +7 with Kazakhstan. This mobile-shaped example may be assigned.</div>
+    <section class="section aff-module">
+      <h2>Need a number that can actually receive the SMS?</h2>
+      <p>Our generator gives you valid, correctly-formatted numbers in the official local format — perfect for form validation, UI testing and QA. But a random number can't receive anything.</p>
+      <p>If you need a number that can receive a real SMS — to verify an account, test a signup flow end-to-end, or keep your personal number off a service — you'll need a virtual number provider. These are the two we've used and can vouch for:</p>
+      <div class="table-wrap card"><table><thead><tr><th>Service</th><th>Best for</th><th>Covers</th><th>Number from</th><th>Try it</th></tr></thead><tbody>
+        <tr data-offer-id="sms-activate"><td data-affiliate-field="name">SMS-Activate</td><td data-affiliate-field="bestFor">One-off SMS verification, widest country coverage</td><td data-affiliate-field="covers" data-needs-verification="true">TBD</td><td data-affiliate-field="numberFrom" data-needs-verification="true">TBD</td><td data-affiliate-field="tryIt"><span class="muted" data-needs-verification="true">TBD</span></td></tr>
+        <tr data-offer-id="sms-man"><td data-affiliate-field="name">SMS-Man</td><td data-affiliate-field="bestFor">Rentals and eSIM, when you need a number longer than one code</td><td data-affiliate-field="covers" data-needs-verification="true">TBD</td><td data-affiliate-field="numberFrom" data-needs-verification="true">TBD</td><td data-affiliate-field="tryIt"><span class="muted" data-needs-verification="true">TBD</span></td></tr>
+      </tbody></table></div>
+      <p class="muted">Some links on this page are affiliate links. If you sign up through them we may earn a commission at no extra cost to you.</p>
+    </section>
     <section class="section"><h2>Russia format reference</h2><div class="table-wrap card"><table><tbody><tr><th>Calling code</th><td>+7</td></tr><tr><th>National pattern</th><td><code>8 900 xxx-xx-xx</code></td></tr><tr><th>E.164 example</th><td><code>+79001234567</code></td></tr><tr><th>Typical length</th><td>10 national digits after +7</td></tr></tbody></table></div></section>
     <section class="section"><h2>Convert a Russia number to E.164</h2><div class="grid"><article class="card"><h3>1. Clean the input</h3><p>Remove spaces, parentheses and hyphens while preserving the digits and country context.</p></article><article class="card"><h3>2. Apply the trunk rule</h3><p>Replace the domestic trunk prefix 8 with +7; keep the following 10 national digits.</p></article><article class="card"><h3>3. Store one canonical value</h3><p>Use <code>+79001234567</code> for machine storage and format it for display at the edge of your application.</p></article></div></section>
     <section class="section"><h2>Russia phone test cases</h2><div class="table-wrap card"><table><thead><tr><th>Case</th><th>Fixture</th><th>Expected test behavior</th></tr></thead><tbody><tr><td>National display</td><td><code>8 900 xxx-xx-xx</code></td><td>Accept punctuation, then normalize.</td></tr><tr><td>Valid E.164 structure</td><td><code>+79001234567</code></td><td>Accept for format testing; do not infer reachability.</td></tr><tr><td>Invalid length</td><td><code>+7900123456</code></td><td>Reject before storing or sending to an API.</td></tr></tbody></table></div></section>
@@ -35,5 +45,7 @@
     </section>
   </main>
   <footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer>
+<script defer src="/assets/affiliate.js?v=20260925-1"></script>
+<script defer src="/assets/affiliate-init.js?v=20260925-1"></script>
 </body>
 </html>
