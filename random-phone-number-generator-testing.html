@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js?id=G-635DLM3Q02"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Phone Number Generator for Testing: Replay a Failure | GetPhoneNum</title>
+  <meta name="description" content="Use a random phone number generator to explore parser edge cases safely. Record the seed, path, region and metadata version so a failing test can be replayed.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://getphonenum.com/random-phone-number-generator-testing">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Random phone number generator for testing: replay a failure","description":"Use randomized phone-shaped inputs to test parsing boundaries, then replay a failure with its seed, path, region and pinned metadata version.","datePublished":"2026-09-27","dateModified":"2026-09-27","author":{"@type":"Organization","name":"GetPhoneNum Editorial Team","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/random-phone-number-generator-testing"}</script>
+</head>
+<body class="static-page">
+<header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
+<main class="page-shell article-shell">
+  <p class="eyebrow">Randomized parser testing</p>
+  <h1>Random phone number generator for testing: replay a failure</h1>
+  <p class="lede">Use random phone-shaped inputs to explore parser edge cases, keep SMS delivery disabled, and save the test seed and counterexample path with the region and numbering-metadata version. A format-shaped result does not show that a number is assigned or can receive a message.</p>
+  <figure style="margin:2rem 0"><img src="/assets/random-phone-property-testing.webp" alt="A seeded test input passes through a phone parser in an isolated sandbox, with a minimized failure available for replay and outbound messaging blocked." loading="lazy" style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:1rem"><figcaption class="muted">Explore input shapes locally; keep randomized parser tests outside live messaging.</figcaption></figure>
+  <p class="muted"><a href="/guides">Developer guides</a> · Updated September 27, 2026</p>
+  <article class="article-body">
+    <section>
+      <h2>What a random phone number can prove</h2>
+      <p>A random phone number generator can give a parser a wider set of inputs than a short hand-written list. It can help find edge cases in country context, separators, lengths and normalization. It cannot prove that a value belongs to a subscriber, is currently reachable or can receive SMS.</p>
+      <p>Keep those claims separate: parsing is a software behavior; allocation and reachability are network facts. Google's <a href="https://github.com/google/libphonenumber/blob/master/FAQ.md" rel="noopener" target="_blank">libphonenumber FAQ</a> explains that numbering metadata cannot tell whether a number is currently assigned to a specific user or reachable. Treat generated values as test inputs, not contact targets.</p>
+    </section>
+    <section>
+      <h2>Capture enough context to replay the failure</h2>
+      <p>A seed alone may not describe the complete test that failed. Store the generator and property-test library versions, the failing path, the default region, the phone-number metadata version, the property name and the runner configuration. Keep these values together in the CI artifact so another developer can reproduce the same case.</p>
+      <div class="table-wrap card"><table><thead><tr><th>Record</th><th>Why it matters</th></tr></thead><tbody>
+        <tr><td>Seed and counterexample path</td><td>Recreates the generated case and the route through the generator.</td></tr>
+        <tr><td>Default region and input mode</td><td>The same digits can be interpreted differently when country context changes.</td></tr>
+        <tr><td>Parser, property-test library and metadata versions</td><td>A library or numbering-plan update can change accepted and rejected cases.</td></tr>
+        <tr><td>Property ID, run ID and command</td><td>Identifies the assertion and environment that produced the failure.</td></tr>
+        <tr><td>Sanitized input artifact, if needed</td><td>Lets an authorized reviewer inspect the minimized case without copying raw values into general logs or analytics.</td></tr>
+      </tbody></table></div>
+      <p>In <a href="https://fast-check.dev/docs/api/interfaces/Parameters/" rel="noopener" target="_blank">fast-check</a>, the documented <code>seed</code> and <code>path</code> parameters can replay a failing property. The path is used with the seed. Preserve the versions and region around that pair because they are part of your own parser's test setup.</p>
+    </section>
+    <section>
+      <h2>Test useful boundaries, not arbitrary digit noise</h2>
+      <p>Generate structured input variations that map to a rule your product actually supports. Keep the expected behavior beside each property; don't assume every plausible-looking string should pass.</p>
+      <div class="table-wrap card"><table><thead><tr><th>Input dimension</th><th>Example test question</th><th>Keep fixed</th></tr></thead><tbody>
+        <tr><td>Country context</td><td>Does explicit international input override the form's default region as designed?</td><td>Region-selection policy</td></tr>
+        <tr><td>Presentation</td><td>Do supported spaces, parentheses or hyphens normalize to the same canonical result?</td><td>Documented accepted separators</td></tr>
+        <tr><td>Length boundary</td><td>Does the validator distinguish a parseable value from a possible-length result?</td><td>Numbering-metadata version</td></tr>
+        <tr><td>Trunk prefix and calling code</td><td>Does the parser preserve or remove a domestic prefix only under the right country context?</td><td>Country and input mode</td></tr>
+        <tr><td>Extensions and extra characters</td><td>Does the application keep an extension separate and reject characters outside its stated policy?</td><td>Product input contract</td></tr>
+      </tbody></table></div>
+      <p>For every generated input, assert one meaningful invariant. For example, if the parser accepts an input and returns a canonical international value, parsing that canonical value again under the same region and metadata should return the same canonical value. If your product has different rules, encode those rules explicitly instead of turning a convenient assumption into an oracle.</p>
+    </section>
+    <section>
+      <h2>Replay a failing property</h2>
+      <p>The exact integration depends on your test runner, but the replay parameters should come from the failing run rather than a newly chosen seed:</p>
+      <pre class="result"><code>import fc from 'fast-check';
+
+const replay = {
+  seed: Number(process.env.FC_SEED),
+  path: process.env.FC_PATH
+};
+
+fc.assert(phoneParserProperty, replay);</code></pre>
+      <p>Replace <code>phoneParserProperty</code> with your property and pass the seed and path reported by the failed run. Pin the phone-number metadata package and default region too. A replay that silently uses newer metadata may exercise a different rule.</p>
+      <ol>
+        <li>Save the seed, path, versions, region, property ID and command in the restricted CI failure artifact.</li>
+        <li>Run that single property with the saved values and confirm it reproduces before changing code.</li>
+        <li>Keep the minimized counterexample as a named regression case after fixing the defect.</li>
+        <li>Review the regression case when updating parser or numbering metadata versions.</li>
+      </ol>
+    </section>
+    <section>
+      <h2>Keep test generation away from live delivery</h2>
+      <p>Randomized parsing belongs in a local or isolated test environment. Disable outbound SMS and voice at the application boundary, not only in the test data factory. If a separate delivery check is necessary, use a provider sandbox or an allowlisted line the team controls and is authorized to test.</p>
+      <p>A public developer discussion has described an integration script sending unintended messages to real phones. That is an anecdotal report, not a measure of how often it happens, but it illustrates why input generation and message delivery should be independently controlled. Never send a generated number a text just to see whether it works.</p>
+      <p>In general logs, record the property ID and run ID instead of a complete phone value. Keep raw or minimized inputs in a restricted test artifact only when a reviewer needs them; do not forward them to analytics, screenshots or public issue reports.</p>
+    </section>
+    <section>
+      <h2>Frequently asked questions</h2>
+      <h3>How do I repeat a failing random phone-number test?</h3>
+      <p>Save the property-test seed and counterexample path, then rerun with the same parser version, phone metadata, region and test command. In fast-check, replay uses the seed together with the path.</p>
+      <h3>Can a random phone number generator create a number that reaches a real person?</h3>
+      <p>It can produce a string that resembles a real number. Format alone does not establish assignment, and a random value must never be contacted as a test. Keep outbound delivery disabled or use an authorized provider sandbox.</p>
+      <h3>Should parser tests send SMS?</h3>
+      <p>No. Parser tests should stay offline. Use a separate, explicitly authorized delivery test with a sandbox or controlled destination when message delivery is the behavior under test.</p>
+    </section>
+    <section>
+      <h2>Sources and related guides</h2>
+      <ul>
+        <li><a href="https://fast-check.dev/docs/api/interfaces/Parameters/" rel="noopener" target="_blank">fast-check parameters: seed and path</a></li>
+        <li><a href="https://github.com/google/libphonenumber/blob/master/FAQ.md" rel="noopener" target="_blank">Google libphonenumber FAQ: limits of numbering metadata</a></li>
+        <li><a href="https://www.reddit.com/r/programming/comments/qashy0/" rel="noopener" target="_blank">Public developer discussion about unintended test messages</a></li>
+        <li><a href="/phone-number-test-data-guide">Safe phone number test data</a></li>
+        <li><a href="/phone-number-generator-decision-guide">Choose the right phone number generator</a></li>
+      </ul>
+      <p>This page covers replayable parser exploration. For source-reviewed fixtures and intentionally chosen regression data, continue with the <a href="/phone-fixture-methodology">fixture methodology</a>.</p>
+    </section>
+  </article>
+  <aside class="section card"><h2>Use the right kind of test input</h2><p>Explore formatting locally, then use a documented fixture for repeatable regressions and a provider sandbox for delivery behavior.</p><a class="button" href="/">Open the phone number generator</a></aside>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer>
+</body></html>
