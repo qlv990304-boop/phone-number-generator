@@ -52,23 +52,33 @@ export class BlockedSmsTransport implements SmsTransport {
   }
 }
 
-// Local and CI use BlockedSmsTransport.
-// A separate, explicit sandbox configuration may inject a sandbox client.
-const smsTransport =
-  testMode === "provider-sandbox" &amp;&amp; sandboxIsConfigured
-    ? sandboxTransport
-    : new BlockedSmsTransport();</code></pre>
+function makeSmsTransport(config: TestConfig): SmsTransport {
+  if (config.mode !== "provider-sandbox") {
+    return new BlockedSmsTransport();
+  }
+  if (!config.sandbox || config.allowlist.size === 0) {
+    throw new Error("Sandbox mode needs a client and an explicit allowlist.");
+  }
+  return new AllowlistedSandboxTransport(config.sandbox, config.allowlist);
+}
+
+// Local and CI select the blocked transport; sandbox is an explicit opt-in.
+const smsTransport = makeSmsTransport(testConfig);</code></pre>
       <p>The branch above is intentionally one-way: an absent flag, missing sandbox credentials, or an unknown environment selects the blocked path. Keep test credentials and live credentials separate, and never let a fallback silently select the live client.</p>
       <p>Add a guard test at the same boundary. It should fail if a routine test can call the provider client, even when the rest of the verification flow returns a success-shaped response.</p>
-      <pre class="result"><code>it("does not send a message in routine tests", async () =&gt; {
-  const send = vi.fn();
-  const transport = new BlockedSmsTransport();
+      <pre class="result"><code>it("does not call the provider in routine tests", async () =&gt; {
+  const sandboxClient = { send: vi.fn() };
+  const transport = makeSmsTransport({
+    mode: "ci",
+    sandbox: sandboxClient,
+    allowlist: new Set()
+  });
 
   await expect(
     transport.send(testFixture.e164, "test message")
   ).rejects.toThrow("Outbound SMS is disabled");
 
-  expect(send).not.toHaveBeenCalled();
+  expect(sandboxClient.send).not.toHaveBeenCalled();
 });</code></pre>
       <p>Use a fixture reference in the test rather than a number that merely looks fictional. The test should prove that the provider boundary was not crossed; it should not depend on a national numbering prefix being permanently unassigned.</p>
     </section>
