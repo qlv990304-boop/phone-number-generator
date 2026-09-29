@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1028869307415425" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Phone Number Generator: Duplicate Risk | GetPhoneNum</title>
+  <meta name="description" content="Can a random phone number generator produce unique results? See collision math, a no-replacement sampling pattern, and tests for duplicate batches.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://getphonenum.com/random-phone-number-generator-unique-results">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Does a random phone number generator guarantee unique results?","description":"Understand collision probability for random test fixture batches, sample without replacement, and enforce uniqueness across concurrent jobs.","datePublished":"2026-09-29","dateModified":"2026-09-29","author":{"@type":"Organization","name":"GetPhoneNum Editorial Team","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/random-phone-number-generator-unique-results"}</script>
+</head>
+<body class="static-page">
+<header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
+<main class="page-shell article-shell">
+  <p class="eyebrow">Random test data</p>
+  <h1>Does a random phone number generator guarantee unique results?</h1>
+  <p class="lede">No. A random phone number generator can repeat an output unless it samples without replacement or enforces a uniqueness rule. If each of <code>k</code> draws independently selects from <code>N</code> equally likely fixture tokens, the chance of at least one collision is <code>1 − ∏(1 − i/N)</code>. Treat uniqueness as a separate test requirement.</p>
+  <figure style="margin:2rem 0"><img src="/assets/random-phone-generator-uniqueness.svg" alt="Two random fixture batches: sampling with replacement repeats fixture A, while sampling without replacement selects each fixture ID once; a note says request count k must not exceed pool size N." loading="lazy" style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:1rem"><figcaption class="muted">Random draws may repeat. A no-replacement sampler guarantees distinct items within a batch when the source pool itself has unique fixture keys.</figcaption></figure>
+  <p class="muted"><a href="/guides">Developer guides</a> · Updated September 29, 2026</p>
+  <article class="article-body">
+    <section>
+      <h2>Random and unique are different properties</h2>
+      <p>A random draw answers, “Which candidate did this call pick?” A uniqueness rule answers, “Can this candidate appear again?” If every draw starts from the full candidate pool, an earlier result is still eligible on the next call. A duplicate is therefore allowed even when the generator is working as designed.</p>
+      <p>Keep the model separate from real telephone numbers. In the calculation below, <code>N</code> is a declared pool of distinct, approved test-fixture tokens, not the size of a national numbering plan and not a count of available phone lines. A phone-shaped string does not establish assignment or reachability.</p>
+      <p>A developer on Stack Overflow asked how to generate a unique ten-digit phone number while avoiding a leading zero and checking for duplicates before inserting it into a table. That public question shows one concrete requirement; it does not tell us how frequent the need is or whether any particular generated value is safe to contact.</p>
+    </section>
+
+    <section>
+      <h2>Estimate collision risk for a random batch</h2>
+      <p>Assume each draw is independent, uniformly distributed across <code>N</code> fixture tokens, and made with replacement. The first draw cannot collide. The second avoids the first with probability <code>1 − 1/N</code>; the third avoids both earlier draws with probability <code>1 − 2/N</code>. Multiplying the no-collision chances and subtracting from one gives:</p>
+      <p class="result"><strong>Collision probability = 1 − ∏<sub>i=0</sub><sup>k−1</sup>(1 − i/N)</strong></p>
+      <p>These examples use only an abstract token pool. The values are calculated from the formula above; they are not measurements of phone-number availability.</p>
+      <div class="table-wrap card"><table><thead><tr><th>Distinct fixture tokens in pool (N)</th><th>Independent draws (k)</th><th>Chance of at least one duplicate</th><th>Interpretation</th></tr></thead><tbody>
+        <tr><td>100,000</td><td>100</td><td>4.83%</td><td>A collision is possible even in a small batch.</td></tr>
+        <tr><td>100,000</td><td>300</td><td>36.17%</td><td>Plan for retries or sample without replacement.</td></tr>
+        <tr><td>100,000</td><td>1,000</td><td>99.33%</td><td>A duplicate is overwhelmingly likely under this model.</td></tr>
+        <tr><td>1,000,000</td><td>1,000</td><td>39.33%</td><td>A larger pool lowers risk but does not guarantee uniqueness.</td></tr>
+      </tbody></table></div>
+      <p>The calculation depends on the assumptions. A weighted or biased generator can collide more often, while sampling without replacement changes the result: a correctly implemented sampler returns distinct pool entries for every request with <code>k ≤ N</code>. When <code>k &gt; N</code>, it must report that the requested batch cannot be made from the available pool.</p>
+    </section>
+
+    <section>
+      <h2>Choose the scope of the uniqueness promise</h2>
+      <div class="table-wrap card"><table><thead><tr><th>Requirement</th><th>Suitable design</th><th>Failure to test</th></tr></thead><tbody>
+        <tr><td>Duplicates are acceptable in a load test</td><td>Draw with replacement and record that repeats are allowed.</td><td>Verify downstream code tolerates repeated fixture keys.</td></tr>
+        <tr><td>Every item in one returned batch must differ</td><td>Sample without replacement from a pool of unique canonical fixture keys.</td><td>Request more items than the pool contains and expect an explicit error.</td></tr>
+        <tr><td>No duplicates across requests or workers</td><td>Reserve keys in shared storage with an atomic operation and a unique constraint.</td><td>Run concurrent reservations for the same candidate; only one may succeed.</td></tr>
+        <tr><td>Repeat the same failing test later</td><td>Record the seed, pool version, ordering, and generator version.</td><td>Confirm replay is stable without treating the seed as a uniqueness guarantee.</td></tr>
+      </tbody></table></div>
+      <p>State the scope in the API contract. “Unique in this response” is weaker than “never used by any job.” A process-local set can protect one request, but it cannot coordinate another process, container, or region. If uniqueness spans workers, let the shared store make the final decision atomically.</p>
+    </section>
+
+    <section>
+      <h2>Sample without replacement from a safe fixture pool</h2>
+      <p>For a batch that must be unique, choose distinct fixture keys without putting each selected item back. This partial Fisher–Yates shuffle does at most <code>count</code> picks. Its input pool must already contain unique keys, and the supplied integer function must return a uniform integer from zero up to, but not including, its argument.</p>
+      <pre class="result"><code>function sampleFixtures(pool, count, randomInt) {
+  if (!Number.isSafeInteger(count) || count &lt; 0) {
+    throw new RangeError("count must be a non-negative integer");
+  }
+  if (new Set(pool).size !== pool.length) {
+    throw new Error("fixture pool contains duplicate keys");
+  }
+  if (count &gt; pool.length) {
+    throw new RangeError("requested batch exceeds fixture pool capacity");
+  }
+
+  const items = [...pool];
+  for (let i = 0; i &lt; count; i += 1) {
+    const remaining = items.length - i;
+    const offset = randomInt(remaining);
+    if (!Number.isInteger(offset) || offset &lt; 0 || offset &gt;= remaining) {
+      throw new RangeError("randomInt returned an out-of-range value");
+    }
+    const j = i + offset;
+    [items[i], items[j]] = [items[j], items[i]];
+  }
+  return items.slice(0, count);
+}
+
+const batch = sampleFixtures(
+  approvedFixtureKeys,
+  requestedCount,
+  limit =&gt; seededRng.int(limit)
+);</code></pre>
+      <p>Here the pool contains approved fixture keys, not arbitrary dialable numbers. If each key maps to a formatted phone value, also test uniqueness on the canonical value your application stores. Two different display strings can normalize to the same value, so comparing raw text alone can miss a duplicate.</p>
+      <p>Python’s official documentation makes the same distinction: <code>random.choices</code> draws with replacement, while <code>random.sample</code> selects unique population entries without replacement. Use the equivalent operation in your language and verify the exact contract of its random-integer function.</p>
+    </section>
+
+    <section>
+      <h2>Make cross-job uniqueness atomic</h2>
+      <p>For persistent allocations, an in-memory set is only a local cache. Two workers can read the same unused candidate before either writes it. Store the canonical fixture key under a database uniqueness constraint and claim it in one atomic insert or transaction. If the insert loses a race, draw another candidate and retry only up to a fixed limit.</p>
+      <p>When the retry limit is reached, return a capacity or conflict error. Do not loop forever, silently return fewer fixtures than requested, or fall back to a live numbering range. Keep the database rule responsible for correctness; a pre-insert “does this exist?” check is useful for reducing retries but cannot prevent a concurrent race by itself.</p>
+      <p>Document whether uniqueness lasts for one response, one test run, or the lifetime of a dataset. Expiration and reuse are product rules: if old fixture keys can be recycled, make that boundary explicit and test it.</p>
+    </section>
+
+    <section>
+      <h2>Test the duplicate path on purpose</h2>
+      <p>A happy-path test that happens to return different values does not prove the generator can prevent collisions. Inject a deterministic random source that selects the same pool position twice, then verify that the contract does what it promises.</p>
+      <ul>
+        <li>For a unique batch of size <code>k</code>, assert exactly <code>k</code> results and <code>k</code> distinct canonical keys.</li>
+        <li>For <code>k &gt; N</code>, assert a clear capacity error rather than a partial batch.</li>
+        <li>Force a repeated draw and verify that the uniqueness layer rejects or skips it according to the API contract.</li>
+        <li>Send concurrent requests for one remaining key and confirm the shared unique constraint allows only one reservation.</li>
+        <li>Normalize equivalent display forms before comparing keys; do not use formatting differences to disguise duplicates.</li>
+        <li>For seeded replay, pin the fixture-pool version and ordering as well as the seed.</li>
+      </ul>
+      <p>Keep fixture data synthetic and separate from live SMS delivery. A unique value can still be assigned to someone; uniqueness says nothing about ownership or reachability. See the <a href="/phone-number-maker-test-safety">SMS safety guide</a> for transport boundaries.</p>
+    </section>
+
+    <section>
+      <h2>Common questions</h2>
+      <h3>Does random mean that every phone number will be different?</h3>
+      <p>No. A random draw may select the same candidate more than once. Distinct results require a no-replacement sampler, a deduplication rule, or an atomic uniqueness constraint, depending on the scope.</p>
+      <h3>How do I generate a unique phone-number batch?</h3>
+      <p>Choose from a declared pool of unique, approved fixture keys without replacement. Reject a request that exceeds the pool size, and compare canonical values if keys are formatted into phone strings. A Stack Overflow developer asked a closely related question about unique generated numbers and duplicate checks; the linked thread is a user question, not authoritative numbering guidance.</p>
+      <h3>Will using the same seed prevent duplicates?</h3>
+      <p>No. A seed can make a pseudo-random sequence repeatable, which helps reproduce a test. It does not change sampling with replacement into sampling without replacement and does not coordinate separate workers.</p>
+    </section>
+
+    <section>
+      <h2>References and related guides</h2>
+      <ul>
+        <li><a href="https://docs.python.org/3/library/random.html#random.sample" rel="noopener" target="_blank">Python random module documentation</a> — distinguishes selection with and without replacement.</li>
+        <li><a href="https://stackoverflow.com/questions/73102264/generating-a-unique-10-digit-phone-number" rel="noopener" target="_blank">Stack Overflow: Generating a unique 10 digit phone number</a> — a developer’s question about unique test-like values and duplicate checks.</li>
+        <li><a href="/random-phone-number-generator-testing">Replay a randomized parser failure</a>.</li>
+        <li><a href="/phone-number-test-data-guide">Build safer phone-number test data</a>.</li>
+        <li><a href="/phone-number-maker-test-safety">Keep test SMS off the live transport</a>.</li>
+      </ul>
+    </section>
+  </article>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>GetPhoneNum · Developer tools and test data</span><nav class="footer-links"><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/responsible-use">Responsible use</a><a href="/contact">Contact</a></nav></div></footer>
+</body></html>
