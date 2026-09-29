@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+<title id="title">Random draws can collide; sampling without replacement stays unique within a batch</title>
+<desc id="desc">An abstract pool of synthetic fixture keys illustrates a repeated key when a draw is replaced, contrasted with a no-replacement batch where each key appears once.</desc>
+<defs>
+  <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#1c2e47" stroke-width="1"/></pattern>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0c1729"/><stop offset="1" stop-color="#12233a"/></linearGradient>
+</defs>
+<rect width="1400" height="760" rx="32" fill="url(#bg)"/>
+<rect width="1400" height="760" rx="32" fill="url(#grid)" opacity=".7"/>
+<circle cx="1280" cy="80" r="220" fill="#12334a" opacity=".35"/>
+<circle cx="42" cy="748" r="210" fill="#0b3343" opacity=".35"/>
+<text x="72" y="70" fill="#27d7ca" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="3">GETPHONENUM · TEST DATA</text>
+<text x="72" y="132" fill="#f0f5fb" font-family="Arial,sans-serif" font-size="43" font-weight="700">RANDOM ≠ UNIQUE</text>
+<text x="72" y="174" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="22">A draw can repeat unless the selection rule prevents it.</text>
+
+<rect x="72" y="224" width="608" height="404" rx="24" fill="#14283f" stroke="#4c667e" stroke-width="2"/>
+<rect x="720" y="224" width="608" height="404" rx="24" fill="#14283f" stroke="#4c667e" stroke-width="2"/>
+<text x="108" y="270" fill="#ffb08f" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="1.5">WITH REPLACEMENT</text>
+<text x="756" y="270" fill="#b8ef72" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="1.5">WITHOUT REPLACEMENT</text>
+<text x="108" y="307" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="18">The picked key goes back into the pool.</text>
+<text x="756" y="307" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="18">Picked keys stay out for this batch.</text>
+
+<text x="108" y="365" fill="#dce7f1" font-family="Arial,sans-serif" font-size="17">DRAW 1</text>
+<text x="108" y="425" fill="#dce7f1" font-family="Arial,sans-serif" font-size="17">DRAW 2</text>
+<text x="108" y="485" fill="#dce7f1" font-family="Arial,sans-serif" font-size="17">DRAW 3</text>
+<rect x="225" y="335" width="210" height="44" rx="12" fill="#203d58" stroke="#3d607b"/>
+<rect x="225" y="395" width="210" height="44" rx="12" fill="#203d58" stroke="#3d607b"/>
+<rect x="225" y="455" width="210" height="44" rx="12" fill="#4c2e38" stroke="#ff9e82" stroke-width="2"/>
+<text x="330" y="365" text-anchor="middle" fill="#f0f5fb" font-family="Consolas,monospace" font-size="20">fx-A</text>
+<text x="330" y="425" text-anchor="middle" fill="#f0f5fb" font-family="Consolas,monospace" font-size="20">fx-C</text>
+<text x="330" y="485" text-anchor="middle" fill="#ffd0bd" font-family="Consolas,monospace" font-size="20">fx-A</text>
+<path d="M464 357h86M464 417h86M464 477h86" fill="none" stroke="#7791a7" stroke-width="3"/>
+<path d="M540 348l12 9-12 9M540 408l12 9-12 9M540 468l12 9-12 9" fill="none" stroke="#7791a7" stroke-width="3"/>
+<text x="570" y="366" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="16">POOL</text>
+<text x="570" y="426" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="16">POOL</text>
+<text x="570" y="486" fill="#ffb08f" font-family="Arial,sans-serif" font-size="16" font-weight="700">COLLISION</text>
+<rect x="108" y="540" width="532" height="54" rx="14" fill="#302d38"/>
+<text x="132" y="574" fill="#ffcfbb" font-family="Arial,sans-serif" font-size="18" font-weight="700">Repeats are allowed by the draw rule.</text>
+
+<text x="756" y="365" fill="#dce7f1" font-family="Arial,sans-serif" font-size="17">DRAW 1</text>
+<text x="756" y="425" fill="#dce7f1" font-family="Arial,sans-serif" font-size="17">DRAW 2</text>
+<text x="756" y="485" fill="#dce7f1" font-family="Arial,sans-serif" font-size="17">DRAW 3</text>
+<rect x="873" y="335" width="210" height="44" rx="12" fill="#203d58" stroke="#3d607b"/>
+<rect x="873" y="395" width="210" height="44" rx="12" fill="#203d58" stroke="#3d607b"/>
+<rect x="873" y="455" width="210" height="44" rx="12" fill="#203d58" stroke="#3d607b"/>
+<text x="978" y="365" text-anchor="middle" fill="#f0f5fb" font-family="Consolas,monospace" font-size="20">fx-A</text>
+<text x="978" y="425" text-anchor="middle" fill="#f0f5fb" font-family="Consolas,monospace" font-size="20">fx-C</text>
+<text x="978" y="485" text-anchor="middle" fill="#f0f5fb" font-family="Consolas,monospace" font-size="20">fx-B</text>
+<path d="M1112 357h86M1112 417h86M1112 477h86" fill="none" stroke="#27d7ca" stroke-width="3"/>
+<path d="M1188 348l12 9-12 9M1188 408l12 9-12 9M1188 468l12 9-12 9" fill="none" stroke="#27d7ca" stroke-width="3"/>
+<text x="1220" y="366" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="16">POOL</text>
+<text x="1220" y="426" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="16">POOL</text>
+<text x="1220" y="486" fill="#a9bfd2" font-family="Arial,sans-serif" font-size="16">POOL</text>
+<rect x="756" y="540" width="532" height="54" rx="14" fill="#1d3a3d"/>
+<text x="780" y="574" fill="#c8f28e" font-family="Arial,sans-serif" font-size="18" font-weight="700">Unique within a batch while k ≤ N.</text>
+
+<text x="72" y="696" fill="#dce7f1" font-family="Arial,sans-serif" font-size="22" font-weight="700">For cross-job uniqueness, reserve a canonical fixture key atomically.</text>
+<text x="1328" y="696" text-anchor="end" fill="#8299ae" font-family="Arial,sans-serif" font-size="16">GETPHONENUM.COM</text>
+</svg>
