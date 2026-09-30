@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1028869307415425" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Phone Number Generator: Fail Closed by Country | GetPhoneNum</title>
+  <meta name="description" content="Build a fake phone number generator that only uses documented fictional ranges and refuses unsupported countries instead of falling back to plausible numbers.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://getphonenum.com/fake-phone-number-generator-fail-closed">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Fake Phone Number Generator: Fail Closed by Country","description":"An implementation guide for a country-aware fake phone number generator that uses documented fictional ranges and rejects unsupported countries without producing plausible subscriber numbers.","datePublished":"2026-09-30","dateModified":"2026-09-30","author":{"@type":"Organization","name":"GetPhoneNum Editorial Team","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/fake-phone-number-generator-fail-closed"}</script>
+</head>
+<body class="static-page">
+<header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
+<main class="page-shell article-shell">
+  <p class="eyebrow">Fake phone number generator · implementation guide</p>
+  <h1>Fake Phone Number Generator: Fail Closed by Country</h1>
+  <p class="lede"><strong>Answer:</strong> generate only from a number range an official numbering authority documents for fiction or drama. If a country has no approved range in your registry, return an explicit unsupported-region error. Never fill the gap with an ordinary random number that could belong to a real subscriber.</p>
+  <p class="muted"><a href="/guides">Developer guides</a> · Updated September 30, 2026</p>
+  <figure style="margin:2rem 0"><img src="/assets/fake-phone-number-generator-safe-fixtures.webp" alt="A country-aware test fixture generator selects from documented fictional ranges inside a sandbox and stops when a country has no approved range." loading="lazy" style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:1rem"><figcaption class="muted">A safe generator has a bounded source and a visible failure path; it does not silently substitute a plausible number.</figcaption></figure>
+  <article class="article-body">
+    <section><h2>Make the country registry the safety boundary</h2>
+      <p>A country calling code or valid-looking national format does not make a number fictional. A generator should keep its allowlist separate from its formatting rules. Add an entry only when an official authority identifies a specific range for fiction, drama or another non-live example use, and store the source URL beside that entry.</p>
+      <p>For example, NANPA identifies the 555-0100 through 555-0199 line-number block as reserved for entertainment and advertising. That statement does not make every number containing 555 fictional. Ofcom publishes the UK mobile drama range 07700 900000 through 07700 900999. These are bounded examples for content and software fixtures; they are not destinations for a delivery or verification test.</p>
+    </section>
+    <section><h2>Use explicit range records and reject missing countries</h2>
+      <p>Store the permitted range, formatter, source and delivery policy together. Generate a slot only after looking up a country code in that registry. The example below supports two documented examples; its small allowlist is intentional. Add another country only after reviewing its official source.</p>
+      <pre><code>const FICTION_RANGES = {
+  US: {
+    size: 100,
+    source: "https://www.nanpa.com/numbering/555-line-numbers",
+    format: (slot) =&gt; "202-555-01" + String(slot).padStart(2, "0")
+  },
+  GB: {
+    size: 1000,
+    source: "https://www.ofcom.org.uk/phones-and-broadband/phone-numbers/numbers-for-drama",
+    format: (slot) =&gt; "07700 900" + String(slot).padStart(3, "0")
+  }
+};
+
+function fictionalFixture(country, slot) {
+  const range = FICTION_RANGES[country];
+  if (!range) {
+    throw new Error("NO_DOCUMENTED_FICTION_RANGE:" + country);
+  }
+  if (!Number.isInteger(slot) || slot &lt; 0 || slot &gt;= range.size) {
+    throw new RangeError("FICTION_RANGE_SLOT_OUT_OF_BOUNDS");
+  }
+
+  return {
+    country,
+    value: range.format(slot),
+    source: range.source,
+    fictionalOnly: true,
+    deliveryAllowed: false
+  };
+}</code></pre>
+      <p>Keep the returned metadata with the fixture. A later caller should not have to infer whether a value is synthetic from its shape. The <code>deliveryAllowed: false</code> field gives downstream code an explicit guard to check before any messaging path is considered.</p>
+      <p>To select an example at random, choose a slot from <code>0</code> through <code>size - 1</code> with a bounded integer generator, then pass that slot to <code>fictionalFixture</code>. For reproducible automated tests, pass a fixed slot instead. Random selection and fictional status are separate: the registry grants the safety property; randomness only chooses among its entries.</p>
+    </section>
+    <section><h2>Test the rejection path as carefully as a successful example</h2>
+      <p>A pleasant demo with two supported countries can hide an unsafe fallback. Add tests that pin both the output and the boundary:</p>
+      <ul>
+        <li>For US slots 0 and 99, expect <code>202-555-0100</code> and <code>202-555-0199</code>; for GB slots 0 and 999, expect <code>07700 900000</code> and <code>07700 900999</code>.</li>
+        <li>Reject slot -1 and a slot equal to the range size. Do not wrap, clamp or generate a number outside the documented block.</li>
+        <li>Request a country absent from the registry, such as DE in this example, and assert <code>NO_DOCUMENTED_FICTION_RANGE</code>. Assert that no value is returned.</li>
+        <li>Assert every returned fixture has <code>fictionalOnly === true</code> and <code>deliveryAllowed === false</code>.</li>
+        <li>Stub the range registry to empty in one test and prove the user interface shows “no documented fictional range” rather than a plausible-number fallback.</li>
+      </ul>
+      <p>When you add a new source, review whether its range is current, geographically scoped and expressly designated for fictional use. Store a reviewed-on date and registry version so a changed authority page triggers maintenance instead of silently changing an existing fixture.</p>
+    </section>
+    <section><h2>Keep display fixtures away from real delivery checks</h2>
+      <p>Reserved examples can help render forms, screenshots, help pages and parser cases. They do not prove number assignment, ownership, reachability or receipt of a one-time code. When the country is unsupported, use an unmistakable placeholder such as <code>[TEST PHONE — NO DELIVERY]</code> for documentation, or use your provider's sandbox for an authorized delivery test. Do not replace the error with a realistic-looking number.</p>
+      <p>This country-specific implementation recipe complements the <a href="/fictional-phone-number-ranges">fictional phone number range review</a> and the broader <a href="/phone-number-test-data-guide">safe phone number test data guide</a>, which explain source coverage and fixture design.</p>
+    </section>
+    <section><h2>Questions developers ask</h2>
+      <h3>Are all phone numbers containing 555 fictional?</h3>
+      <p>No. NANPA reserves the 555-0100 through 555-0199 block for entertainment and advertising. Treat only a specifically documented reserved range as fictional; the digits “555” alone are not a safety rule.</p>
+      <h3>What should a fake phone number generator do for a country without a documented range?</h3>
+      <p>Return a clear unsupported-range error or an unmistakable non-phone placeholder. Do not generate a plausible national number as a fallback. An engineering question about larger NANP test ranges illustrates why this boundary should be explicit, but a forum discussion is not an official numbering allocation.</p>
+      <h3>Can a fictional example receive a verification code?</h3>
+      <p>No. A fictional range is for safe display and software fixtures, not live verification. Use a provider sandbox or a test line you are authorized to use for delivery behavior.</p>
+    </section>
+    <section><h2>Sources</h2>
+      <ul>
+        <li><a href="https://www.nanpa.com/numbering/555-line-numbers" rel="nofollow">NANPA: 555 line numbers</a> — the limited US and NANP 555-0100 to 555-0199 reservation.</li>
+        <li><a href="https://www.ofcom.org.uk/phones-and-broadband/phone-numbers/numbers-for-drama" rel="nofollow">Ofcom: numbers for drama</a> — UK ranges set aside for fictional use in TV and radio drama.</li>
+        <li><a href="https://stackoverflow.com/questions/9593143/nanp-phone-numbers-available-for-testing" rel="nofollow">Stack Overflow: NANP phone numbers available for testing</a> — a developer question used only as a question signal, not as an allocation source.</li>
+      </ul>
+    </section>
+  </article>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>GetPhoneNum · Developer tools and test data</span><nav class="footer-links"><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/responsible-use">Responsible use</a><a href="/contact">Contact</a></nav></div></footer>
+</body></html>

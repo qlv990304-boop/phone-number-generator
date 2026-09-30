@@ -382,3 +382,20 @@ th { background: #f8fafc; }
   .nav { align-items: flex-start; flex-wrap: wrap; }
   .nav-links { justify-content: space-between; width: 100%; }
 }
+
+
+/* The home hero uses a compact label to surface the test-data boundary early. */
+.home-hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  padding: .28rem .7rem;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1e40af;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .015em;
+  line-height: 1.35;
+}
