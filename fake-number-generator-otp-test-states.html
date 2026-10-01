@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1028869307415425" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Number Generator for OTP Test States | GetPhoneNum</title>
+  <meta name="description" content="A fake number cannot receive a real OTP. Use a synthetic phone fixture and a test-only verifier to check accepted, expired, replayed and throttled states offline.">
+  <meta name="robots" content="index, follow"><link rel="canonical" href="https://getphonenum.com/fake-number-generator-otp-test-states">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Fake number generator for OTP test states","description":"Test one-time-code flow outcomes with a synthetic phone fixture and an offline verification adapter.","datePublished":"2026-10-01","dateModified":"2026-10-01","author":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/fake-number-generator-otp-test-states"}</script>
+</head>
+<body class="static-page">
+<header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
+<main class="page-shell article-shell">
+  <p class="eyebrow">OTP flow QA · Offline fixtures</p>
+  <h1>Fake Number Generator for OTP Tests: Check the Flow Offline</h1>
+  <p class="lede"><strong>A fake number cannot receive a real verification code.</strong> To test your own app, pair one synthetic phone fixture with a test-only verifier and exercise the code states locally: accepted once, expired, replayed, incorrect, or throttled.</p>
+  <p class="muted"><a href="/guides">Developer guides</a> · October 1, 2026 · Test-state contract and fixture examples</p>
+  <figure class="card" style="margin:1.5rem 0;padding:1rem"><img src="/assets/fake-number-otp-test-states.png" alt="An offline test flow sends a synthetic phone fixture through a disconnected mock provider and checks success, expiration, replay rejection, and rate limiting" style="display:block;width:100%;height:auto;border-radius:12px"><figcaption class="muted" style="margin-top:.75rem">The fixture drives the app state; a disconnected mock replaces live SMS delivery.</figcaption></figure>
+  <article class="article-body">
+    <section><h2>Keep the phone fixture separate from the OTP</h2>
+      <p>A generated phone string is only test input. It does not establish ownership, reachability, or control of a real account. The one-time code is a separate, short-lived secret created by the verification flow. Keep the phone fixture fixed and vary the verifier outcome so each test has one clear purpose.</p>
+      <p>For a local example, store a reserved fictional number in a named test fixture and label it as non-deliverable. The phone value should never decide whether the application switches from a fake verifier to a live SMS provider.</p>
+    </section>
+    <section><h2>Write the state contract before the tests</h2>
+      <p>These cases describe application behavior, not a promise that a phone-number generator can receive codes. Pin your own expiry window and resend policy in code. For out-of-band authentication, NIST SP 800-63B says a secret becomes invalid after its validity period, is accepted only once while valid, and that generating a new secret must not reset the failed-attempt count.</p>
+      <div class="table-wrap card"><table><thead><tr><th>Test case</th><th>Mock verifier outcome</th><th>Expected app result</th></tr></thead><tbody>
+        <tr><td>Correct code, first submission</td><td><code>accept_once</code></td><td>Mark this challenge verified; consume its secret.</td></tr>
+        <tr><td>Same code submitted again</td><td><code>already_used</code></td><td>Reject the replay; keep the account unverified.</td></tr>
+        <tr><td>Challenge past its expiry</td><td><code>expired</code></td><td>Reject it and offer the documented retry path.</td></tr>
+        <tr><td>Incorrect attempts reach the limit</td><td><code>throttled</code></td><td>Stop further guesses and preserve the account-level attempt count.</td></tr>
+        <tr><td>Resend creates a new challenge</td><td><code>new_challenge</code></td><td>Apply your stated invalidation policy; do not silently clear failed attempts.</td></tr>
+      </tbody></table></div>
+      <p>Do not copy a universal timeout or attempt limit from this table. Choose limits for your system and applicable standard, then make those values explicit in tests.</p>
+    </section>
+    <section><h2>Use a test-only adapter, not a test phone inbox</h2>
+      <p>Put the provider behind an interface so the test can supply a controlled outcome without contacting a carrier. Inject a clock as well: expiration tests should advance a fake clock instead of sleeping until a real challenge times out.</p>
+      <pre class="result"><code>type OtpScenario =
+  | "accept_once" | "already_used" | "expired"
+  | "incorrect" | "throttled" | "new_challenge";
+
+type VerificationCase = {
+  id: string;
+  phoneFixtureId: string;
+  scenario: OtpScenario;
+  testOnly: true;
+};
+
+const testCase: VerificationCase = {
+  id: "signup-expired-01",
+  phoneFixtureId: "us-fictional-demo-01",
+  scenario: "expired",
+  testOnly: true
+};
+
+// The test adapter returns this scenario locally.
+// It does not send an SMS or expose a reusable OTP.
+const result = await verifierForTests.verify(testCase);
+expect(result.status).toBe("expired");</code></pre>
+      <p>Guard the adapter with the environment as well as the <code>testOnly</code> marker. Production configuration should fail closed if it receives a test scenario, and CI should assert that the mock transport—not the live provider—was selected.</p>
+    </section>
+    <section><h2>Check the race and clock edges</h2>
+      <ul>
+        <li>Submit the same challenge twice at the same time; only one request may consume it.</li>
+        <li>Advance the injected clock just before and just after expiry and verify the boundary consistently.</li>
+        <li>Request a resend after failed attempts; verify the attempt policy remains in force.</li>
+        <li>Simulate provider timeout and retry; make the app's challenge policy explicit instead of creating duplicate live sends.</li>
+        <li>Assert logs contain the case ID and outcome, never a complete phone value or one-time secret.</li>
+      </ul>
+      <p>This matrix is an original test contract for OTP state transitions. It complements the <a href="/fake-phone-number-generator-fail-closed">country-aware fictional-range guide</a>, which explains how safe phone fixtures are selected, and the <a href="/phone-number-maker-test-safety">delivery-isolation guide</a>, which explains how to block real SMS in routine testing.</p>
+    </section>
+    <section><h2>Questions developers ask</h2>
+      <h3>Can a fake number receive a real OTP?</h3><p>No. A fictional test fixture is not a live line. Use an offline verifier for app states or a provider's approved sandbox and authorized test destination when you need to test real delivery.</p>
+      <h3>How do I test an expired code without waiting?</h3><p>Inject a test clock and move it across the expiry boundary. Keep the application code path under test, but keep time and delivery dependencies controlled.</p>
+      <h3>Should resending a code clear the failed-attempt counter?</h3><p>Do not assume it should. NIST SP 800-63B says generating a new out-of-band secret must not reset the failed authentication count. Apply the requirements that fit your system and test that rule explicitly.</p>
+    </section>
+    <section><h2>Sources</h2>
+      <ul>
+        <li><a href="https://pages.nist.gov/800-63-4/sp800-63b/authenticators/" rel="noopener" target="_blank">NIST SP 800-63B, Section 3.1.3.2: Out-of-Band Verifiers</a> — validity, single-use secrets, and rate limiting.</li>
+        <li><a href="https://pages.nist.gov/800-63-4/sp800-63b.html" rel="noopener" target="_blank">NIST SP 800-63B, Section 3.1.3</a> — the out-of-band flow and secret lifecycle.</li>
+        <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Multifactor_Authentication_Cheat_Sheet.html" rel="noopener" target="_blank">OWASP Multifactor Authentication Cheat Sheet</a> — SMS and phone-call codes are single-use factors with risks and limitations.</li>
+        <li><a href="https://stackoverflow.com/questions/79938705/any-kind-of-application-or-tool-i-can-use-to-send-calls-and-messages-for-testing" rel="noopener" target="_blank">Developer question about testing phone-code login flows</a> — used only as a question signal; the test contract above is based on the cited standards, not forum replies.</li>
+      </ul>
+    </section>
+  </article>
+  <aside class="section card"><h2>Try the phone developer toolkit</h2><p>Use local tools to format and validate synthetic test input, then keep verification behavior in a test-only adapter.</p><a class="button" href="/tools">Open free tools</a></aside>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum · Developer tools and test data</span><nav class="footer-links"><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/responsible-use">Responsible use</a><a href="/contact">Contact</a></nav></div></footer>
+</body></html>
