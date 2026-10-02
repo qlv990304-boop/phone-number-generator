@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1028869307415425" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a Free Phone Number? Check Retention First | GetPhoneNum</title>
+  <meta name="description" content="A free number generator gives you synthetic test data, not a live line. Before using a provider-assigned free number for account recovery, check its reclaim and transfer rules.">
+  <meta name="robots" content="index, follow"><link rel="canonical" href="https://getphonenum.com/create-a-free-phone-number-retention">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Create a free phone number? Check the retention rules first","description":"A practical continuity checklist for no-cost provider-assigned numbers, account recovery, inactivity and number transfers.","datePublished":"2026-10-02","dateModified":"2026-10-02","author":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/create-a-free-phone-number-retention"}</script>
+</head>
+<body class="static-page">
+<header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
+<main class="page-shell article-shell">
+  <p class="eyebrow">Free-number continuity · Account recovery</p>
+  <h1>Create a Free Phone Number? Check the Retention Rules First</h1>
+  <p class="lede"><strong>GetPhoneNum creates free synthetic test data, not a live phone line.</strong> A carrier or VoIP provider must assign a real number. Before you rely on any no-cost line for account recovery, check its inactivity, reclaim, transfer and SMS rules.</p>
+  <p class="muted"><a href="/guides">Developer guides</a> · October 2, 2026 · Provider-continuity checklist</p>
+  <figure class="card" style="margin:1.5rem 0;padding:1rem"><img src="/assets/create-free-phone-number-retention.png" alt="A provider-assigned phone number moves through use, an inactivity warning, a reclaim decision, then recovery or transfer, with a separate backup sign-in key" style="display:block;width:100%;height:auto;border-radius:12px"><figcaption class="muted" style="margin-top:.75rem">A free-to-start number still has a service lifecycle. Keep a separate recovery method while you check it.</figcaption></figure>
+  <article class="article-body">
+    <section><h2>A generator cannot assign a live number</h2>
+      <p>A synthetic fixture can help test a phone field, country selector or sign-up screen. It cannot receive calls, prove that you control a line or recover an account. A provider-assigned number is different: the provider's current plan and rules determine whether it stays active, can receive the message you need, and can move with you later.</p>
+      <p>So “free” answers only one question about the offer. It does not tell you how long you keep access. A recent public question from a UK user describes a number cancelled after inactivity while it was still tied to two-factor sign-in. That single account is a question signal, not evidence about how often numbers are reclaimed or what any specific provider will do.</p>
+    </section>
+    <section><h2>Audit the continuity rules before linking accounts</h2>
+      <p>Read the provider's current help and terms. Save the exact rule and the date you checked it; do not assume another service follows the same policy.</p>
+      <div class="table-wrap card"><table><thead><tr><th>Check</th><th>What to find in the provider's own rules</th><th>Your continuity note</th></tr></thead><tbody>
+        <tr><td>Inactivity trigger</td><td>What counts as activity, how the interval is measured, and whether account login alone counts.</td><td>Copy the exact trigger and the date it applies from.</td></tr>
+        <tr><td>Warning and recovery</td><td>Which account receives a warning, the reclaim date, and any recovery window after removal.</td><td>Record the warning channel and the last recovery date.</td></tr>
+        <tr><td>Transfer or port-out</td><td>Whether the number can move, what eligibility or identity checks apply, and which account data will not move.</td><td>Separate number transfer from messages, voicemail and settings.</td></tr>
+        <tr><td>Required verification</td><td>Whether the specific site or app accepts that number type and country for its codes.</td><td>Check each important service; “can receive SMS” is not universal support.</td></tr>
+        <tr><td>Fallback access</td><td>How to sign in if the number stops working or the provider account is locked.</td><td>Test an alternate authenticator, recovery email or backup codes first.</td></tr>
+      </tbody></table></div>
+    </section>
+    <section><h2>Provider policies are examples, not universal rules</h2>
+      <p>For example, Google's current Google Voice help says it may reclaim a number after inactivity, shows a reclaim date, and allows a limited period to try to get the number back. Its transfer help also lists eligibility limits and explains that call history and voicemail do not move with a number. Those rules are specific to Google Voice account types; another provider may differ.</p>
+      <p>The FCC describes number porting as a way to keep a number when switching providers within the same geographic area, including moves between wireline, IP and wireless providers. Check whether the service and the exact number qualify before you treat portability as a backup plan.</p>
+      <p>For account security, NIST treats PSTN-based out-of-band authentication as restricted and says alternative authenticator types should be available. Do not make one number the only route back into an important account.</p>
+    </section>
+    <section><h2>Keep a small number-continuity record</h2>
+      <p>This worksheet stores policy notes, not a phone number or private account details. Keep it in your team's approved documentation and recheck it when the provider's plan or terms change.</p>
+      <pre class="result"><code>{
+  "service": "provider name",
+  "numberType": "provider-assigned",
+  "country": "region checked",
+  "inactivityRule": "exact provider wording",
+  "warningChannel": "email or in-app notice",
+  "reclaimRecoveryWindow": "provider-specific rule",
+  "transferEligibility": "provider-specific conditions",
+  "importantServicesChecked": ["service A", "service B"],
+  "fallbackSignInTested": true,
+  "policyCheckedOn": "YYYY-MM-DD"
+}</code></pre>
+      <p>If the provider cannot explain its reclaim or transfer process, do not attach that number as the sole recovery method. If you only need a page mock or parser fixture, use synthetic test data and keep it outside live delivery.</p>
+    </section>
+    <section><h2>Questions developers and account owners ask</h2>
+      <h3>Can a free phone number generator give me a working line?</h3><p>No. A generator can create a fictional test value; only a communications provider can assign a live line. This site generates non-deliverable test fixtures.</p>
+      <h3>Will a provider's free number always stay active?</h3><p>There is no universal rule. Check that provider's current inactivity, warning, reclaim and recovery terms. Google Voice's reclaim page is one concrete example, not a rule for all services.</p>
+      <h3>Can I use a generated number for account recovery or a real OTP?</h3><p>No. A synthetic number cannot receive a code or establish control of a subscriber line. Use an account recovery method you control and keep an alternate sign-in method available.</p>
+      <h3>If a number is reclaimed, can I get it back?</h3><p>Only if the provider's current process still allows recovery and the number remains eligible. Contact the provider through its official support path; do not try to claim a number that may now belong to someone else.</p>
+    </section>
+    <section><h2>Sources</h2>
+      <ul>
+        <li><a href="https://support.google.com/voice/answer/159519?hl=en" rel="noopener" target="_blank">Google Voice Help: Reclaim your Voice number</a> — a provider-specific inactivity and recovery example.</li>
+        <li><a href="https://support.google.com/voice/answer/12083094?hl=en" rel="noopener" target="_blank">Google Voice Help: Transfer your Google Voice number</a> — transfer eligibility and which account information moves.</li>
+        <li><a href="https://consumercomplaints.fcc.gov/hc/en-us" rel="noopener" target="_blank">FCC Consumer Inquiries: Porting</a> — the FCC's summary of retaining a number when changing providers.</li>
+        <li><a href="https://pages.nist.gov/800-63-4/sp800-63b/authenticators/" rel="noopener" target="_blank">NIST SP 800-63B: Authenticators</a> — PSTN authentication limitations and alternative authenticators.</li>
+        <li><a href="https://www.reddit.com/r/AskUK/comments/1vrvbmx/can_i_retrieve_a_phone_number/" rel="noopener" target="_blank">Public question about recovering an inactive phone number</a> — one user story used only as a question signal, not prevalence or provider policy.</li>
+      </ul>
+    </section>
+  </article>
+  <aside class="section card"><h2>Need a safe test fixture?</h2><p>Use fictional input for product tests; choose a provider-assigned line only for workflows that need a live number.</p><a class="button" href="/tools">Open free tools</a></aside>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum · Developer tools and test data</span><nav class="footer-links"><a href="/about">About</a><a href="/privacy">Privacy</a><a href="/responsible-use">Responsible use</a><a href="/contact">Contact</a></nav></div></footer>
+</body></html>
