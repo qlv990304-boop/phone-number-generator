@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 840" role="img" aria-labelledby="title desc">
+<title id="title">Safely bind a provider-assigned phone line to account sign-in</title>
+<desc id="desc">A five-step checklist: get a real line from a provider, prove present access, bind it from an authenticated session, send an independent notice and keep a fallback, then retire the old binding after testing the replacement.</desc>
+<defs>
+  <style>
+    .bg{fill:#f5f8fc}.ink{fill:#16253d}.muted{fill:#53647d}.card{fill:#fff;stroke:#d8e1ee;stroke-width:2}.num{fill:#0b6bcb}.step{font:700 21px Arial,sans-serif;fill:#172840}.body{font:18px Arial,sans-serif;fill:#43546c}.small{font:16px Arial,sans-serif;fill:#53647d}.head{font:700 34px Arial,sans-serif;fill:#14233b}.sub{font:20px Arial,sans-serif;fill:#53647d}.arrow{stroke:#5f7fa5;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}.warn{fill:#fff4dd;stroke:#efd18f;stroke-width:2}.warntext{font:700 19px Arial,sans-serif;fill:#6b4b00}.icon{fill:none;stroke:#0b6bcb;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+  </style>
+  <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5f7fa5"/></marker>
+</defs>
+<rect class="bg" width="1440" height="840" rx="28"/>
+<text x="72" y="82" class="head">Link a real number in five deliberate steps</text>
+<text x="72" y="122" class="sub">An SMS check shows access now. Your account still needs a safe binding and a working fallback.</text>
+<g transform="translate(56,184)">
+  <rect class="card" x="0" y="0" width="242" height="414" rx="24"/>
+  <circle class="num" cx="48" cy="50" r="26"/><text x="48" y="58" text-anchor="middle" font="700 22px Arial" fill="#fff">1</text>
+  <g class="icon" transform="translate(82,38)"><path d="M10 5h42v58H10z"/><path d="M20 14h22M20 51h22"/></g>
+  <text x="26" y="142" class="step">Get a real line</text>
+  <text x="26" y="184" class="body"><tspan x="26" dy="0">A carrier or VoIP</tspan><tspan x="26" dy="27">provider assigns it.</tspan><tspan x="26" dy="38">A generated fixture</tspan><tspan x="26" dy="27">cannot receive a code.</tspan></text>
+
+  <rect class="card" x="264" y="0" width="242" height="414" rx="24"/>
+  <circle class="num" cx="312" cy="50" r="26"/><text x="312" y="58" text-anchor="middle" font="700 22px Arial" fill="#fff">2</text>
+  <g class="icon" transform="translate(346,40)"><path d="M8 15l22-10 22 10v18c0 16-11 27-22 33C19 60 8 49 8 33z"/><path d="M19 32l8 8 16-18"/></g>
+  <text x="290" y="142" class="step">Prove access now</text>
+  <text x="290" y="184" class="body"><tspan x="290" dy="0">Send a short-lived</tspan><tspan x="290" dy="27">challenge on request.</tspan><tspan x="290" dy="38">Expire it, accept once</tspan><tspan x="290" dy="27">and rate-limit tries.</tspan></text>
+
+  <rect class="card" x="528" y="0" width="242" height="414" rx="24"/>
+  <circle class="num" cx="576" cy="50" r="26"/><text x="576" y="58" text-anchor="middle" font="700 22px Arial" fill="#fff">3</text>
+  <g class="icon" transform="translate(612,40)"><rect x="5" y="7" width="54" height="48" rx="6"/><path d="M16 22h32M16 34h19M18 55v8M46 55v8M12 63h40"/></g>
+  <text x="554" y="142" class="step">Bind in-session</text>
+  <text x="554" y="184" class="body"><tspan x="554" dy="0">Use an authenticated</tspan><tspan x="554" dy="27">account session.</tspan><tspan x="554" dy="38">Store the new route</tspan><tspan x="554" dy="27">only after success.</tspan></text>
+
+  <rect class="card" x="792" y="0" width="242" height="414" rx="24"/>
+  <circle class="num" cx="840" cy="50" r="26"/><text x="840" y="58" text-anchor="middle" font="700 22px Arial" fill="#fff">4</text>
+  <g class="icon" transform="translate(878,40)"><rect x="4" y="9" width="54" height="43" rx="6"/><path d="M5 15l26 20 26-20M16 61h30"/></g>
+  <text x="818" y="142" class="step">Notify elsewhere</text>
+  <text x="818" y="184" class="body"><tspan x="818" dy="0">Use an independent</tspan><tspan x="818" dy="27">verified channel.</tspan><tspan x="818" dy="38">Keep and test a</tspan><tspan x="818" dy="27">separate fallback.</tspan></text>
+
+  <rect class="card" x="1056" y="0" width="242" height="414" rx="24"/>
+  <circle class="num" cx="1104" cy="50" r="26"/><text x="1104" y="58" text-anchor="middle" font="700 22px Arial" fill="#fff">5</text>
+  <g class="icon" transform="translate(1142,39)"><path d="M8 16h45M15 16V6h30v10M15 24v37h30V24M23 33l14 14M37 33L23 47"/></g>
+  <text x="1082" y="142" class="step">Retire old route</text>
+  <text x="1082" y="184" class="body"><tspan x="1082" dy="0">Revoke it only after</tspan><tspan x="1082" dy="27">the new route works.</tspan><tspan x="1082" dy="38">Keep lifecycle time</tspan><tspan x="1082" dy="27">and opaque references.</tspan></text>
+
+  <path class="arrow" marker-end="url(#arrowhead)" d="M244 208h16"/>
+  <path class="arrow" marker-end="url(#arrowhead)" d="M508 208h16"/>
+  <path class="arrow" marker-end="url(#arrowhead)" d="M772 208h16"/>
+  <path class="arrow" marker-end="url(#arrowhead)" d="M1036 208h16"/>
+</g>
+<rect class="warn" x="72" y="654" width="1296" height="110" rx="20"/>
+<path d="M112 724l25-48 25 48z" fill="none" stroke="#b77900" stroke-width="4" stroke-linejoin="round"/><path d="M137 690v15M137 715v2" stroke="#b77900" stroke-width="4" stroke-linecap="round"/>
+<text x="188" y="700" class="warntext">Do not treat a generated test value as a live sign-in number.</text>
+<text x="188" y="736" class="small">Keep test fixtures on a non-delivery path; never store one-time codes in logs.</text>
+</svg>
