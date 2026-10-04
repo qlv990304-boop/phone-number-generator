@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1028869307415425" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Phone Number Generator for CSV Test Data | GetPhoneNum</title>
+  <meta name="description" content="Keep phone-number test fixtures as strings from a free phone number generator through CSV, Excel imports and application tests.">
+  <meta name="robots" content="index, follow"><link rel="canonical" href="https://getphonenum.com/free-phone-number-generator-csv-text">
+  <link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Free Phone Number Generator for CSV Test Data: Preserve Values as Text","description":"A practical type-preservation workflow for synthetic phone-number fixtures exported through CSV, Excel and application imports.","datePublished":"2026-10-04","dateModified":"2026-10-04","author":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/free-phone-number-generator-csv-text"}</script>
+</head>
+<body class="static-page">
+<header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
+<main class="page-shell article-shell">
+  <p class="eyebrow">Free synthetic data · CSV and spreadsheet QA</p>
+  <h1>Free Phone Number Generator for CSV Test Data: Preserve Values as Text</h1>
+  <p class="lede"><strong>Keep every phone value as a string.</strong> A free phone number generator can provide synthetic test data, but a spreadsheet may strip leading zeros or convert long values while importing a CSV. Phone numbers are identifiers, not quantities. GetPhoneNum values are synthetic and cannot receive calls or SMS.</p>
+  <p class="muted"><a href="/guides">Developer guides</a> · October 4, 2026 · CSV type-preservation workflow</p>
+  <figure class="card" style="margin:1.5rem 0;padding:1rem"><img src="/assets/free-phone-number-generator-csv-pipeline.svg" alt="A four-step synthetic phone test data pipeline: keep the generated value as text, write CSV with a library, import the spreadsheet column as Text, and compare the round-tripped fixture value and metadata" style="display:block;width:100%;height:auto;border-radius:12px"><figcaption class="muted" style="margin-top:.75rem">Preserve the exact text at every handoff; CSV punctuation does not tell a spreadsheet what type a field should be.</figcaption></figure>
+  <article class="article-body">
+    <section><h2>Why a phone number must stay text</h2>
+      <p>Applications do not add or multiply phone numbers. A value may begin with a zero, include a leading plus sign, vary in length by region, or exceed the precision of a spreadsheet's numeric cell. Converting it to a number can change the test input before your phone-field parser sees it.</p>
+      <p>Microsoft documents that Excel can remove leading zeros and convert long numeric-looking strings to scientific notation; values with 16 or more digits can lose precision. Once a character has been discarded, changing the cell's display format cannot reconstruct the original value. Import the CSV deliberately and set the phone column to Text before loading it.</p>
+      <p>Use examples only from a documented fictional range and mark them non-deliverable. NANPA keeps 555-0100 through 555-0199 reserved for entertainment and advertising; Ofcom publishes separate ranges for drama, including 07700 900000 through 07700 900999. Such examples help exercise formatting without pretending that a generated string is an assigned service line.</p>
+    </section>
+    <section><h2>CSV quotes do not define a text column</h2>
+      <p>CSV quotes protect fields that contain commas, quotation marks or line breaks. They are syntax, not a type declaration. A quoted phone value can still be inferred as a number when a spreadsheet opens the file. Keep the raw CSV as a text exchange format, then choose the column type in the importer.</p>
+      <div class="table-wrap card"><table><thead><tr><th>Handoff</th><th>Failure to watch for</th><th>Control and assertion</th></tr></thead><tbody>
+        <tr><td>Generator to fixture</td><td>A numeric cast drops the plus sign or a leading zero.</td><td>Build the phone field as a string and keep region and fictional-only metadata beside it.</td></tr>
+        <tr><td>Fixture to CSV</td><td>Manual concatenation breaks fields containing delimiters or quotes.</td><td>Use a CSV writer; compare each parsed phone field to the original string.</td></tr>
+        <tr><td>CSV to Excel</td><td>Automatic conversion changes digits or display.</td><td>Choose Data → From Text/CSV and set the phone column's data type to Text before loading.</td></tr>
+        <tr><td>Excel to application</td><td>The workbook looks right while the saved CSV has changed.</td><td>Export, parse it again, and assert exact character equality and the expected row count.</td></tr>
+        <tr><td>Test delivery boundary</td><td>A fixture is mistaken for a reachable subscriber number.</td><td>Carry fictional_only=true and delivery_allowed=false; keep synthetic tests offline.</td></tr>
+      </tbody></table></div>
+    </section>
+    <section><h2>Write a typed fixture export</h2>
+      <p>The example uses two documented fictional values: the NANPA 555 entertainment range and Ofcom's UK drama mobile range. They are illustrative test data, not working lines. In JSON and application code, retain the field as a string:</p>
+      <pre class="card"><code>{
+  "fixture_id": "us-example-001",
+  "phone_e164": "+12025550100",
+  "region": "US",
+  "fictional_only": true,
+  "delivery_allowed": false
+}</code></pre>
+      <p>When creating a CSV, use a writer so the library handles delimiters and quoting. Python's CSV documentation recommends opening output with newline="" and documents DictWriter for named fields:</p>
+      <pre class="card"><code>import csv
+
+rows = [
+    {"fixture_id": "us-example-001", "phone_e164": "+12025550100",
+     "region": "US", "fictional_only": "true", "delivery_allowed": "false"},
+    {"fixture_id": "uk-example-001", "phone_e164": "+447700900123",
+     "region": "GB", "fictional_only": "true", "delivery_allowed": "false"},
+]
+fields = ["fixture_id", "phone_e164", "region", "fictional_only", "delivery_allowed"]
+
+with open("phone-fixtures.csv", "w", newline="", encoding="utf-8") as output:
+    writer = csv.DictWriter(output, fieldnames=fields, extrasaction="raise")
+    writer.writeheader()
+    writer.writerows(rows)
+
+with open("phone-fixtures.csv", newline="", encoding="utf-8") as source:
+    imported = list(csv.DictReader(source))
+
+assert [row["phone_e164"] for row in imported] == [row["phone_e164"] for row in rows]
+assert all(row["fictional_only"] == "true" for row in imported)
+assert all(row["delivery_allowed"] == "false" for row in imported)</code></pre>
+      <p>CSV readers return strings by default. Avoid converting these fields with int() or float(). If a spreadsheet is part of the workflow, import the raw file through its text-import flow with the phone column set to Text, save the result, export it again, and run the equality checks once more.</p>
+    </section>
+    <section><h2>Use a round-trip check before the fixture reaches tests</h2>
+      <ol>
+        <li>Save the expected phone string and row count in the test that creates the fixture.</li>
+        <li>Check the raw CSV in a text editor before opening it in a spreadsheet.</li>
+        <li>Import the phone column as Text; do not rely on double-clicking a CSV file.</li>
+        <li>After editing or exporting, parse the CSV again and compare each string character-for-character.</li>
+        <li>Validate the region and fictional-only flags, and confirm no delivery-enabled test path can consume these fixtures.</li>
+      </ol>
+      <p>This workflow catches transport corruption separately from phone-number validation. For region-aware syntax, see the <a href="/e164-phone-number-format">E.164 formatting guide</a>; for fixture boundaries, see the <a href="/fake-phone-number-generator-fail-closed">country-aware fake-number guide</a>.</p>
+    </section>
+    <section><h2>Frequently asked questions</h2>
+      <h3>Why does Excel change phone numbers in a CSV?</h3>
+      <p>Excel may infer a numeric type when it opens a CSV. Leading zeros can disappear and long values may be converted or lose precision. Import with Data → From Text/CSV and explicitly set the phone column to Text.</p>
+      <h3>Do quotation marks force Excel to keep a phone value as text?</h3>
+      <p>No. CSV quotes escape field content; they do not define a spreadsheet column type. Choose Text in the import step and check the exported file again.</p>
+      <h3>Can a free phone number generator CSV receive a verification message?</h3>
+      <p>No. A synthetic fixture is a string for testing input handling. It is not a carrier-assigned number or a live inbox. Use a provider's authorized test environment for delivery workflows.</p>
+      <h3>How can I safely open test-number CSV data in Excel?</h3>
+      <p>Use Data → From Text/CSV, set the phone column to Text in the import preview, then compare the imported and exported strings with the raw fixture source.</p>
+    </section>
+    <section><h2>References and question signal</h2>
+      <ul>
+        <li><a href="https://support.microsoft.com/en-us/excel/keeping-leading-zeros-and-large-numbers">Microsoft: Keeping leading zeros and large numbers</a></li>
+        <li><a href="https://support.microsoft.com/en-us/excel/get-started/import-or-export-text-txt-or-csv-files">Microsoft: Import or export text and CSV files</a></li>
+        <li><a href="https://docs.python.org/3/library/csv.html">Python: csv — CSV File Reading and Writing</a></li>
+        <li><a href="https://www.rfc-editor.org/rfc/rfc4180.html">RFC 4180: Common Format and MIME Type for CSV Files</a></li>
+        <li><a href="https://www.nanpa.com/numbering/555-line-numbers">NANPA: 555 line numbers</a> and <a href="https://www.ofcom.org.uk/phones-and-broadband/phone-numbers/numbers-for-drama">Ofcom: numbers for drama</a></li>
+        <li><a href="https://www.reddit.com/r/excel/comments/1h0e4z5/phone_numbers_in_csv_format/">A public Excel question about phone numbers changing in CSV files during spreadsheet import/export</a> (one user question only; not a frequency or policy source).</li>
+      </ul>
+    </section>
+  </article>
+  <p class="muted"><a href="/guides">Browse all developer guides</a></p>
+</main>
+<footer class="site-footer"><div class="page-shell"><a href="/">GetPhoneNum</a> · <a href="/privacy">Privacy</a> · <a href="/responsible-use">Responsible use</a></div></footer>
+</body>
+</html>
