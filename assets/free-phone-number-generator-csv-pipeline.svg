@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+<title id="title">Keep synthetic phone test data as text across CSV and spreadsheets</title>
+<desc id="desc">Four stages preserve the exact phone string from generator to fixture: create string values, serialize with a CSV writer, import the spreadsheet column as Text, and compare round-tripped data plus safety metadata.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101936"/><stop offset="1" stop-color="#1b2851"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#71e4cb"/><stop offset="1" stop-color="#67a5ff"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#050b1c" flood-opacity=".35"/></filter>
+</defs>
+<rect width="1200" height="560" rx="32" fill="url(#bg)"/>
+<text x="58" y="65" fill="#f2f5ff" font-family="Inter,Arial,sans-serif" font-size="31" font-weight="700">Free generator → safe CSV test fixtures</text>
+<text x="58" y="103" fill="#b8c4e5" font-family="Inter,Arial,sans-serif" font-size="17">Keep the phone value as text from the first step to the final assertion.</text>
+<g filter="url(#shadow)">
+ <rect x="55" y="150" width="245" height="250" rx="20" fill="#202d57" stroke="#47618e"/>
+ <rect x="345" y="150" width="245" height="250" rx="20" fill="#202d57" stroke="#47618e"/>
+ <rect x="635" y="150" width="245" height="250" rx="20" fill="#202d57" stroke="#47618e"/>
+ <rect x="925" y="150" width="220" height="250" rx="20" fill="#202d57" stroke="#47618e"/>
+</g>
+<g font-family="Inter,Arial,sans-serif">
+ <circle cx="83" cy="181" r="16" fill="url(#accent)"/><text x="78" y="187" fill="#101936" font-size="16" font-weight="700">1</text>
+ <text x="78" y="229" fill="#ffffff" font-size="21" font-weight="700">Generate strings</text>
+ <text x="78" y="264" fill="#b8c4e5" font-size="15">phone_e164: "+…"</text>
+ <text x="78" y="292" fill="#b8c4e5" font-size="15">region: "US"</text>
+ <text x="78" y="320" fill="#b8c4e5" font-size="15">fictional_only: true</text>
+ <text x="78" y="348" fill="#71e4cb" font-size="14" font-weight="700">Do not cast to number</text>
+ <path d="M307 276h28m-9-9 9 9-9 9" stroke="#71e4cb" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+ <circle cx="373" cy="181" r="16" fill="url(#accent)"/><text x="368" y="187" fill="#101936" font-size="16" font-weight="700">2</text>
+ <text x="368" y="229" fill="#ffffff" font-size="21" font-weight="700">Write CSV</text>
+ <text x="368" y="264" fill="#b8c4e5" font-size="15">Use DictWriter / writer</text>
+ <text x="368" y="292" fill="#b8c4e5" font-size="15">Keep row schema stable</text>
+ <text x="368" y="320" fill="#b8c4e5" font-size="15">Quotes escape commas</text>
+ <text x="368" y="348" fill="#ffcf78" font-size="14" font-weight="700">Quotes do not set type</text>
+ <path d="M597 276h28m-9-9 9 9-9 9" stroke="#71e4cb" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+ <circle cx="663" cy="181" r="16" fill="url(#accent)"/><text x="658" y="187" fill="#101936" font-size="16" font-weight="700">3</text>
+ <text x="658" y="229" fill="#ffffff" font-size="21" font-weight="700">Import as Text</text>
+ <text x="658" y="264" fill="#b8c4e5" font-size="15">Excel: Data → From Text/CSV</text>
+ <text x="658" y="292" fill="#b8c4e5" font-size="15">Select phone column</text>
+ <text x="658" y="320" fill="#b8c4e5" font-size="15">Set data type to Text</text>
+ <text x="658" y="348" fill="#ffcf78" font-size="14" font-weight="700">Avoid automatic coercion</text>
+ <path d="M887 276h28m-9-9 9 9-9 9" stroke="#71e4cb" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+ <circle cx="953" cy="181" r="16" fill="url(#accent)"/><text x="948" y="187" fill="#101936" font-size="16" font-weight="700">4</text>
+ <text x="948" y="229" fill="#ffffff" font-size="20" font-weight="700">Round-trip test</text>
+ <text x="948" y="264" fill="#b8c4e5" font-size="14">Exact string equality</text>
+ <text x="948" y="292" fill="#b8c4e5" font-size="14">Row count + region</text>
+ <text x="948" y="320" fill="#b8c4e5" font-size="14">delivery_allowed: false</text>
+</g>
+<rect x="56" y="432" width="1088" height="70" rx="16" fill="#172344" stroke="#344872"/>
+<circle cx="89" cy="467" r="13" fill="#71e4cb"/>
+<path d="M83 467l4 4 8-9" stroke="#101936" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="117" y="474" fill="#e9efff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="600">Synthetic test data only — a saved CSV string is not a provider-assigned, message-capable line.</text>
+</svg>
