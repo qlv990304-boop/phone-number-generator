@@ -10,7 +10,7 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://getphonenum.com/fake-phone-number-generator-fail-closed">
   <link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Fake Phone Number Generator: Fail Closed by Country","description":"An implementation guide for a country-aware fake phone number generator that uses documented fictional ranges and rejects unsupported countries without producing plausible subscriber numbers.","datePublished":"2026-09-30","dateModified":"2026-09-30","author":{"@type":"Organization","name":"GetPhoneNum Editorial Team","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/fake-phone-number-generator-fail-closed"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Fake Phone Number Generator: Fail Closed by Country","description":"An implementation guide for a country-aware fake phone number generator that uses documented fictional ranges and rejects unsupported countries without producing plausible subscriber numbers.","datePublished":"2026-09-30","dateModified":"2026-10-06","author":{"@type":"Organization","name":"GetPhoneNum Editorial Team","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/fake-phone-number-generator-fail-closed"}</script>
 </head>
 <body class="static-page">
 <header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
@@ -18,7 +18,7 @@
   <p class="eyebrow">Fake phone number generator · implementation guide</p>
   <h1>Fake Phone Number Generator: Fail Closed by Country</h1>
   <p class="lede"><strong>Answer:</strong> generate only from a number range an official numbering authority documents for fiction or drama. If a country has no approved range in your registry, return an explicit unsupported-region error. Never fill the gap with an ordinary random number that could belong to a real subscriber.</p>
-  <p class="muted"><a href="/guides">Developer guides</a> · Updated September 30, 2026</p>
+  <p class="muted"><a href="/guides">Developer guides</a> · Updated October 6, 2026</p>
   <figure style="margin:2rem 0"><img src="/assets/fake-phone-number-generator-safe-fixtures.webp" alt="A country-aware test fixture generator selects from documented fictional ranges inside a sandbox and stops when a country has no approved range." loading="lazy" style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:1rem"><figcaption class="muted">A safe generator has a bounded source and a visible failure path; it does not silently substitute a plausible number.</figcaption></figure>
   <article class="article-body">
     <section><h2>Make the country registry the safety boundary</h2>
@@ -74,6 +74,10 @@ function fictionalFixture(country, slot) {
     <section><h2>Keep display fixtures away from real delivery checks</h2>
       <p>Reserved examples can help render forms, screenshots, help pages and parser cases. They do not prove number assignment, ownership, reachability or receipt of a one-time code. When the country is unsupported, use an unmistakable placeholder such as <code>[TEST PHONE — NO DELIVERY]</code> for documentation, or use your provider's sandbox for an authorized delivery test. Do not replace the error with a realistic-looking number.</p>
       <p>This country-specific implementation recipe complements the <a href="/fictional-phone-number-ranges">fictional phone number range review</a> and the broader <a href="/phone-number-test-data-guide">safe phone number test data guide</a>, which explain source coverage and fixture design.</p>
+    </section>
+    <section><h2>Use a fake number generator for safe test data</h2>
+      <p>If you need to generate a fake number for a mockup, parser test, or UI fixture, choose only a country range explicitly reserved for fiction. This page's fake number generator returns synthetic examples from the documented US and UK ranges above; each result is marked fictional and not deliverable. A generated sample cannot receive calls, SMS, or verification codes.</p>
+      <p>When no documented range exists, return the explicit unsupported-region error or use your provider's sandbox for an authorized delivery test. Never replace the error with a plausible real-looking number.</p>
     </section>
     <section><h2>Questions developers ask</h2>
       <h3>Are all phone numbers containing 555 fictional?</h3>
