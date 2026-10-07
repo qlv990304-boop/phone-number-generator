@@ -9,7 +9,7 @@ if (root) {
   let rows = [];
 
   function render() {
-    const locationId = root.dataset.addressGenerator === "los-angeles" ? "los-angeles" : form.elements.location.value;
+    const locationId = root.dataset.addressGenerator === "any" ? form.elements.location.value : root.dataset.addressGenerator;
     rows = makeAddressBatch({
       locationId,
       count: Number(form.elements.count.value),
