@@ -1,5 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { LOCATIONS } from "../assets/address-data.mjs";
 import { makeAddressBatch, formatAddress, addressesToCSV } from "../assets/address-core.mjs";
 
 test("Los Angeles scope retains its reviewed fields for a complete batch", () => {
@@ -16,6 +18,14 @@ test("Los Angeles scope retains its reviewed fields for a complete batch", () =>
     assert.equal(row.delivery_verified, false);
     assert.equal(row.country, "US");
   }
+});
+
+test("every advertised city preset is selectable in the static HTML", () => {
+  const html = readFileSync(new URL("../fake-address-america.html", import.meta.url), "utf8");
+  const select = html.match(/<select name="location"[^>]*>([\s\S]*?)<\/select>/)[1];
+  const values = [...select.matchAll(/<option value="([^"]+)">/g)].map(match => match[1]);
+  assert.deepEqual(values, ["any", ...LOCATIONS.map(location => location.id)]);
+  assert.ok(!/<\/[a-z]+\s+[^>]*>/i.test(select), "closing option tags cannot carry attributes");
 });
 
 test("national choices cannot pair a city with a different state's preset", () => {
