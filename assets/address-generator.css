@@ -1,0 +1,43 @@
+.address-page .page-shell { padding-top: 2.25rem; }
+.address-hero { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 2.5rem; align-items: start; }
+.address-intro h1 { font-size: clamp(2.1rem, 4.5vw, 3.6rem); }
+.address-intro .lede { font-size: 1.13rem; }
+.address-intro .tool-badge { display: inline-block; margin-top: .5rem; }
+.address-panel { margin-top: 0; min-width: 0; }
+.address-panel h2 { font-size: 1.25rem; margin: 0 0 1rem; }
+.address-controls { display: grid; grid-template-columns: minmax(0, 1fr) minmax(6rem, .5fr); gap: .85rem; }
+.address-controls .field { margin-bottom: .6rem; }
+.address-fixed-location { padding: .75rem .85rem; border: 1px solid var(--line); border-radius: .7rem; background: var(--soft); line-height: 1.65; }
+.address-checkbox { display: flex; align-items: center; gap: .65rem; min-height: 2.6rem; font-size: .95rem; }
+.address-checkbox input { width: 1.1rem; height: 1.1rem; accent-color: var(--blue); }
+.address-actions { display: flex; gap: .65rem; margin: .5rem 0 .8rem; }
+.address-actions .button { flex: 1; }
+.address-seed { font-size: .9rem; margin: .5rem 0 .75rem; }
+.address-seed summary { cursor: pointer; color: var(--blue-dark); font-weight: 650; }
+.address-seed label { display: block; margin-top: .7rem; }
+.address-output { margin: 1rem 0 .5rem; background: #0f172a; color: #eef6ff; padding: 1rem; border-radius: .8rem; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 20rem; overflow-y: auto; font: .96rem/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.address-output:focus-visible, .address-page button:focus-visible, .address-page summary:focus-visible, .address-page a:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
+.address-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem .8rem; margin: .9rem 0; }
+.address-fields dt { color: var(--muted); font-size: .75rem; }
+.address-fields dd { margin: .1rem 0 0; font-weight: 700; overflow-wrap: anywhere; font-size: .93rem; }
+.address-export { display: flex; gap: .6rem; flex-wrap: wrap; }
+.address-export .button { min-height: 2.5rem; font-size: .85rem; }
+.address-status { min-height: 1.4rem; margin: .65rem 0 0; color: var(--blue-dark); font-size: .85rem; }
+.address-caption { color: var(--muted); font-size: .8rem; margin: .25rem 0; }
+.address-article { max-width: 960px; }
+.address-article code { overflow-wrap: anywhere; }
+.address-figure { margin: 2rem 0 0; }
+.address-figure img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 1rem; }
+.address-figure figcaption { font-size: .88rem; margin-top: .5rem; }
+@media (max-width: 760px) {
+  .address-page .page-shell { padding-top: 1.15rem; }
+  .address-hero { display: block; }
+  .address-intro h1 { font-size: 2.05rem; margin-bottom: .65rem; }
+  .address-intro .lede { font-size: 1rem; margin-bottom: .8rem; }
+  .address-intro .hero-actions { margin: .65rem 0 1.2rem; font-size: .9rem; }
+  .address-panel { padding: 1rem; }
+  .address-intro .tool-badge { font-size: .68rem; }
+  .address-controls { grid-template-columns: minmax(0, 1fr) 5.5rem; gap: .65rem; }
+  .address-controls input, .address-controls select, .address-fixed-location { padding: .6rem .65rem; font-size: .9rem; }
+  .address-actions .button { padding: .6rem; font-size: .92rem; }
+}
