@@ -95,3 +95,20 @@ Task-created Chrome search/video tabs were closed and empty tab listing confirme
 - Original street/unit vocabulary and authored generator code are first-party material; no competitor text or real resident/street list was reused. Municipal facts only supply location presets.
 - Source seed remains bestrandoms.com; no additional city/state landing pages were published. Workers integration reported an earlier build failure for c4d6a23, while target Pages preview and production were actually verified. No dashboard build configuration was read or invented.
 - Browser verification task tabs and temporary test downloads were cleaned. The isolated development checkout is handled as task-created temporary material; earlier denied video-tool cleanup paths are not retried.
+
+## Four address state pages — October 8, 2026
+
+User authorized Pennsylvania, Alabama, Tennessee and the Washington/Seattle term, conditional on real Google organic top-three intent. Each state gets one page. No separate Seattle synonym page. Phone main keyword and its locked TOP3 remain unchanged.
+
+Signed-in Chrome, hl=en / gl=us / pws=0, October 7 23:56–23:59 Asia/Shanghai. Google footer: Unknown / Can't determine location; US parameter is not claimed as physical US location. Ads, AI Overview, maps and PAA excluded.
+
+| Supplied keyword | Organic TOP3 in order | Intent decision | New canonical |
+|---|---|---|---|
+| addresses in pennsylvania | pa.postcodebase.com/randomaddress (random address); pa.gov physical street addresses PDF (directory); bestrandoms.com/random-pennsylvania-address (random tool) | Mixed, 2 of 3 random address tools; generator page justified | https://getphonenum.com/pennsylvania-address-generator |
+| address in alabama usa | al.postcodebase.com/randomaddress (random address); hrblock.com shredeventlocations.pdf (directory); bestrandoms.com/random-alabama-address (random tool) | Mixed, 2 of 3 random address tools; generator page justified | https://getphonenum.com/alabama-address-generator |
+| address in tennessee | bestrandoms.com/random-tennessee-address (random tool); tn.postcodebase.com/randomaddress (random address); zillow.com/tn/ (real estate) | Mixed, 2 of 3 random address tools; generator page justified | https://getphonenum.com/tennessee-address-generator |
+| address in washington seattle | wa.postcodebase.com/random_address_city/SEATTLE (random addresses); zillow.com/seattle-wa/ (real estate); bestrandoms.com/random-seattle-address (random tool) | Mixed, 2 of 3 random address tools; one Washington page explicitly scoped to Seattle | https://getphonenum.com/washington-address-generator |
+
+Original material: authored synthetic street generation and exports, immutable location tuples, state-specific field assertions and offline QA matrices, four original SVG diagrams. State presets reuse the already sourced location table: Philadelphia PA 19107, Birmingham AL 35203, Nashville TN 37201, Seattle WA 98104. No statewide/all-ZIP completeness or deliverability claim; no real residents or street records copied. National and LA pages link to all four; tools hub links directly.
+
+Candidate sitemap: 79 unique locs, each new canonical exactly once. Status: prepared; preview/production are not yet verified or counted as published. No GSC/GA4 values read.

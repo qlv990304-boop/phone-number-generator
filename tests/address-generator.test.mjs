@@ -65,3 +65,31 @@ test("plain text keeps the optional unit on its own line and preserves postal te
   const csv = addressesToCSV([sample]);
   assert.ok(csv.includes('"02108"'));
 });
+
+test("each published state page confines its complete export batch to the advertised location", () => {
+  const scopes = [
+    ["pennsylvania-address-generator", "Philadelphia", "PA", "19107"],
+    ["alabama-address-generator", "Birmingham", "AL", "35203"],
+    ["tennessee-address-generator", "Nashville", "TN", "37201"],
+    ["washington-address-generator", "Seattle", "WA", "98104"]
+  ];
+  for (const [slug, city, state, zip] of scopes) {
+    const html = readFileSync(new URL(`../${slug}.html`, import.meta.url), "utf8");
+    const scope = html.match(/data-address-generator="([^"]+)"/)[1];
+    assert.ok(!html.includes('name="location"'), "fixed state page must not expose a cross-state selector");
+    const settings = { locationId: scope, count: 25, includeUnit: true, seed: `${state}-export` };
+    const rows = makeAddressBatch(settings);
+    assert.equal(new Set(rows.map(formatAddress)).size, 25);
+    assert.deepEqual(JSON.parse(JSON.stringify(rows)), makeAddressBatch(settings));
+    for (const row of rows) {
+      assert.deepEqual([row.city, row.state, row.postal_code], [city, state, zip]);
+      assert.equal(row.country, "US");
+      assert.equal(row.delivery_verified, false);
+      assert.equal(row.synthetic, true);
+      assert.equal(typeof row.postal_code, "string");
+      assert.match(row.address_line_2, /^APT /);
+      assert.match(row.location_source, /^https:\/\//);
+    }
+    assert.ok(addressesToCSV(rows).includes(`"${city}","${state}"`));
+  }
+});
