@@ -25,6 +25,9 @@
 
 | 2026-10-07 | phone number generator | Phone Number Generator: Do Your Tests Catch Broken Fixtures? | https://getphonenum.com/phone-number-generator-mutation-checks | Five controlled output mutations and independent test-oracle experiment | Preview and production verified live, PR 14 |
 
+| 2026-10-07 | los angeles addresses | Los Angeles Addresses Generator | https://getphonenum.com/los-angeles-addresses | Fixed LA preset, original local street/unit generator, replay and exports | Verified live, PR 15 |
+| 2026-10-07 | fake address america | Fake Address America: US Address Generator | https://getphonenum.com/fake-address-america | Five paired city/state/ZIP presets, local batch generator and export contract | Verified live, PR 15 |
+
 Oct 5: no page. Oct 6: existing guide updated, not a new article.
 
 ## 2026-10-07 — published and verified
@@ -40,7 +43,7 @@ Oct 5: no page. Oct 6: existing guide updated, not a new article.
 - Status: published and counted after public verification. PR #14 https://github.com/qlv990304-boop/phone-number-generator/pull/14 squash merged; merge commit 7d1c1984300b5270f96dfda89e006487090da36c.
 - Pages preview: https://3d70c03f.phone-number-generator-89o.pages.dev . Article, SVG, Python source, guides and sitemap all HTTP 200. H1/canonical/first-screen Answer correct; desktop 1440×900 and mobile 390×844 legible without page overflow; mobile table scrolls within its own container. Browser Use run 1e76047e-240e-4501-98dd-3ce06c8e6bdb completed.
 - Production: exact article URL, SVG, Python source, guides and sitemap HTTP 200. Public Browser Use run f471d7b2-dcc6-42bb-948e-b0f871ca6ff7 confirmed H1/canonical/Answer/SVG; sitemap has 73 unique loc entries and exactly one target loc. Direct public HTTP GET cross-check agrees. No Cloudflare dashboard build setting was read or inferred.
-- Original content count for this cycle is now 10 articles; Oct 6's update remains an existing-page update.
+- At this article's release, the cycle contained 10 editorial guides; Oct 6's update remains an existing-page update. The later address launch below adds two product pages, for 12 new content URLs (10 guides plus 2 address tools).
 
 ## 2026-10-08 — tomorrow's topic is fixed tonight
 
@@ -76,8 +79,19 @@ Task-created Chrome search/video tabs were closed and empty tab listing confirme
 - Explicit scope: first check for an existing address generator; if absent, publish only los angeles addresses and fake address america. No other city/state landing pages are authorized in this batch.
 - Inventory: GitHub search and a fresh main checkout found no address-generator page, no address page in the sitemap, and no address-generation assets. The two pages are new product pages rather than synonym duplicates.
 - Selected seed read: https://www.bestrandoms.com/ and https://www.bestrandoms.com/random-address, two public static pages read serially in run 97727e96-6c45-4692-acbd-d59702c5be29. Observed filter/result/format/FAQ structure only; no generation controls, feedback, login or personal data were used. No original text or datasets copied.
-- New canonical URLs: https://getphonenum.com/los-angeles-addresses ; https://getphonenum.com/fake-address-america . Status: implemented and locally tested, preview/production still pending.
+- New canonical URLs: https://getphonenum.com/los-angeles-addresses ; https://getphonenum.com/fake-address-america . Status: published and independently verified. PR #15 https://github.com/qlv990304-boop/phone-number-generator/pull/15 squash merged at 6161c9d66db35addd46fdabbe3e44bf900de4a42.
 - Original product: shared static location table, original test street vocabulary, local browser generation, optional apartment line, seed replay, within-batch distinct city/street slots, copy, JSON/CSV exports. No new backend.
 - Five city/state/ZIP presets: Los Angeles CA 90012, Seattle WA 98104, Philadelphia PA 19107, Birmingham AL 35203, Nashville TN 37201. Municipal source URLs accompany the records; real streets/people are not imported. The LA page is fixed to one preset, while the US page exposes five available city presets. No nationwide/all-ZIP completeness or delivery validation is claimed.
-- Six Node tests passed: LA tuple and flags, national tuple consistency, replay, unique termination under a constant random source, invalid inputs, optional-line/text export. Original SVG inserted in each page. Sitemap candidate has 75 unique URLs, with each new canonical once; tools hub contains both cards.
+- Final seven Node tests passed, including static selector/data parity: LA tuple and flags, national tuple consistency, replay, unique termination under a constant random source, invalid inputs, optional-line/text export. Original SVG inserted in each page. Sitemap candidate has 75 unique URLs, with each new canonical once; tools hub contains both cards.
 - Scope does not expand to lottery, QR/barcode or unrelated projects. The already-published authorized video at https://youtu.be/jyxnzyFtYOw is not uploaded again merely because file access is now enabled.
+
+## Final address release evidence
+
+- Final branch commit 4ab4683c358ff93a5c51fa6e461029be4deaa6b5, Pages preview https://28600f97.phone-number-generator-89o.pages.dev .
+- Preview run b1b420f2-a903-4c06-b895-3acf0c174d25 verified LA seeded quantity5, separate APT, identical replay, JSON/CSV payloads, copy-permission selection fallback, national quantity10 exports, original SVGs, mutual links, hub and sitemap. Both 1440×900 and 390×844 layouts were legible; mobile primary CTA above fold and no horizontal overflow.
+- Preview found malformed LA/Seattle option tags in the initial national selector. Both corrected, new regression added; all seven Node tests pass. Focused final-deployment run 7eeed250-7d6a-4ddf-b8b5-26e375f446f0 confirmed all expected selector values, Seattle-only ten-row batch and LA-only one-row batch.
+- The first preview run visited a typo host f1f8b05e rather than the correct f1f8b05f. Its 404 was recorded as a navigation error, not a failed Pages deployment or passed UI check.
+- Public production run b6876974-c3ce-450d-90aa-81405d6c022f completed: both exact clean URLs HTTP200; titles/H1s/self-canonicals, generated default sample, JS ready status, synthetic/unverified labels, rendered SVGs and complete national selector correct. Tools cards and mutual links present. Sitemap valid XML with 75 unique locs and each new canonical exactly once. Direct public HTTP GET also confirmed pages, three modules, CSS, both SVGs, hub and sitemap200.
+- Original street/unit vocabulary and authored generator code are first-party material; no competitor text or real resident/street list was reused. Municipal facts only supply location presets.
+- Source seed remains bestrandoms.com; no additional city/state landing pages were published. Workers integration reported an earlier build failure for c4d6a23, while target Pages preview and production were actually verified. No dashboard build configuration was read or invented.
+- Browser verification task tabs and temporary test downloads were cleaned. The isolated development checkout is handled as task-created temporary material; earlier denied video-tool cleanup paths are not retried.
