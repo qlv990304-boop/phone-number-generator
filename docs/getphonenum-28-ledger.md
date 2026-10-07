@@ -23,9 +23,11 @@
 | 2026-10-03 | create phone number | Create a Phone Number for Sign-In? Verify Control First | https://getphonenum.com/create-phone-number-account-binding | Binding lifecycle and independent notification | Verified live, PR 11 |
 | 2026-10-04 | free phone number generator | Free Phone Number Generator for CSV Test Data: Preserve Values as Text | https://getphonenum.com/free-phone-number-generator-csv-text | Reproducible CSV round-trip matrix | Verified live, PR 12 |
 
+| 2026-10-07 | phone number generator | Phone Number Generator: Do Your Tests Catch Broken Fixtures? | https://getphonenum.com/phone-number-generator-mutation-checks | Five controlled output mutations and independent test-oracle experiment | Preview and production verified live, PR 14 |
+
 Oct 5: no page. Oct 6: existing guide updated, not a new article.
 
-## 2026-10-07 — fixed task, publication candidate
+## 2026-10-07 — published and verified
 
 - Keyword: phone number generator.
 - Title: Phone Number Generator: Do Your Tests Catch Broken Fixtures?
@@ -35,7 +37,10 @@ Oct 5: no page. Oct 6: existing guide updated, not a new article.
 - Measured locally with Python 3.13.15: baseline PASS; weak check detects two changes and misses three; exact reviewed fixture contract detects all five specified changes. Not a production source-code mutation score.
 - Facts: Stryker official introduction and mutant states; NANPA official fictional range. Question signal: Reddit softwaretesting discussion about mutation-analysis runtime cost, summarized only.
 - Sources: https://stryker-mutator.io/docs/ ; https://stryker-mutator.io/docs/mutation-testing-elements/mutant-states-and-metrics/ ; https://www.nanpa.com/numbering/555-line-numbers ; https://www.reddit.com/r/softwaretesting/comments/mz63br/
-- Status: drafted and locally reproduced; preview/merge/production must be verified before counting.
+- Status: published and counted after public verification. PR #14 https://github.com/qlv990304-boop/phone-number-generator/pull/14 squash merged; merge commit 7d1c1984300b5270f96dfda89e006487090da36c.
+- Pages preview: https://3d70c03f.phone-number-generator-89o.pages.dev . Article, SVG, Python source, guides and sitemap all HTTP 200. H1/canonical/first-screen Answer correct; desktop 1440×900 and mobile 390×844 legible without page overflow; mobile table scrolls within its own container. Browser Use run 1e76047e-240e-4501-98dd-3ce06c8e6bdb completed.
+- Production: exact article URL, SVG, Python source, guides and sitemap HTTP 200. Public Browser Use run f471d7b2-dcc6-42bb-948e-b0f871ca6ff7 confirmed H1/canonical/Answer/SVG; sitemap has 73 unique loc entries and exactly one target loc. Direct public HTTP GET cross-check agrees. No Cloudflare dashboard build setting was read or inferred.
+- Original content count for this cycle is now 10 articles; Oct 6's update remains an existing-page update.
 
 ## 2026-10-08 — tomorrow's topic is fixed tonight
 
@@ -55,5 +60,11 @@ Oct 5: no page. Oct 6: existing guide updated, not a new article.
 T1 homepage checks completed Oct 7: 1440×900 and 390×844, primary CTA above fold, no page overflow, no CSS change required.
 T2 fixed competitor corpus remains capped at Dialaxy/KrispCall 10 pages each and Receive-SMSS 9 safe static pages. No inbox reading.
 T3/T4 original experiment and sourced runtime-cost question feed today's FAQ; no invented volume or user quotations.
-T5 original SVG accompanies today's article. Authorized fake-range video upload remains pending local-file permission; no public link is claimed here.
+T5 original SVG is live with today's article. The previously made Fake Phone Number Generator: Fail Closed by Country video was published on GetPhoneNum at https://youtu.be/jyxnzyFtYOw . The user's Oct 3 consent was reused without asking again. Studio confirmed Public and copyright check reported no issues. Independent anonymous public playback matched title/channel and ~1:38 duration, with no unavailable/private/processing/age-restriction messages. Original screenshot saved in the dedicated local video folder. Automatic thumbnail retained; caption Add was disabled in the upload flow and captions.srt was not uploaded. CSV video remains separate and unuploaded.
 No blocked file deletion is retried or bypassed.
+
+## Latest one-off Google list
+
+The user explicitly requested another same-day search for random phone number generator. Signed-in Chrome query used hl=en, gl=us, pws=0; physical location was Unknown, not inferred. Excluding videos/PAA/ads/app-store pages, the ordered domains were dialaxy.com, krispcall.com, codebeautify.org, phrasefix.com, generate-random.org, bestrandoms.com, receive-smss.com, numbergenerator.org, random.org, slynumber.com. No destination pages or inboxes were opened. Do not rerun this daily or change the locked TOP3. The user chooses the next seed.
+
+Task-created Chrome search/video tabs were closed and empty tab listing confirmed; public verification tabs were also closed. No denied temporary deletion was retried. The scheduled task's app update tool was unavailable, so no change to its stored schedule or prompt is claimed; this repository ledger, local ledger and current thread preserve the revised instruction and Oct 8 fixed topic.
