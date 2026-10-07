@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1028869307415425" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-635DLM3Q02"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-635DLM3Q02');</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Number Generator: Do Your Tests Catch Broken Fixtures? | GetPhoneNum</title>
+<meta name="description" content="Check whether your phone fixture assertions catch broken output. Run five offline mutations and compare weak checks with an independent expected fixture.">
+<meta name="robots" content="index, follow"><link rel="canonical" href="https://getphonenum.com/phone-number-generator-mutation-checks">
+<link rel="stylesheet" href="/assets/site.css?v=20260719-4"><script defer src="/assets/site.js?v=20260719-2"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Phone Number Generator: Do Your Tests Catch Broken Fixtures?","datePublished":"2026-10-07","dateModified":"2026-10-07","author":{"@type":"Organization","name":"GetPhoneNum Editorial Team","url":"https://getphonenum.com/about"},"publisher":{"@type":"Organization","name":"GetPhoneNum","url":"https://getphonenum.com/"},"mainEntityOfPage":"https://getphonenum.com/phone-number-generator-mutation-checks"}</script>
+</head><body class="static-page"><header class="site-header"><nav class="nav"><a class="brand" href="/">GetPhoneNum</a><div class="nav-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/e164-formatter">Formatter</a><a href="/#countries">Countries</a><a href="/api">API</a></div></nav></header>
+<main class="page-shell article-shell">
+<p class="eyebrow">Phone number generator · test oracle experiment</p>
+<h1>Phone Number Generator: Do Your Tests Catch Broken Fixtures?</h1>
+<p class="lede"><strong>Answer:</strong> a passing test does not prove it can detect a broken phone fixture. Start with a passing baseline, deliberately change one output field at a time, and confirm the relevant assertion fails. Keep this experiment offline; never send a message to a mutated number.</p>
+<p class="muted"><a href="/guides">Developer guides</a> · Published October 7, 2026</p>
+<figure style="margin:2rem 0"><img src="/assets/phone-fixture-mutation-checks.svg" width="1200" height="680" alt="Five controlled changes expose three weaknesses in a length-and-region check; an independently reviewed exact fixture contract catches all five." style="display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:1rem"><figcaption class="muted">Our five-case offline experiment checks the assertions. These results do not measure an entire production generator.</figcaption></figure>
+<article class="article-body">
+<section><h2>Check the assertion, not just the generated input</h2>
+<p>A generator can return hundreds of phone-shaped values while its tests check only that a string is present. That leaves the expected country, exact output and safety fields untested. Changing the input distribution will not repair an assertion that ignores those fields.</p>
+<p>In <a href="https://stryker-mutator.io/docs/" rel="noopener">source-code mutation testing</a>, a tool changes implementation code and reruns the tests. A failing test detects a change; a passing suite leaves it surviving. The small experiment below uses hand-selected <em>output</em> changes instead. It is a quick check of the test oracle, not a substitute for a tool such as Stryker or a report about this site's production test coverage.</p>
+<p>An oracle is the rule that decides whether a result is correct. For one deterministic display fixture, keep an independently reviewed expected record. Do not obtain the expected value by calling the generator you are testing: the same defect could then produce both the actual and expected values.</p>
+</section>
+<section><h2>Our five-change experiment</h2>
+<p>We fixed the baseline at <code>+12025550100</code>, region <code>US</code>, a source URL, <code>fictional_only: true</code> and <code>delivery_allowed: false</code>. Its 555-0100 line number is inside the limited <a href="https://www.nanpa.com/numbering/555-line-numbers" rel="noopener">NANPA fictional reservation</a>. Both the baseline and the alternate 555-0101 slot below are display fixtures; neither is a live messaging destination.</p>
+<p>The weak check tests only length and region. The exact contract check compares this particular deterministic record with its reviewed expected record. We ran the downloadable Python script locally on October 7, 2026 with Python 3.13.15; the baseline passed both checks. Then we applied one change per independent copy:</p>
+<div class="table-wrap card"><table><thead><tr><th>Deliberate change</th><th>Length + region</th><th>Exact fixture contract</th><th>What it reveals</th></tr></thead><tbody>
+<tr><td>Remove the leading <code>+</code></td><td>Killed</td><td>Killed</td><td>The length check happens to catch this change.</td></tr>
+<tr><td>Change region from US to GB</td><td>Killed</td><td>Killed</td><td>The selected-region assertion catches it.</td></tr>
+<tr><td>Empty the source field</td><td>Survived</td><td>Killed</td><td>Provenance was never checked by the weak oracle.</td></tr>
+<tr><td>Set <code>delivery_allowed</code> to true</td><td>Survived</td><td>Killed</td><td>A safety field can drift while phone shape stays identical.</td></tr>
+<tr><td>Change the fixed 0100 slot to 0101</td><td>Survived</td><td>Killed</td><td>A plausible reserved value can still violate the fixed fixture identity.</td></tr>
+</tbody></table></div>
+<p>These are five selected cases, not a statistical sample. The three survivors demonstrate missing assertions in this weak check. Detecting all five with the exact contract proves sensitivity to those five changes only; it does not prove every implementation defect is covered.</p>
+</section>
+<section><h2>Reproduce the result without an SMS provider</h2>
+<p>Save <a href="/assets/phone-fixture-mutation-check.py">phone-fixture-mutation-check.py</a> and run <code>python phone-fixture-mutation-check.py</code>. It uses only Python's standard library, contains no network client and sends no SMS. Run without Python's <code>-O</code> option so its baseline assertions stay enabled.</p>
+<pre><code>"""Offline, hand-selected output mutations; no SMS or network code."""
+from copy import deepcopy
+import json
+
+EXPECTED = {
+    "phone": "+12025550100",
+    "region": "US",
+    "source": "https://www.nanpa.com/numbering/555-line-numbers",
+    "fictional_only": True,
+    "delivery_allowed": False,
+}
+
+MUTATIONS = {
+    "remove_plus": {"phone": "12025550100"},
+    "wrong_region": {"region": "GB"},
+    "empty_source": {"source": ""},
+    "enable_delivery": {"delivery_allowed": True},
+    "change_fixed_slot": {"phone": "+12025550101"},
+}
+
+def weak_check(row):
+    return len(row.get("phone", "")) == 12 and row.get("region") == "US"
+
+def contract_check(row):
+    # Independent, reviewed expected values, not the generator under test.
+    return row == EXPECTED
+
+def classify(check, row):
+    try:
+        return "SURVIVED" if check(row) else "KILLED"
+    except Exception as error:
+        return "HARNESS_ERROR:" + type(error).__name__
+
+def main():
+    assert weak_check(EXPECTED) and contract_check(EXPECTED)
+    results = []
+    for name, change in MUTATIONS.items():
+        row = deepcopy(EXPECTED)
+        row.update(change)
+        results.append({"mutation": name, "weak": classify(weak_check, row),
+                        "contract": classify(contract_check, row)})
+    print("BASELINE: PASS")
+    print(json.dumps(results, indent=2))
+    assert all(row["contract"] == "KILLED" for row in results)
+    assert sum(row["weak"] == "SURVIVED" for row in results) == 3
+
+if __name__ == "__main__":
+    main()</code></pre>
+<p>The output begins <code>BASELINE: PASS</code>. The JSON contains five rows: two weak-check kills, three weak-check survivors and five contract-check kills. An unexpected exception is reported as <code>HARNESS_ERROR</code>; do not present a broken runner as evidence that the intended assertion detected a defect.</p>
+<p>The script changes data in memory and returns the original reviewed baseline to each case. It does not alter a production dataset, parser or numbering policy. Exact equality is intentional for this one fixed fixture. For randomized output, assert the reviewed invariants of the chosen pool rather than requiring every generated result to equal this one number.</p>
+</section>
+<section><h2>Turn a survivor into a useful regression</h2>
+<ol>
+<li>Identify the changed field and the contract it should satisfy. “The result looks like a phone” is too broad for a missing source or a changed delivery flag.</li>
+<li>Add an assertion from an independent expected rule. Pin exact values for deterministic fixtures and policy fields; document whether optional presentation fields may vary.</li>
+<li>Run the unchanged implementation first. A baseline failure means the experiment cannot yet distinguish a regression from existing breakage.</li>
+<li>Reapply the one controlled change and confirm the intended assertion fails. Record the case name and failing assertion, not just a red build.</li>
+<li>Restore the baseline and keep the new assertion in ordinary regression tests. Run broader source-code mutation analysis separately when its cost is justified.</li>
+</ol>
+<p>Keep transport disabled even when you intentionally flip <code>delivery_allowed</code> in a test record. The mutation runner must not call a messaging adapter at all. A boolean guard being tested is not the only barrier between a fixture and a real delivery system.</p>
+<p><a href="https://stryker-mutator.io/docs/mutation-testing-elements/mutant-states-and-metrics/" rel="noopener">Stryker's report states</a> distinguish failed tests, survivors, missing coverage and runner or compile errors. When you use that tool, retain its reported categories rather than relabeling them to match this simplified data experiment. Review an apparently equivalent change before adding an assertion solely to raise a score.</p>
+</section>
+<section><h2>Questions developers ask</h2>
+<h3>Does a phone number generator need more random values to fix a surviving change?</h3>
+<p>Sometimes new inputs matter, but not when the check ignores the changed field. In this experiment every value is fixed: adding the source and delivery-policy assertions detects defects that length and region cannot see.</p>
+<h3>Is changing a fixture record the same as full mutation testing?</h3>
+<p>No. This experiment checks the sensitivity of a few assertions to selected output changes. Full source-code mutation testing modifies implementation behavior and classifies results across a configured test suite. Do not publish this five-case demonstration as the generator's mutation score.</p>
+<h3>Should these checks run on every commit?</h3>
+<p>Keep the small deterministic contract regressions with ordinary unit tests. Schedule broader mutation analysis according to the changed code and runtime budget. A <a href="https://www.reddit.com/r/softwaretesting/comments/mz63br/" rel="noopener">public software-testing discussion</a> raises the cost of running mutation analysis in a pipeline; it is a question signal, not a benchmark or a rule for every team.</p>
+<h3>Can a deliberately changed test number receive a real verification code?</h3>
+<p>This example never attempts delivery. Its known phone values stay within the documented fictional block, and the runner has no messaging code. If you mutate arbitrary digits in your own tests, do not assume the resulting number is unassigned or safe to contact.</p>
+</section>
+<section><h2>Sources and next checks</h2>
+<ul>
+<li><a href="https://stryker-mutator.io/docs/" rel="noopener">Stryker: what mutation testing measures</a></li>
+<li><a href="https://stryker-mutator.io/docs/mutation-testing-elements/mutant-states-and-metrics/" rel="noopener">Stryker: mutant states and metrics</a></li>
+<li><a href="https://www.nanpa.com/numbering/555-line-numbers" rel="noopener">NANPA: the limited fictional 555 line-number block</a></li>
+<li><a href="/assets/phone-fixture-mutation-check.py">Original reproducible experiment</a> — baseline, changes and check definitions.</li>
+<li><a href="/random-phone-number-generator-testing">Replay a randomized parser failure</a> when the input, rather than the assertion, needs investigation.</li>
+<li><a href="/phone-number-testing-checklist">Phone number testing checklist</a> for the broader release matrix.</li>
+</ul>
+</section></article></main><footer class="site-footer"><div class="footer-inner"><span>© 2026 GetPhoneNum</span><div class="footer-links"><a href="/tools">Tools</a><a href="/guides">Guides</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/responsible-use">Responsible use</a><a href="/privacy">Privacy</a></div></div></footer></body></html>

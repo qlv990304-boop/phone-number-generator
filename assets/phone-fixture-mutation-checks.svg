@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<title id="title">Check the test oracle with five controlled fixture mutations</title><desc id="desc">A passing baseline is followed by five deliberate output changes. A weak length and region check catches two. An exact reviewed fixture contract catches all five. The experiment is offline and is not a full production mutation score.</desc>
+<rect width="1200" height="680" rx="24" fill="#0b1727"/><g font-family="Arial,sans-serif">
+<text x="58" y="62" fill="#4ce0cf" font-size="20">GETPHONENUM · OFFLINE QA EXPERIMENT</text>
+<text x="58" y="122" fill="#fff" font-size="38" font-weight="700">A passing test can still miss a broken fixture.</text>
+<rect x="58" y="158" width="1084" height="84" rx="16" fill="#162b42"/><text x="86" y="195" fill="#fff" font-size="23">Baseline: a reviewed, fixed fictional fixture</text><text x="86" y="225" fill="#bbccdd" font-size="20">Both checks pass before any deliberate change.</text>
+<text x="60" y="296" fill="#bbccdd" font-size="19">CONTROLLED CHANGE</text><text x="690" y="296" fill="#bbccdd" font-size="19">WEAK CHECK</text><text x="945" y="296" fill="#bbccdd" font-size="19">EXACT CONTRACT</text>
+<g fill="#fff" font-size="23"><text x="60" y="347">Remove the leading +</text><text x="60" y="399">Change US region to GB</text><text x="60" y="451">Empty the source field</text><text x="60" y="503">Set delivery_allowed to true</text><text x="60" y="555">Change the fixed reserved slot</text></g>
+<g fill="#4ce0cf" font-size="22" font-weight="700"><text x="690" y="347">KILLED</text><text x="690" y="399">KILLED</text><text x="960" y="347">KILLED</text><text x="960" y="399">KILLED</text><text x="960" y="451">KILLED</text><text x="960" y="503">KILLED</text><text x="960" y="555">KILLED</text></g>
+<g fill="#ffc778" font-size="22" font-weight="700"><text x="690" y="451">SURVIVED</text><text x="690" y="503">SURVIVED</text><text x="690" y="555">SURVIVED</text></g>
+<path d="M60 584 H1140" stroke="#38506a"/><text x="60" y="625" fill="#bbccdd" font-size="20">Five hand-selected output mutations. No SMS. No network calls.</text><text x="60" y="654" fill="#bbccdd" font-size="18">This demonstrates assertion sensitivity; it is not a full source-code mutation score.</text>
+</g></svg>
