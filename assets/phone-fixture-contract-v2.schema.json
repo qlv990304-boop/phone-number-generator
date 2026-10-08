@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 2
+    },
+    "country": {
+      "type": "string",
+      "minLength": 1
+    },
+    "iso2": {
+      "type": "string",
+      "minLength": 1
+    },
+    "callingCode": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nationalPattern": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nationalDigits": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phone_e164": {
+      "type": "string",
+      "pattern": "^\\+[1-9][0-9]{1,14}$"
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "fixtureSafety": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceUrl": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "fixtureSafety",
+        "sourceUrl"
+      ],
+      "additionalProperties": false
+    },
+    "delivery_allowed": {
+      "type": "boolean",
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "country",
+    "iso2",
+    "callingCode",
+    "nationalPattern",
+    "nationalDigits",
+    "phone_e164",
+    "provenance",
+    "delivery_allowed"
+  ],
+  "additionalProperties": false
+}

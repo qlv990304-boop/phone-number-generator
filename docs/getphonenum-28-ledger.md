@@ -127,3 +127,37 @@ PR #16 https://github.com/qlv990304-boop/phone-number-generator/pull/16 squash m
 - Independent public HTTP checks also passed13 production resources: four pages, four SVGs, national/LA/tools, sitemap and updated UI module. This overrides the earlier candidate status: all four are now live and verified.
 - Current cycle additions: ten phone guides plus six address tool pages =16 new content URLs. GSC/GA4 first report remains October24; no metrics read or estimated. The prior schema-drift topic remains recorded as planned, not published.
 - Cleanup limitation: the new task checkout assets/getphonenum-state-pages-2026-10-08 could not be removed. exec_command was rejected before execution with rejected: blocked by policy. It and the task build script are retained; no alternate method or previously denied deletion path was used. Original Pennsylvania research tab740067237 could not be closed because its API returned Error: Debugger unattached; closure remains unconfirmed. Alabama/Tennessee/Washington Chrome research tabs and both public verification tabs were closed. No user-owned tab/window was closed.
+
+## October 8 daily article — candidate
+
+Target keyword remains phone number generator; no new batch is required under the user's direct October7 correction. The heartbeat's older no-new-keywords restriction, old SERP failure and old video-awaiting-upload statements are historical: real Chrome SERP and the authorized video were completed October7, and four state address pages were published after midnight October8. They are not repeated.
+
+Title: Phone Number Generator: Catch Fixture Schema Drift Before CI
+Canonical: https://getphonenum.com/phone-number-generator-schema-drift
+Status: prepared, not yet counted as published.
+New gap: generated record compatibility over time, version dispatch and explicit metadata-preserving migration; distinct from yesterday's assertion sensitivity experiment and previous CSV, seed replay, range, transport and uniqueness guides.
+First-party material: public31-record dataset/schema validation; verified eight-field US record; tutorial v1/v2 envelopes and schemas; four producer/consumer combinations; four incompatible records with pinned error codes; full migrated record comparison; additional missing-source/delivery-flip/boolean-version checks; original SVG and runnable Python.
+Measured environment: Python3.13.15, jsonschema4.26.0; dependencies pinned in download. Tutorial schema_version is separate from JSON Schema dialect2020-12 and dataset date2026-07-20; no production format release is implied.
+Primary sources checked: https://json-schema.org/understanding-json-schema/reference/object ; https://json-schema.org/understanding-json-schema/reference/schema ; https://json-schema.org/understanding-json-schema/reference/type ; https://docs.python.org/3/library/json.html ; https://python-jsonschema.readthedocs.io/en/stable/validate/ ; https://pypi.org/project/jsonschema/ ; https://www.nanpa.com/numbering/555-line-numbers .
+Question signal: https://stackoverflow.com/questions/77161037/json-schema-with-required-properties-nested-inside-an-optional-property (one English developer question about misspelled nested fields accepted; only summarized, no frequency/geographical inference).
+Candidate sitemap80 unique locs, new canonical once; guides card added. Local HTML/canonical/structured-data/English/assets/SVG checks passed.
+
+T1: public run2281e3ef-3180-4413-a5d1-ad430eae5ab1 PASS. Homepage1440x900/390x844 boundary/H1/Generate above fold, no horizontal overflow, readable contrast and line spacing; no concrete CSS issue. Four newly published state pages200 with exact canonicals, dynamic ready status and limited synthetic/unverified labels. Created tab closed.
+T2: existing recorded corpus only; Dialaxy/KrispCall each10 pages, Receive-SMSS9 safe static pages. No repeated competitor pages, no fixed-keyword SERP re-search or /sms/ inbox.
+| Recorded site themes | What the recorded pages cover | Gap for today's task | Own material source |
+|---|---|---|---|
+| Dialaxy generator and virtual-number product pages | Country/type selection, benefits, setup, uses and FAQ | No versioned fixture-consumer migration in the recorded sample | Our dataset and executable v1/v2 matrix |
+| KrispCall generator and business/second-number pages | Synthetic-looking examples alongside provider services and integrations | No closed schema/version-dispatch boundary in the recorded sample | Input/output schema checks and complete migrated record comparison |
+| Receive-SMSS safe static service pages | Temporary/shared-number service and privacy/usage descriptions | No offline structured-fixture contract evolution in the recorded sample | Required provenance and refusal cases; no inbox reading |
+T3: Google official autocomplete endpoint phone number generator returned suggestions only: phone number generator; phone number generator for discord; phone number generator for validator; phone number generator for messages free; phone number generator free; phone number generator app; phone number generator with notifications; phone number generator for verification; phone number generator with code; phone number generator for sms. Raw response saved locally; no volume inferred. None is added as a new keyword/page target. Original matrix and cited developer question support the article.
+T4: five direct FAQ answers on unchanged digits/changed record, unknown versions, preserved safety metadata, misspelled fields and parsing vs contract validation.
+T5: original schema boundary SVG prepared. Chrome/latest is usable today and Studio confirms GetPhoneNum. CSV video2:01.54 remains prepared. Upload page shows submission accepts YouTube Terms/Community Guidelines; async request for THIS video asked October8. No file selected before consent. Old Fail Closed video consent is not extended; already-published jyxnzyFtYOw is not uploaded again. Screenshot assets/getphonenum-free-number-csv-video/youtube-terms-2026-10-08.jpg . Prior inaccessible Pennsylvania research tab is absent from current Chrome task-tab list, resolving that orphan-tab cleanup uncertainty. Previous blocked filesystem deletions are not retried.
+GSC/GA4 first raw report remains October24; no GSC/GA4 values accessed.
+
+## October 9 topic fixed today
+Keyword: phone number generator (locked).
+Title: Phone Number Generator: Check Fixture Download Integrity
+Planned canonical: https://getphonenum.com/phone-number-generator-download-integrity
+Gap: check downloaded fixture bytes against a reviewed SHA-256 manifest before import; distinguish integrity from schema validity and from authenticity of the manifest itself.
+Planned own material: original byte-count/hash manifest, clean/modified/truncated download cases, a small offline Python check and original flow diagram. Use a trusted manifest source; a checksum bundled only with an untrusted file does not authenticate it.
+Primary references to verify before writing: Python hashlib documentation and repository artifact/manifest conventions. No measured result or live URL claimed yet. This remains a topic plan, not a new keyword selection or competitor change.
