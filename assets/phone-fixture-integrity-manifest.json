@@ -1,0 +1,11 @@
+{
+  "manifest_version": 1,
+  "artifact": "phone-fixture-integrity-sample.json",
+  "algorithm": "sha256",
+  "byte_length": 354,
+  "sha256": "6fb5743dfa03a81bae2ea01f07070a54a2f9d7f5e6044c6f4b9d1e53d309fb25",
+  "sample_release": "2026-10-09",
+  "source_dataset_commit": "cf0f25be5b004671d0eb7f990aa392ae807edf36",
+  "source_dataset_path": "data/country-phone-formats.json",
+  "scope": "Tutorial sample only; not a signed manifest for all site downloads"
+}

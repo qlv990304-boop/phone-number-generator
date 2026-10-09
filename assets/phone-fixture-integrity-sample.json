@@ -1,0 +1,12 @@
+{
+  "country": "United States",
+  "iso2": "US",
+  "callingCode": "+1",
+  "nationalPattern": "(NPA) NXX-XXXX",
+  "e164Example": "+12025550123",
+  "nationalDigits": "10",
+  "fixtureSafety": "Uses the reserved 555-01xx fictional block",
+  "sourceUrl": "https://www.nanpa.com/numbering/555-line-numbers",
+  "schema_version": 1,
+  "delivery_allowed": false
+}
