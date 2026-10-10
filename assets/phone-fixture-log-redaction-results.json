@@ -1,0 +1,69 @@
+{
+  "python": "3.13.15",
+  "cases": [
+    {
+      "case": "nested_fixture_and_otp",
+      "sinks_checked": 1,
+      "raw_canaries_present": false,
+      "event": "fixture_failure",
+      "replay_preserved": true
+    },
+    {
+      "case": "unknown_recipient_alias",
+      "sinks_checked": 1,
+      "raw_canaries_present": false,
+      "event": "fixture_failure",
+      "replay_preserved": true
+    },
+    {
+      "case": "percent_s_argument",
+      "sinks_checked": 1,
+      "raw_canaries_present": false,
+      "event": "log_redaction_rejected",
+      "replay_preserved": false
+    },
+    {
+      "case": "exception_and_cached_text",
+      "sinks_checked": 1,
+      "raw_canaries_present": false,
+      "event": "fixture_failure",
+      "replay_preserved": true
+    },
+    {
+      "case": "two_output_handlers",
+      "sinks_checked": 2,
+      "raw_canaries_present": false,
+      "event": "fixture_failure",
+      "replay_preserved": true
+    },
+    {
+      "case": "boolean_seed",
+      "sinks_checked": 1,
+      "raw_canaries_present": false,
+      "event": "log_redaction_rejected",
+      "replay_preserved": false
+    }
+  ],
+  "negative_controls": {
+    "phone_from_args_leaks": true,
+    "otp_from_exception_leaks": true
+  },
+  "input_unchanged": true,
+  "redacted_sample": {
+    "event": "fixture_failure",
+    "error_code": "PARSER_REJECTED",
+    "replay": {
+      "seed": 417,
+      "counterexample_path": "3:1:0",
+      "dataset_version": "2026-07-20"
+    },
+    "fixtures": [
+      {
+        "iso2": "US",
+        "e164Example": "[REDACTED]",
+        "delivery_allowed": false
+      }
+    ]
+  },
+  "scope": "Only this dedicated logger and its reviewed handlers"
+}
