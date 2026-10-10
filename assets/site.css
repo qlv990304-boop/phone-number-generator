@@ -387,6 +387,8 @@ th { background: #f8fafc; }
 /* The home hero uses a compact label to surface the test-data boundary early. */
 .home-hero .eyebrow {
   display: inline-flex;
+  justify-self: start;
+  width: fit-content;
   align-items: center;
   max-width: 100%;
   padding: .28rem .7rem;
