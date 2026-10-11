@@ -350,3 +350,22 @@ The human reports manually completing Public publication of the EXISTING uploade
 This video is published and counted, superseding prior uploaded/private/unverified/connection-block status for this specific video. Do not ask upload consent again or reupload it. Six current GetPhoneNum tutorials now verified public: _2GBvPZpvuw,S10daqur6XU,jyxnzyFtYOw,CyQKMl6LejU,Rs4F835DdS0,zkr7M0t_Mxs. October8 schema-drift MP4 remains a separate local/unpublished asset; no state inferred for it. Captions or custom thumbnail state for the manually finished publication was not checked.
 
 The October10 article/sitemap82 verification and October11 fixed export-state topic stay complete. No Chrome reconnect/settings/publication action, no metrics reading, no additional page/keyword/TOP3 changes or denied cleanup attempts in this verification continuation. No upload remains pending for zkr7M0t_Mxs.
+
+
+## October 11 prepared release — export state
+
+Human instruction to continue daily original pages within fixed keyword family overrides old exhausted-keyword/no-publication heartbeat text. No new keyword or TOP3. Today's previously fixed topic: Phone Number Generator: Keep Batch Exports in Sync with Filters; planned https://getphonenum.com/phone-number-generator-export-state. Source e0263110667252e19c1e9d624a3f1513b2458cce. Not yet published at this entry; preview/production verification required.
+
+Own material: actual bulk event-handler baseline retained stale output for country/count/format; patched handlers clear on input/change/reset and guard copy/JSON/CSV against option mismatch. Offline minimal DOM harness six after-cases PASS, not real browser event-dispatch proof. No live async worker or seed control. Separate Node v24.19.0 tutorial six controlled cases PASS, A-B-A weak equality negative control accepts obsolete A, revision/request guard rejects it; fixed US/GB fictional rows, metadata-only seed, no network/SMS.
+
+T1 public home run a4d04832-aeab-4565-a644-c77c19b05804 completed: 1440x900 and390x844 H1/label/CTA firstscreen, contrast17.06/17.85/5.17, page nooverflow1425/1425 and390/390. Secondary bulk CTA also filled blue: use existing secondary style. Actual bulk stale-state fix included. T2 no locked competitor rereads or SERP. Existing-corpus table:
+
+|Theme|What prior corpus covered|Shared gap|Our own source|
+|---|---|---|---|
+|Dialaxy generator/service pages (10 max)|Country/type controls, procedures, uses and FAQ|No measured export revision or late-result contract in read corpus|Actual bulk-handler baseline and controlled state experiment|
+|KrispCall tools/business pages (10 max)|Synthetic input and allocated/virtual service options|No batch UI/export snapshot contract in read corpus|Same before/after source-pinned cases|
+|Receive-SMSS static corpus (9)|Shared temporary service, pricing/privacy and usage|No synthetic-batch state model in read corpus|Same offline cases; never /sms/|
+
+T3 primary MDN input/change/Promise references; single English question https://stackoverflow.com/questions/58977737/how-to-only-handle-the-last-created-out-of-many-parallel-promises as signal only, no location/frequency claim. Google official autocomplete raw saved locally only if fetched; no volumes/SERP. T4 five direct FAQ based on signal and experiment. T5 original SVG prepared; today's narrated video/publication status pending later truthful entry. Yesterday user-manually published zkr7M0t_Mxs verified public; do not reupload.
+
+October12 fixed topic: Phone Number Generator: Test International and National Display Round Trips; planned /phone-number-generator-format-roundtrip. Stay in phone number generator family. Inspect source dataset and parser metadata; build offline international/national display-to-canonical matrix with leading-trunk, whitespace and country-context cases. Verify current official libphonenumber rules and one actual public question before writing; do not invent outcomes. Distinct parser/format round-trip boundary from today's UI state, previous CSV/spreadsheet typing and download-byte integrity. Do not publish duplicate intent if existing guide already owns this complete gap; enrich that guide with the measured new section instead. GSC/GA4 first raw report October24.

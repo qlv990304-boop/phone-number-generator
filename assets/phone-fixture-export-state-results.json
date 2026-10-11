@@ -1,0 +1,62 @@
+{
+  "node": "v24.19.0",
+  "scope": "offline tutorial state; not live UI or production worker",
+  "cases": [
+    {
+      "case": "region_change",
+      "old_export": "blocked",
+      "regenerated_export": "current"
+    },
+    {
+      "case": "quantity_change",
+      "old_export": "blocked",
+      "regenerated_export": "current"
+    },
+    {
+      "case": "seed_change",
+      "old_export": "blocked",
+      "regenerated_export": "current"
+    },
+    {
+      "case": "A_B_A_late_completion",
+      "late_commit": "rejected",
+      "current_export": "unchanged"
+    },
+    {
+      "case": "same_options_two_requests",
+      "older_commit": "rejected"
+    },
+    {
+      "case": "captured_export_snapshot",
+      "captured_rows": 2,
+      "later_export": "blocked"
+    }
+  ],
+  "negative_control": {
+    "field_equality_only_accepts_old_A": true
+  },
+  "latest_example": {
+    "revision": 3,
+    "request": 2,
+    "options": {
+      "region": "US",
+      "quantity": 2,
+      "seed": 417
+    },
+    "rows": [
+      {
+        "id": 1,
+        "region": "US",
+        "phone": "+12025550123",
+        "delivery_allowed": false
+      },
+      {
+        "id": 2,
+        "region": "US",
+        "phone": "+12025550123",
+        "delivery_allowed": false
+      }
+    ]
+  },
+  "network_calls": 0
+}

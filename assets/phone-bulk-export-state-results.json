@@ -1,0 +1,44 @@
+{
+  "source_commit": "e0263110667252e19c1e9d624a3f1513b2458cce",
+  "scope": "offline DOM harness of actual bulk event handlers; not a real-browser event-dispatch test",
+  "before": [
+    {
+      "case": "country_edit",
+      "stale_output": "still_visible"
+    },
+    {
+      "case": "count_edit",
+      "stale_output": "still_visible"
+    },
+    {
+      "case": "format_edit",
+      "stale_output": "still_visible"
+    }
+  ],
+  "after": [
+    {
+      "case": "country_edit",
+      "stale_output": "cleared"
+    },
+    {
+      "case": "count_edit",
+      "stale_output": "cleared"
+    },
+    {
+      "case": "format_edit",
+      "stale_output": "cleared"
+    },
+    {
+      "case": "copy_JSON_CSV",
+      "snapshot": "same_current_batch"
+    },
+    {
+      "case": "programmatic_edit_without_event",
+      "copy_export": "blocked"
+    },
+    {
+      "case": "form_reset",
+      "stale_output": "cleared"
+    }
+  ]
+}
