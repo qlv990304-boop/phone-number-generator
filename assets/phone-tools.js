@@ -300,6 +300,24 @@ function initializeBulkGenerator() {
   const results = document.querySelector("#bulk-results");
   const output = document.querySelector("#bulk-output");
   let records = [];
+  let generatedOptions = null;
+  function currentOptions() {
+    return JSON.stringify([form.elements.country.value, form.elements.count.value, form.elements.format.value]);
+  }
+  function invalidateBatch() {
+    records = [];
+    generatedOptions = null;
+    output.value = "";
+    results.hidden = true;
+    showStatus(status, "Options changed. Generate a new batch before copying or downloading.", "");
+  }
+  function hasCurrentBatch() {
+    if (generatedOptions !== currentOptions()) invalidateBatch();
+    return records.length > 0;
+  }
+  form.addEventListener("input", invalidateBatch);
+  form.addEventListener("change", invalidateBatch);
+  form.addEventListener("reset", invalidateBatch);
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const plan = byId(form.elements.country.value);
@@ -309,12 +327,16 @@ function initializeBulkGenerator() {
       return { id: index + 1, country: plan.id, e164, display: display(e164, plan) };
     });
     output.value = records.map((record) => form.elements.format.value === "display" ? record.display : record.e164).join("\n");
+    generatedOptions = currentOptions();
     results.hidden = false;
     showStatus(status, `${count} ${plan.name} fixtures generated locally.`, "success");
     window.GetPhoneNum.track("bulk_phone_generate", { country: plan.id, count });
   });
-  document.querySelector("#bulk-copy").addEventListener("click", (event) => window.GetPhoneNum.copy(output.value, event.currentTarget));
+  document.querySelector("#bulk-copy").addEventListener("click", (event) => {
+    if (hasCurrentBatch()) window.GetPhoneNum.copy(output.value, event.currentTarget);
+  });
   function exportRecords(format) {
+    if (!hasCurrentBatch()) return;
     const bulkExport = buildBulkExport(format, records);
     if (!bulkExport) return;
     download(bulkExport.name, bulkExport.type, bulkExport.content);
