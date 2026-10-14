@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+<title id="title">Phone fixture input boundaries</title><desc id="desc">Separate text extraction from a machine API's explicit syntax policy. Parse accepted API input and compare the known fixture identity. Offline only.</desc>
+<rect width="1200" height="600" rx="24" fill="#f8fafc"/>
+<g font-family="Arial,sans-serif" fill="#0f172a"><text x="60" y="70" font-size="34" font-weight="700">One input. Three different questions.</text><text x="60" y="111" font-size="21" fill="#475569">Can it be extracted? Is its syntax allowed? Is it the same fixture?</text>
+<rect x="60" y="160" width="260" height="140" rx="18" fill="#e0e7ff" stroke="#818cf8"/><text x="84" y="202" font-size="25" font-weight="700">Raw input</text><text x="84" y="241" font-size="20">Keep the exact string</text><text x="84" y="271" font-size="20">and entry-point policy</text>
+<path d="M320 230H390" stroke="#2563eb" stroke-width="5"/><path d="m377 219 15 11-15 11" fill="none" stroke="#2563eb" stroke-width="5"/>
+<rect x="395" y="160" width="320" height="140" rx="18" fill="#dbeafe" stroke="#60a5fa"/><text x="420" y="202" font-size="25" font-weight="700">API syntax policy</text><text x="420" y="241" font-size="20">One ASCII +digit string</text><text x="420" y="271" font-size="20">Explicit outer-space trim</text>
+<path d="M715 230H790" stroke="#2563eb" stroke-width="5"/><path d="m777 219 15 11-15 11" fill="none" stroke="#2563eb" stroke-width="5"/>
+<rect x="795" y="160" width="345" height="140" rx="18" fill="#dcfce7" stroke="#4ade80"/><text x="820" y="202" font-size="25" font-weight="700">Whole-input parse</text><text x="820" y="241" font-size="20">No extension for this API</text><text x="820" y="271" font-size="20">Compare fixture identity</text>
+<path d="M190 300V355" stroke="#64748b" stroke-width="4"/><path d="m179 343 11 13 11-13" fill="none" stroke="#64748b" stroke-width="4"/>
+<rect x="60" y="360" width="490" height="110" rx="16" fill="#f1f5f9" stroke="#94a3b8"/><text x="84" y="399" font-size="23" font-weight="700">Separate prose-import path</text><text x="84" y="435" font-size="20">Extraction can recognize a candidate in text.</text>
+<rect x="600" y="360" width="540" height="110" rx="16" fill="#fff7ed" stroke="#fb923c"/><text x="624" y="399" font-size="23" font-weight="700">A parser is not the field contract</text><text x="624" y="435" font-size="20">Whole-input mode can still accept extensions.</text>
+<text x="60" y="540" font-size="21" fill="#475569">Original 16-input experiment • Pinned package + metadata • Fictional fixtures • No calls or SMS</text></g></svg>
