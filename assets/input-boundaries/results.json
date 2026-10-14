@@ -1,0 +1,329 @@
+{
+  "measuredDate": "2026-10-14",
+  "timezone": "Asia/Shanghai",
+  "nodeVersion": "v24.19.0",
+  "packageVersion": "1.13.15",
+  "entryPoint": "libphonenumber-js/max",
+  "metadataSha256": "197aabc11a950b88234f2eb20b8259cffa09e975b3ebe90bdd10badefd91dee4",
+  "scope": "Offline one-region fictional input-boundary experiment; no production UI execution, calls or SMS; parser outputs are observations, API policy expectations are assertions.",
+  "fixture": {
+    "e164": "+12025550123",
+    "region": "US",
+    "fictionalOnly": true,
+    "deliveryAllowed": false
+  },
+  "observations": [
+    {
+      "id": "canonical",
+      "input": "+12025550123",
+      "expectedApiAccepted": true,
+      "apiAccepted": true,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      }
+    },
+    {
+      "id": "outer-ASCII-spaces",
+      "input": "  +12025550123  ",
+      "expectedApiAccepted": true,
+      "apiAccepted": true,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "international-display",
+      "input": "+1 202 555 0123",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      }
+    },
+    {
+      "id": "national-display",
+      "input": "(202) 555-0123",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      }
+    },
+    {
+      "id": "prefix-label",
+      "input": "Call: +12025550123",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "suffix-prose",
+      "input": "+12025550123 is the test value",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "two-values",
+      "input": "+12025550123 / +12025550124",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "repeated-plus",
+      "input": "++12025550123",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "middle-plus",
+      "input": "+1202+5550123",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "extension",
+      "input": "+12025550123 ext. 0042",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": "0042",
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": "0042",
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      }
+    },
+    {
+      "id": "tel-URI",
+      "input": "tel:+12025550123;ext=0042",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": "0042",
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "outer-tabs",
+      "input": "\t+12025550123\t",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "trailing-newline",
+      "input": "+12025550123\n",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    },
+    {
+      "id": "nonbreaking-spaces",
+      "input": "+1 202 555 0123",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      }
+    },
+    {
+      "id": "fullwidth-digits",
+      "input": "+１２０２５５５０１２３",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      },
+      "extractFalse": {
+        "outcome": "parsed",
+        "number": "+12025550123",
+        "extension": null,
+        "sameFixture": true,
+        "possible": true,
+        "valid": true
+      }
+    },
+    {
+      "id": "empty",
+      "input": "",
+      "expectedApiAccepted": false,
+      "apiAccepted": false,
+      "extractTrue": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      },
+      "extractFalse": {
+        "outcome": "error",
+        "error": "NOT_A_NUMBER"
+      }
+    }
+  ],
+  "summary": {
+    "inputs": 16,
+    "comparisonParserInvocations": 32,
+    "totalParserInvocations": 34,
+    "apiPolicyAssertions": 16,
+    "assertionsPassed": 25,
+    "apiAccepted": 2,
+    "acceptedInputPipelineCases": 2,
+    "extractTrueParsed": 12,
+    "extractFalseParsed": 6
+  },
+  "anchorProbe": {
+    "input": "+12025550123\n",
+    "anchoredRegexTest": false,
+    "multilineRegexTest": true
+  }
+}
