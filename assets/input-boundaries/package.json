@@ -1,4 +1,6 @@
 {
+  "name": "input-boundaries",
+  "private": true,
   "dependencies": {
     "libphonenumber-js": "1.13.15"
   }
