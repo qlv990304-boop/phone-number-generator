@@ -1,0 +1,412 @@
+{
+  "measuredDate": "2026-10-15",
+  "timeZone": "Asia/Shanghai",
+  "sourceURL": "https://67a52dd0.phone-number-generator-89o.pages.dev/assets/form-acceptance/native-lab.html",
+  "expectationsURL": "https://67a52dd0.phone-number-generator-89o.pages.dev/assets/form-acceptance/expectations.json",
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36"
+  },
+  "httpStatus": 200,
+  "inputCount": 35,
+  "allRowsMatchExpected": true,
+  "validCountsByPolicy": {
+    "A": 7,
+    "B": 6,
+    "C": 1,
+    "D": 2,
+    "E": 3
+  },
+  "observedRows": [
+    {
+      "id": "us-national-A",
+      "case": "us-national",
+      "policy": "A",
+      "value": "202-555-0123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-national-B",
+      "case": "us-national",
+      "policy": "B",
+      "value": "202-555-0123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-national-C",
+      "case": "us-national",
+      "policy": "C",
+      "value": "202-555-0123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-national-D",
+      "case": "us-national",
+      "policy": "D",
+      "value": "202-555-0123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-national-E",
+      "case": "us-national",
+      "policy": "E",
+      "value": "202-555-0123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-international-A",
+      "case": "us-international",
+      "policy": "A",
+      "value": "+12025550123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-international-B",
+      "case": "us-international",
+      "policy": "B",
+      "value": "+12025550123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-international-C",
+      "case": "us-international",
+      "policy": "C",
+      "value": "+12025550123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-international-D",
+      "case": "us-international",
+      "policy": "D",
+      "value": "+12025550123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "us-international-E",
+      "case": "us-international",
+      "policy": "E",
+      "value": "+12025550123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-national-A",
+      "case": "uk-national",
+      "policy": "A",
+      "value": "07700900123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-national-B",
+      "case": "uk-national",
+      "policy": "B",
+      "value": "07700900123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-national-C",
+      "case": "uk-national",
+      "policy": "C",
+      "value": "07700900123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-national-D",
+      "case": "uk-national",
+      "policy": "D",
+      "value": "07700900123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-national-E",
+      "case": "uk-national",
+      "policy": "E",
+      "value": "07700900123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-international-A",
+      "case": "uk-international",
+      "policy": "A",
+      "value": "+447700900123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-international-B",
+      "case": "uk-international",
+      "policy": "B",
+      "value": "+447700900123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-international-C",
+      "case": "uk-international",
+      "policy": "C",
+      "value": "+447700900123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-international-D",
+      "case": "uk-international",
+      "policy": "D",
+      "value": "+447700900123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "uk-international-E",
+      "case": "uk-international",
+      "policy": "E",
+      "value": "+447700900123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "spaces-A",
+      "case": "spaces",
+      "policy": "A",
+      "value": "202 555 0123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "spaces-B",
+      "case": "spaces",
+      "policy": "B",
+      "value": "202 555 0123",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "spaces-C",
+      "case": "spaces",
+      "policy": "C",
+      "value": "202 555 0123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "spaces-D",
+      "case": "spaces",
+      "policy": "D",
+      "value": "202 555 0123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "spaces-E",
+      "case": "spaces",
+      "policy": "E",
+      "value": "202 555 0123",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "text-control-A",
+      "case": "text-control",
+      "policy": "A",
+      "value": "not-a-number",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "text-control-B",
+      "case": "text-control",
+      "policy": "B",
+      "value": "not-a-number",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "text-control-C",
+      "case": "text-control",
+      "policy": "C",
+      "value": "not-a-number",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "text-control-D",
+      "case": "text-control",
+      "policy": "D",
+      "value": "not-a-number",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "text-control-E",
+      "case": "text-control",
+      "policy": "E",
+      "value": "not-a-number",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": false,
+      "patternMismatch": true,
+      "typeMismatch": false
+    },
+    {
+      "id": "empty-control-A",
+      "case": "empty-control",
+      "policy": "A",
+      "value": "",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "empty-control-B",
+      "case": "empty-control",
+      "policy": "B",
+      "value": "",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": true,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "empty-control-C",
+      "case": "empty-control",
+      "policy": "C",
+      "value": "",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": true,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "empty-control-D",
+      "case": "empty-control",
+      "policy": "D",
+      "value": "",
+      "willValidate": true,
+      "valid": false,
+      "valueMissing": true,
+      "patternMismatch": false,
+      "typeMismatch": false
+    },
+    {
+      "id": "empty-control-E",
+      "case": "empty-control",
+      "policy": "E",
+      "value": "",
+      "willValidate": true,
+      "valid": true,
+      "valueMissing": false,
+      "patternMismatch": false,
+      "typeMismatch": false
+    }
+  ],
+  "observationRunId": "a08d4efd-435b-4c7f-9259-61cc810c2465",
+  "fixturePolicy": {
+    "fictionalOnly": true,
+    "deliveryAllowed": false
+  },
+  "scope": "Native input.validity DOM readings on this static lab only; no edits, validity events, form submissions, messages, external-site signup or server testing."
+}
