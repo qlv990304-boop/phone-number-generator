@@ -1,0 +1,190 @@
+{
+  "scope": "Authored offline synthetic envelopes only; no live Lookup results",
+  "date": "2026-10-16",
+  "clock_utc": "2026-10-16T01:00:00+00:00",
+  "window_seconds": 300,
+  "cases": 20,
+  "matched": 20,
+  "rows": [
+    {
+      "id": "basic-only",
+      "actual": "not_checked",
+      "expected": "not_checked",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "type-only",
+      "actual": "not_checked",
+      "expected": "not_checked",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "active",
+      "actual": "active_reported",
+      "expected": "active_reported",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "reachable",
+      "actual": "reachable_reported",
+      "expected": "reachable_reported",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "unreachable",
+      "actual": "unreachable_reported",
+      "expected": "unreachable_reported",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "inactive",
+      "actual": "inactive_reported",
+      "expected": "inactive_reported",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "unknown",
+      "actual": "unknown_reported",
+      "expected": "unknown_reported",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "null-requested",
+      "actual": "unavailable",
+      "expected": "unavailable",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "unrequested-field",
+      "actual": "not_checked",
+      "expected": "not_checked",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "http-error",
+      "actual": "unavailable",
+      "expected": "unavailable",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "package-error",
+      "actual": "unavailable",
+      "expected": "unavailable",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "stale",
+      "actual": "stale",
+      "expected": "stale",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "future",
+      "actual": "timestamp_invalid",
+      "expected": "timestamp_invalid",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "missing-time",
+      "actual": "timestamp_invalid",
+      "expected": "timestamp_invalid",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "wrong-subject",
+      "actual": "subject_mismatch",
+      "expected": "subject_mismatch",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "invalid-basic",
+      "actual": "basic_invalid",
+      "expected": "basic_invalid",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "unknown-value",
+      "actual": "unavailable",
+      "expected": "unavailable",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "cache-null",
+      "actual": "unavailable",
+      "expected": "unavailable",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "cache-error",
+      "actual": "unavailable",
+      "expected": "unavailable",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    },
+    {
+      "id": "window-edge",
+      "actual": "active_reported",
+      "expected": "active_reported",
+      "matched": true,
+      "delivery_proven": false,
+      "control_proven": false,
+      "contact_permission_proven": false
+    }
+  ]
+}
