@@ -1,0 +1,305 @@
+[
+  {
+    "id": "basic-only",
+    "description": "Basic validity, no status package",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": false,
+      "line_status": null,
+      "package_error": null
+    },
+    "expected": "not_checked"
+  },
+  {
+    "id": "type-only",
+    "description": "Mobile type, no status package",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": false,
+      "line_status": null,
+      "package_error": null,
+      "line_type": "mobile"
+    },
+    "expected": "not_checked"
+  },
+  {
+    "id": "active",
+    "description": "Current active report",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "active_reported"
+  },
+  {
+    "id": "reachable",
+    "description": "Current reachable report",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "reachable",
+      "package_error": null
+    },
+    "expected": "reachable_reported"
+  },
+  {
+    "id": "unreachable",
+    "description": "Current unreachable report",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "unreachable",
+      "package_error": null
+    },
+    "expected": "unreachable_reported"
+  },
+  {
+    "id": "inactive",
+    "description": "Current inactive report",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "inactive",
+      "package_error": null
+    },
+    "expected": "inactive_reported"
+  },
+  {
+    "id": "unknown",
+    "description": "Explicit unknown report",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "unknown",
+      "package_error": null
+    },
+    "expected": "unknown_reported"
+  },
+  {
+    "id": "null-requested",
+    "description": "Requested package has no status",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": null,
+      "package_error": null
+    },
+    "expected": "unavailable"
+  },
+  {
+    "id": "unrequested-field",
+    "description": "Status present but not requested",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": false,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "not_checked"
+  },
+  {
+    "id": "http-error",
+    "description": "Transport/API failure",
+    "input": {
+      "http_ok": false,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "unavailable"
+  },
+  {
+    "id": "package-error",
+    "description": "Package error despite status text",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": "synthetic-error"
+    },
+    "expected": "unavailable"
+  },
+  {
+    "id": "stale",
+    "description": "Report age is 301 seconds",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:54:59Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "stale"
+  },
+  {
+    "id": "future",
+    "description": "Observation is in the future",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T01:00:01Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "timestamp_invalid"
+  },
+  {
+    "id": "missing-time",
+    "description": "No observation timestamp",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": null,
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "timestamp_invalid"
+  },
+  {
+    "id": "wrong-subject",
+    "description": "Response belongs to fixture-B",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-B",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "subject_mismatch"
+  },
+  {
+    "id": "invalid-basic",
+    "description": "Invalid basic result with status text",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": false,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "basic_invalid"
+  },
+  {
+    "id": "unknown-value",
+    "description": "Unrecognized status text",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "probably-fine",
+      "package_error": null
+    },
+    "expected": "unavailable"
+  },
+  {
+    "id": "cache-null",
+    "description": "New null, old positive cached",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": null,
+      "package_error": null,
+      "cached_positive": "reachable"
+    },
+    "expected": "unavailable"
+  },
+  {
+    "id": "cache-error",
+    "description": "New error, old positive cached",
+    "input": {
+      "http_ok": false,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:59:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null,
+      "cached_positive": "reachable"
+    },
+    "expected": "unavailable"
+  },
+  {
+    "id": "window-edge",
+    "description": "Report age is exactly 300 seconds",
+    "input": {
+      "http_ok": true,
+      "requested_subject": "fixture-A",
+      "response_subject": "fixture-A",
+      "observed_at": "2026-10-16T00:55:00Z",
+      "basic_valid": true,
+      "line_status_requested": true,
+      "line_status": "active",
+      "package_error": null
+    },
+    "expected": "active_reported"
+  }
+]
