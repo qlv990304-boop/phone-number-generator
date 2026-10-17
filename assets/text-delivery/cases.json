@@ -1,0 +1,207 @@
+[
+  {
+    "id": "no-evidence",
+    "events": [],
+    "expected": "no_matching_evidence",
+    "reason": "No response is not a delivery result."
+  },
+  {
+    "id": "queued",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "queued"
+      }
+    ],
+    "expected": "delivery_unconfirmed",
+    "reason": "The request has not established delivery."
+  },
+  {
+    "id": "sent-only",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "queued"
+      },
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      }
+    ],
+    "expected": "delivery_unconfirmed",
+    "reason": "Carrier acceptance is not a delivery receipt."
+  },
+  {
+    "id": "delivered",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "queued"
+      },
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      },
+      {
+        "message_id": "message-A",
+        "status": "delivered"
+      }
+    ],
+    "expected": "delivery_reported",
+    "reason": "One consistent delivery report is present."
+  },
+  {
+    "id": "undelivered",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "queued"
+      },
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      },
+      {
+        "message_id": "message-A",
+        "status": "undelivered"
+      }
+    ],
+    "expected": "non_delivery_reported",
+    "reason": "Preserve an explicit non-delivery report."
+  },
+  {
+    "id": "failed",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "queued"
+      },
+      {
+        "message_id": "message-A",
+        "status": "failed"
+      }
+    ],
+    "expected": "send_failure_reported",
+    "reason": "Keep sending failure distinct from non-delivery."
+  },
+  {
+    "id": "late-sent",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "delivered"
+      },
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      }
+    ],
+    "expected": "delivery_reported",
+    "reason": "A late progress event does not erase a receipt."
+  },
+  {
+    "id": "duplicate",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      },
+      {
+        "message_id": "message-A",
+        "status": "delivered"
+      },
+      {
+        "message_id": "message-A",
+        "status": "delivered"
+      }
+    ],
+    "expected": "delivery_reported",
+    "reason": "Repeating one receipt does not add another delivery."
+  },
+  {
+    "id": "late-queue",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      },
+      {
+        "message_id": "message-A",
+        "status": "queued"
+      }
+    ],
+    "expected": "delivery_unconfirmed",
+    "reason": "Keep the furthest progress; do not infer delivery."
+  },
+  {
+    "id": "wrong-message",
+    "events": [
+      {
+        "message_id": "message-B",
+        "status": "delivered"
+      }
+    ],
+    "expected": "no_matching_evidence",
+    "reason": "A different message cannot complete this one."
+  },
+  {
+    "id": "mixed-message",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      },
+      {
+        "message_id": "message-B",
+        "status": "delivered"
+      }
+    ],
+    "expected": "delivery_unconfirmed",
+    "reason": "Foreign success does not upgrade a sent message."
+  },
+  {
+    "id": "terminal-conflict",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "delivered"
+      },
+      {
+        "message_id": "message-A",
+        "status": "undelivered"
+      }
+    ],
+    "expected": "review_terminal_conflict",
+    "reason": "Do not resolve contradictory receipts by arrival order."
+  },
+  {
+    "id": "failure-conflict",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "failed"
+      },
+      {
+        "message_id": "message-A",
+        "status": "delivered"
+      }
+    ],
+    "expected": "review_terminal_conflict",
+    "reason": "Retain both reports for reconciliation."
+  },
+  {
+    "id": "unknown-status",
+    "events": [
+      {
+        "message_id": "message-A",
+        "status": "sent"
+      },
+      {
+        "message_id": "message-A",
+        "status": "read"
+      }
+    ],
+    "expected": "review_unknown_status",
+    "reason": "Read is outside this SMS-only model; require review."
+  }
+]
