@@ -1,0 +1,272 @@
+{
+  "scope": "Authored offline synthetic events only; not actual messages, callbacks or delivery measurements",
+  "date": "2026-10-17",
+  "curated_cases": 14,
+  "curated_matched": 14,
+  "permutations": 6,
+  "permutation_matched": 6,
+  "guarded_delivery_reported": 6,
+  "naive_delivered_last": 2,
+  "rows": [
+    {
+      "id": "no-evidence",
+      "expected": "no_matching_evidence",
+      "actual": {
+        "label": "no_matching_evidence",
+        "progress": null,
+        "terminal_reports": [],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": null
+    },
+    {
+      "id": "queued",
+      "expected": "delivery_unconfirmed",
+      "actual": {
+        "label": "delivery_unconfirmed",
+        "progress": "queued",
+        "terminal_reports": [],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "queued"
+    },
+    {
+      "id": "sent-only",
+      "expected": "delivery_unconfirmed",
+      "actual": {
+        "label": "delivery_unconfirmed",
+        "progress": "sent",
+        "terminal_reports": [],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "sent"
+    },
+    {
+      "id": "delivered",
+      "expected": "delivery_reported",
+      "actual": {
+        "label": "delivery_reported",
+        "progress": "sent",
+        "terminal_reports": [
+          "delivered"
+        ],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "delivered"
+    },
+    {
+      "id": "undelivered",
+      "expected": "non_delivery_reported",
+      "actual": {
+        "label": "non_delivery_reported",
+        "progress": "sent",
+        "terminal_reports": [
+          "undelivered"
+        ],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "undelivered"
+    },
+    {
+      "id": "failed",
+      "expected": "send_failure_reported",
+      "actual": {
+        "label": "send_failure_reported",
+        "progress": "queued",
+        "terminal_reports": [
+          "failed"
+        ],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "failed"
+    },
+    {
+      "id": "late-sent",
+      "expected": "delivery_reported",
+      "actual": {
+        "label": "delivery_reported",
+        "progress": "sent",
+        "terminal_reports": [
+          "delivered"
+        ],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "sent"
+    },
+    {
+      "id": "duplicate",
+      "expected": "delivery_reported",
+      "actual": {
+        "label": "delivery_reported",
+        "progress": "sent",
+        "terminal_reports": [
+          "delivered"
+        ],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "delivered"
+    },
+    {
+      "id": "late-queue",
+      "expected": "delivery_unconfirmed",
+      "actual": {
+        "label": "delivery_unconfirmed",
+        "progress": "sent",
+        "terminal_reports": [],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "queued"
+    },
+    {
+      "id": "wrong-message",
+      "expected": "no_matching_evidence",
+      "actual": {
+        "label": "no_matching_evidence",
+        "progress": null,
+        "terminal_reports": [],
+        "ignored_wrong_message": 1,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "delivered"
+    },
+    {
+      "id": "mixed-message",
+      "expected": "delivery_unconfirmed",
+      "actual": {
+        "label": "delivery_unconfirmed",
+        "progress": "sent",
+        "terminal_reports": [],
+        "ignored_wrong_message": 1,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "delivered"
+    },
+    {
+      "id": "terminal-conflict",
+      "expected": "review_terminal_conflict",
+      "actual": {
+        "label": "review_terminal_conflict",
+        "progress": null,
+        "terminal_reports": [
+          "delivered",
+          "undelivered"
+        ],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "undelivered"
+    },
+    {
+      "id": "failure-conflict",
+      "expected": "review_terminal_conflict",
+      "actual": {
+        "label": "review_terminal_conflict",
+        "progress": null,
+        "terminal_reports": [
+          "delivered",
+          "failed"
+        ],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "delivered"
+    },
+    {
+      "id": "unknown-status",
+      "expected": "review_unknown_status",
+      "actual": {
+        "label": "review_unknown_status",
+        "progress": "sent",
+        "terminal_reports": [],
+        "ignored_wrong_message": 0,
+        "human_read_proven": false
+      },
+      "matched": true,
+      "naive_last_status": "read"
+    }
+  ],
+  "orders": [
+    {
+      "order": [
+        "queued",
+        "sent",
+        "delivered"
+      ],
+      "naive_last_status": "delivered",
+      "guarded_label": "delivery_reported",
+      "matched": true
+    },
+    {
+      "order": [
+        "queued",
+        "delivered",
+        "sent"
+      ],
+      "naive_last_status": "sent",
+      "guarded_label": "delivery_reported",
+      "matched": true
+    },
+    {
+      "order": [
+        "sent",
+        "queued",
+        "delivered"
+      ],
+      "naive_last_status": "delivered",
+      "guarded_label": "delivery_reported",
+      "matched": true
+    },
+    {
+      "order": [
+        "sent",
+        "delivered",
+        "queued"
+      ],
+      "naive_last_status": "queued",
+      "guarded_label": "delivery_reported",
+      "matched": true
+    },
+    {
+      "order": [
+        "delivered",
+        "queued",
+        "sent"
+      ],
+      "naive_last_status": "sent",
+      "guarded_label": "delivery_reported",
+      "matched": true
+    },
+    {
+      "order": [
+        "delivered",
+        "sent",
+        "queued"
+      ],
+      "naive_last_status": "queued",
+      "guarded_label": "delivery_reported",
+      "matched": true
+    }
+  ]
+}
