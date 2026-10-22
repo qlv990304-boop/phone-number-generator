@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="880" viewBox="0 0 400 880" role="img" aria-labelledby="t d">
+<title id="t">Read a lookup as evidence, not a guarantee</title>
+<desc id="d">Phone layout: check request identity, observation time and package outcome before displaying a limited dated report. Delivery, your control and contact permission remain unproven.</desc>
+<rect width="400" height="880" rx="20" fill="#f1f5f9"/>
+<g font-family="Arial, sans-serif" fill="#0f172a">
+<text x="24" y="44" font-size="26" font-weight="700">What does this lookup</text>
+<text x="24" y="76" font-size="26" font-weight="700">actually prove?</text>
+<text x="24" y="110" font-size="18" fill="#475569">Synthetic evidence checklist</text>
+<g fill="white" stroke="#94a3b8" stroke-width="2"><rect x="24" y="144" width="352" height="128" rx="14"/><rect x="24" y="306" width="352" height="128" rx="14"/><rect x="24" y="468" width="352" height="128" rx="14"/></g>
+<g font-size="22" font-weight="700"><text x="44" y="180">1. Same subject?</text><text x="44" y="342">2. Usable time?</text><text x="44" y="504">3. Usable package?</text></g>
+<g font-size="18" fill="#334155"><text x="44" y="218">Request and response</text><text x="44" y="246">must identify one line.</text><text x="44" y="380">Keep the timestamp.</text><text x="44" y="408">Flag stale or future data.</text><text x="44" y="542">Requested, recognized,</text><text x="44" y="570">and free of errors.</text></g>
+<path d="M200 280v18m-8-8 8 8 8-8M200 442v18m-8-8 8 8 8-8" fill="none" stroke="#2563eb" stroke-width="3"/>
+<rect x="24" y="636" width="352" height="220" rx="14" fill="#172554"/>
+<g font-size="22" font-weight="700" fill="white"><text x="44" y="674">Display a limited,</text><text x="44" y="704">dated report</text></g>
+<g font-size="18" fill="#dbeafe"><text x="44" y="746">Not proof of SMS delivery</text><text x="44" y="784">Not proof of your control</text><text x="44" y="822">Not permission to contact</text></g>
+</g></svg>
