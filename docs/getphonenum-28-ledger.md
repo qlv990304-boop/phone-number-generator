@@ -795,3 +795,65 @@ T3/T4: No new keyword measurements, autocomplete responses, overseas questions, 
 T5: Existing agent object; chromeOct22 undefined; current chrome/latest runtime entry confirmed present. One explicit Chrome family get failed before documentation/tablist/YouTube actions with exact "Browser is not available: chrome". No new upload, file chooser, draft or Public/Publish action; already-uploaded approved caption video I5txkVtH-pk remains Public/Publish unverified. Specific consent persists; no reask, reupload or manual-Public request. No reset/reimport loop, shell Chrome launch, substitute upload surface, password/OTP/CAPTCHA or phone verification. No new image or video publication today; yesterday's image remains selected.
 
 Cleanup: BrowserUse explicitly confirmed task-created tabs closed and pre-existing blank tab preserved. No user Chrome windows or tabs opened/closed. No new dependencies, renders or disposable intermediates; only reviewable audit/log records saved. Prior policy-denied cleanup targets were not retried or removed by another method. No other-site files/data or automation settings used/changed. No article/page/asset release today; repository change is this execution documentation only.
+
+
+## 2026-10-24 — first 28-day report, unavailable account metrics
+
+Report date2026-10-24, Asia/Shanghai; editorial cycle1 isSeptember26–October23. Original Google metric values could not be acquired. CurrentChrome runtime entry exists. Existing agent object and chromeOct23undefined; one explicit Chrome-familyget failed before documentation/tablist/Google page access with exact "Browser is not available: chrome". No reinitialization/reset loop, tab command retry, shell Chrome launch, alternate signed-in surface, external search substitution, login/password/OTP/CAPTCHA or phone verification.
+
+All requested GSC original-value comparisons are recorded 读不到 for BOTH sides: Indexing/Pages Indexed this28days versus previous28days; Performance clicks this7days versus previous7days; Performance averageposition latest24hours versus previousday. GA4 near7day dailyaverageactiveusers is also 读不到. UI date labels, raw values and property identities were not read, and are null in report.json/completion.json. Editorial cycle dates are bookkeeping dates, not fabricated observed GSC date labels. GA4installationstatus is unknown; did NOT write 未安装. No zero substitution, estimated metrics, proxy traffic/HTTP/indexing inference, growth-cause explanation or keyword/direction change.
+
+### Five-line cycle 1 report
+
+第1轮（2026-09-26—10-23）｜GSC已索引（本/上28天）：读不到 / 读不到。  
+GSC点击（本/上7天）：读不到 / 读不到。  
+GSC平均排名（最近24小时/前一天）：读不到 / 读不到。  
+GA4近7天日均活跃用户：读不到（Chrome：`Browser is not available: chrome`）。  
+本期文章19篇：[文章清单](https://github.com/qlv990304-boop/phone-number-generator/blob/main/docs/getphonenum-28-ledger.md#cycle-1-articles)；6个工具页另计，今日新增文章0篇。
+
+### Cycle 1 articles
+
+第1轮：2026-09-26—2026-10-23；文章19篇，地址工具6页另计。文章按历史发布日志及10月20日公开清单核对；本清单不代表Google索引数量。后续手机图示修复未重复计数。
+
+| 日期 | 文章 | URL |
+| --- | --- | --- |
+| 2026-09-26 | Phone number generator: which type do you need? | [阅读](https://getphonenum.com/phone-number-generator-decision-guide) |
+| 2026-09-27 | Random phone number generator for testing: replay a failure | [阅读](https://getphonenum.com/random-phone-number-generator-testing) |
+| 2026-09-28 | Phone number maker safety: block test SMS before it reaches a real person | [阅读](https://getphonenum.com/phone-number-maker-test-safety) |
+| 2026-09-29 | Does a random phone number generator guarantee unique results? | [阅读](https://getphonenum.com/random-phone-number-generator-unique-results) |
+| 2026-09-30 | Fake Phone Number Generator: Fail Closed by Country | [阅读](https://getphonenum.com/fake-phone-number-generator-fail-closed) |
+| 2026-10-01 | Fake Number Generator for OTP Tests: Check the Flow Offline | [阅读](https://getphonenum.com/fake-number-generator-otp-test-states) |
+| 2026-10-02 | Create a Free Phone Number? Check the Retention Rules First | [阅读](https://getphonenum.com/create-a-free-phone-number-retention) |
+| 2026-10-03 | Create a Phone Number for Sign-In? Verify Control First | [阅读](https://getphonenum.com/create-phone-number-account-binding) |
+| 2026-10-04 | Free Phone Number Generator for CSV Test Data: Preserve Values as Text | [阅读](https://getphonenum.com/free-phone-number-generator-csv-text) |
+| 2026-10-07 | Phone Number Generator: Do Your Tests Catch Broken Fixtures? | [阅读](https://getphonenum.com/phone-number-generator-mutation-checks) |
+| 2026-10-08 | Phone Number Generator: Catch Fixture Schema Drift Before CI | [阅读](https://getphonenum.com/phone-number-generator-schema-drift) |
+| 2026-10-09 | Phone Number Generator: Check Fixture Download Integrity | [阅读](https://getphonenum.com/phone-number-generator-download-integrity) |
+| 2026-10-10 | Phone Number Generator: Test Log Redaction Before Sharing Failures | [阅读](https://getphonenum.com/phone-number-generator-log-redaction) |
+| 2026-10-11 | Phone Number Generator: Keep Batch Exports in Sync with Filters | [阅读](https://getphonenum.com/phone-number-generator-export-state) |
+| 2026-10-13 | Phone Number Generator: Test International and National Display Round Trips | [阅读](https://getphonenum.com/phone-number-generator-format-roundtrip) |
+| 2026-10-14 | Phone Number Generator: Test Extraction and Whole-Field Input Separately | [阅读](https://getphonenum.com/phone-number-generator-input-boundaries) |
+| 2026-10-15 | Fake Phone Numbers That Work: Why Forms Disagree | [阅读](https://getphonenum.com/fake-phone-numbers-that-work) |
+| 2026-10-16 | Random Real Phone Numbers: What a Lookup Can Tell You | [阅读](https://getphonenum.com/random-real-phone-numbers) |
+| 2026-10-17 | Random Phone Number to Text? Check What Sent Means | [阅读](https://getphonenum.com/random-phone-number-to-text) |
+
+#### Address tools — not included in article count
+
+- [Alabama Address Generator](https://getphonenum.com/alabama-address-generator)
+- [Fake Address America: US Address Generator](https://getphonenum.com/fake-address-america)
+- [Los Angeles Addresses Generator](https://getphonenum.com/los-angeles-addresses)
+- [Pennsylvania Address Generator](https://getphonenum.com/pennsylvania-address-generator)
+- [Tennessee Address Generator](https://getphonenum.com/tennessee-address-generator)
+- [Washington Address Generator: Seattle](https://getphonenum.com/washington-address-generator)
+
+
+Article list count reconciled against the current historical release ledger:19uniqueguideURLs datedwithinfirstcycle,allpresentinledger. Sourceavailability inventory was actually checkedOctober20, not rerun today; laterOctober18/22diagramrepairs andOctober19localFaker research were not counted as newarticles. Sixaddress tools are separate from19editorialguides. Site-wide88sitemapURLs are not cyclearticlecount orGoogleindexedcount. Local artifacts assets/getphonenum-28/cycle-1-report-2026-10-24/: article-list.md,report.md(5lines),report.json,completion.json,browser-audit.json. FullarticlelistisalsopreservedaboveunderCycle1articlesanchor.
+
+Daily execution:0newarticles,0newcontentURLs; no newpage/asset/video release. No new measured keyword/region batch; sixFakerproposalsremainpending. Publishingauthorization persists, no reask or repeated inputrequest; no inherited volume, synonym page or fabricated userquote/searchvolume.
+T1 public read-only BrowserUse1b803b0b-4c2b-4c05-a4dc-c692680b5e78 completed: https://getphonenum.com/ at1440x900/390x844 boundary,H1,Generate test number firstscreen;client/scroll1425/1425 and390/390;readable,nokeyoverlap/nohorizontaloverflow. Sampledcontrast5.17–17.85:1 passed AA for those measured text/colorpairs,notafullWCAGaudit. https://getphonenum.com/sitemap.xml HTTP200,88locs/88unique/0duplicates.NoCSSfixneeded.
+T2 no new/rereadcompetitorpages,SERP orTOP3change. Fixedmainkeywordphone number generator andexistingTOP3retained. HistoricalceilingsDialaxy10/KrispCall10/Receive-SMSS9safestaticpages;no /sms/inbox/SMS/OTPbody.
+T3/T4 no newautocomplete/keywordmeasurement/userquestion/experiment/publishedFAQtoday. Existing researchdrafts retained,notclaimednewproduction.
+T5 alreadyuploadedapprovedcaptionvideoI5txkVtH-pk remains Public/Publish unverified because of sameChromeconnectiongate; no YouTubeaction/filechooser/newdraft/reupload/termsreask/manualPublicrequest. Specificconsentpersists. No newimageorvideooutputclaimed.
+Cleanupexplicitlyconfirmedcreatedpublicresearchtabclosed/preexistingtabpreserved. No userChrome tabs/windowscreatedorclosed. Onlyreviewableaudit/report/logartifacts retained; no newdependencies/renders/disposableintermediates. Olderpolicy-deniedcleanup targetsnotretriedorremovedbyothermethods. Automation settings and unrelated-sitefiles/data untouched.
+
+The first scheduled report is delivered with unavailable-data labels; this does not claim original metrics were successfully read. Next regular28dayreportdate isNovember21 by calendar, with no scheduler modification made. No strategy or ranking changes were inferred from missing data.
