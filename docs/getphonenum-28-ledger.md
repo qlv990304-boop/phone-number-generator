@@ -1089,3 +1089,18 @@ T5: chrome/latest entry exists. Existing agent reused for one Chrome-family sele
 
 No metrics reread; October 24 report retains 读不到 values, GA4 installation unknown. Next regular report November 21. No estimates or strategy change.
 Cleanup: No Browser Use run or Chrome handle, hence no task tabs/windows created or user tabs/windows touched. Reviewable checker/results/error/log saved in assets/getphonenum-28/daily-check-2026-11-08/. No disposable materials/dependencies created. Older policy-denied cleanup targets not retried/bypassed. Other-site files/data and automation settings untouched. Repository change is execution documentation only; no article/page/image/video release.
+
+
+## 2026-11-09 — Public HTTP verified; browser work blocked
+
+Client date Asia/Shanghai. Today and cycle 2 (October 24–November 20): 0 new articles / 0 new content URLs. No new measured keyword batch received; six unmeasured Faker proposals and competitor keyword export request remain pending. Existing intents remain covered. Daily article target not met. No repeated keyword request, invented volume or duplicate synonym page.
+
+T1: Fresh HTTP checker ran: https://getphonenum.com/ HTTP 200, final URL unchanged, 13,682 bytes, title “Free Phone Number Generator for Testing | GetPhoneNum”; CTA and synthetic boundary text present in source. https://getphonenum.com/sitemap.xml HTTP 200, 10,909 bytes, 88 locs / 88 unique / 0 duplicates. No HTTP errors. HTTP/source evidence only; desktop 1440×900 and mobile 390×844 rendered visual checks not completed. No CSS change.
+One fresh Browser Use read returned isError=true, error_code UNAUTHORIZED, no run_id, exact “This app connection requires reauthentication. Reconnect the app and try again.” No wait/retry/login/authentication action. October 26 reconnection request remains pending; no duplicate question or plugin installation.
+
+T2: Main keyword phone number generator and existing TOP3 unchanged. No SERP search or new/repeated competitor reads. Historical corpus: Dialaxy 10 / KrispCall 10 / Receive-SMSS 9 safe static pages. No /sms/ inbox or SMS/OTP body access.
+T3/T4: No new autocomplete, measured keyword, question/quote, experiment or published FAQ. Existing Faker research/drafts remain unpublished, not today's output.
+T5: chrome/latest entry exists. Existing agent reused for one Chrome-family selection; exact “Browser is not available: chrome” before documentation/tab listing or YouTube actions. Uploaded caption video I5txkVtH-pk remains Public/Publish unverified; specific consent persists. No reupload, file chooser, visibility change, consent reask/manual-public request, reset/import loop, shell Chrome, CUA/Browser Use upload substitute or credential/OTP/CAPTCHA/phone verification.
+
+No metrics reread; October 24 report retains 读不到 values, GA4 installation unknown. Next regular report November 21. No estimates or strategy change.
+Cleanup: No Browser Use run or Chrome handle, hence no task tabs/windows created or user tabs/windows touched. Reviewable checker/results/error/log saved in assets/getphonenum-28/daily-check-2026-11-09/. No disposable materials/dependencies created. Older policy-denied cleanup targets not retried/bypassed. Other-site files/data and automation settings untouched. Repository change is execution documentation only; no article/page/image/video release.
