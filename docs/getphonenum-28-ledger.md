@@ -1235,3 +1235,22 @@ T5: chrome/latest entry exists. Existing agent reused for exactly one Chrome-fam
 No GSC/GA4 reread. October24 report retains 读不到 values; GA4 installation unknown. Installed Umami does not replace the required GA4 metric. Next regular report November21; no estimates or strategy change.
 
 Cleanup: Browser Use explicitly confirmed this run's homepage, sitemap and report tabs closed, leaving only the pre-existing unrelated about:blank tab. This verifies current-run cleanup, not prior-run tabs. No Chrome handle/task tabs/windows created; user tabs/windows untouched. Reviewable checker/results, browser audit/status and log saved in assets/getphonenum-28/daily-check-2026-11-16/. No disposable dependencies/materials created. Older policy-denied cleanup targets not retried/bypassed. Other-site files/data and automation settings untouched. Repository mutation is execution documentation only; no new article/page/image/video release.
+
+
+## 2026-11-17 — Daily checks passed; Umami retained; Chrome unavailable
+
+Client date Asia/Shanghai. Today and cycle 2 (October 24–November 20): 0 new articles / 0 new content URLs. No new measured keyword batch received; pending six unmeasured Faker proposals and competitor keyword export request unchanged. Existing intents remain covered. Daily article target not met; no duplicate synonym page, invented volume or repeated keyword request.
+
+T1: Browser Use run de9b31ca-180c-4ea3-88a5-47db825004f2 completed terminal=true/status=completed. Public homepage https://getphonenum.com/ at desktop1440×900/mobile390×844: complete synthetic boundary label, heading “Random phone number generator for testing” and main “Generate test number” CTA visible in both first screens. Typography, contrast and spacing readable; no page-level horizontal overflow. Reported scrollWidth equals clientWidth desktop1425px/mobile390px. No CSS change indicated; no controls activated.
+Public sitemap https://getphonenum.com/sitemap.xml:88locs/88unique/0duplicates.
+Independent public HTTP: homepage200,13,803bytes, unchanged exact final URL/title “Free Phone Number Generator for Testing | GetPhoneNum”; CTA/boundary text present. Sitemap200,10,909bytes,88locs/88unique/0duplicates; no HTTP errors. public-http.json is source-only evidence; rendered evidence is browser-audit.json.
+
+Umami: DOM confirms exactly one matching deferred https://cloud.umami.is/script.js tag and website ID14079940-a57b-4c6c-8b4b-c1b9a7d8d2c5; HTTP independently confirms one matching source tag and supplied ID. No reinsertion/configuration change. November14 full-site91-page verification/PR#30 remains historical evidence, not repeated today. No manually sent analytics events; network delivery and Umami dashboard data not newly verified today. Browser Use remains functional; no reconnection request.
+
+T2: Main keyword phone number generator / existing TOP3 unchanged. No SERP or new/repeated competitor reads. Historical corpus Dialaxy10/KrispCall10/Receive-SMSS9 safe static pages. No /sms/ inbox or SMS/OTP body access.
+T3/T4: No new autocomplete, measured keyword, question/quote, experiment or published FAQ. Existing Faker research/drafts remain unpublished and are not today's output.
+T5: chrome/latest entry exists. Reused existing agent for exactly one Chrome-family selection; exact “Browser is not available: chrome” before documentation/tab listing. Uploaded caption video I5txkVtH-pk remains Public/Publish unverified; specific publication consent persists. No YouTube action/reupload/consent reask/reset/import loop/shell Chrome/CUA or Browser Use upload substitute/password/OTP/CAPTCHA/phone verification.
+
+No GSC/GA4 reread. October24 report retains 读不到 values; GA4 installation unknown. Installed Umami does not replace the required GA4 metric. Next regular report November21; no estimates or strategy change.
+
+Cleanup: Browser Use explicitly confirmed task-created homepage, sitemap and report tabs closed and verified absent, preserving the pre-existing unrelated about:blank tab. This verifies current-run cleanup only. No Chrome handle/task tabs/windows created; user tabs/windows untouched. Reviewable checker/results, browser audit/status and execution log saved in assets/getphonenum-28/daily-check-2026-11-17/. No disposable dependencies/materials created. Older policy-denied cleanup targets not retried/bypassed. Other-site files/data and automation settings untouched. Repository mutation is execution documentation only; no new article/page/image/video release.
